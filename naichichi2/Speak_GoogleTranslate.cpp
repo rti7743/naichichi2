@@ -1,4 +1,5 @@
-﻿//GPLでライセンスされています。(他のライセンス形態を望むならばお問い合わせください)
+﻿//結局使いませんでした そりゃそうだろう
+//GPLでライセンスされています。(他のライセンス形態を望むならばお問い合わせください)
 #if WITH_CLIENT_ONLY_CODE==1
 // Speak_GoogleTranslate.cpp: Speak_GoogleTranslate クラスのインプリメンテーション
 //
