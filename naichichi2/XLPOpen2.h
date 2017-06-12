@@ -5,6 +5,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+//LinuxとWindows両対応な peopn2を実現する.
 class XLPOpen2
 {
 public:

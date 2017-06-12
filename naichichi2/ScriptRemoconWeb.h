@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-
+//HTML Webリモコン画面を出すにあたってのユーティリティ集 
 class ScriptRemoconWeb 
 {
 public:

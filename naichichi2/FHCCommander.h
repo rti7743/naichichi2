@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+//Windows用ユーティリティ FHCCommanderと通信する.
 class FHCCommander
 {
 public:

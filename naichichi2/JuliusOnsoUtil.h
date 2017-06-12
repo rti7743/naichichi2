@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+//Julius音素系ユーティリティ
 class JuliusOnsoUtil
 {
 public:

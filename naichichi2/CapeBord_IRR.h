@@ -2,7 +2,7 @@
 #pragma once
 #include "CapeBord.h"
 
-
+//新リモコンボードIRR
 class CapeBord_IRR : public ICapeBordInterface
 {
 public:

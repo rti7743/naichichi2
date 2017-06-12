@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+//センサー関係にアクセスする.
 class Sensor_CapeBord : public ISensorInterface
 {
 public:

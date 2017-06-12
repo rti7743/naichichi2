@@ -9,6 +9,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
+//文字列全般を扱うユーティリティ
 class XLStringUtil  
 {
 public:

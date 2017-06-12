@@ -6,6 +6,7 @@
 	#include "XLUSBHIDDevice.h"
 #endif //_WITH_USB
 
+//javascript インターフェースの実装 
 class ScriptRunner 
 {
 	v8::HandleScope handle_scope;

@@ -5,6 +5,7 @@
 #include <alsa/asoundlib.h>
 #endif
 
+//音楽の再生.
 class SoundPlay
 {
 public:

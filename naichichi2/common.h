@@ -178,9 +178,6 @@ static float atof(const string& str)
 #ifndef MIN
 #define MIN(a,b)	((a) < (b) ? (a) : (b))
 #endif
-#ifndef MINMAX
-#define MINMAX(a,x,b)	()
-#endif
 
 
 //メインウィンドウ
@@ -223,9 +220,6 @@ template<typename _INT> static _INT sizehosei(_INT x, _INT min,_INT max)
 //スレッドの秒単位スリープ
 static void SecSleepEx(mutex& lock,condition_variable& EventObject,unsigned int sec)
 {
-	//愚かな仕様の this_thread::sleep はこれじゃない. 俺たちのほしいのはこれじゃない。はっきりわかんだね。
-	//終了割り込みがちゃんとかからない sleep なんて、 ::Sleep() と同じやん。
-	//ついでに chronoもとても使いずらいので改善を希望。なんでも型でやろうとするのは理想主義だと思うんだよな。
 	const auto timeout = chrono::seconds(sec);
 
 	unique_lock<mutex> al(lock);

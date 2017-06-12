@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+//読み上げデータのキャッシュ
+//wave生成に時間がかかるため一度読んだものはキャッシュして使いまわす.
 class SpeakCacheDB
 {
 public:

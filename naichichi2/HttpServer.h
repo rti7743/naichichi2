@@ -11,6 +11,7 @@
 #include "XLSocket.h"
 #include "XLHttpHeader.h"
 
+//インターフェース用にHTTPサーバを作ります.
 
 enum WEBSERVER_RESULT_TYPE
 {

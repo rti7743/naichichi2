@@ -12,6 +12,7 @@ struct ICapeBordInterface
 	virtual void TurnOffLED() = 0;
 };
 
+//拡張ボードがない場合
 struct CapeBord_None : public ICapeBordInterface
 {
 	virtual int getLumi() { return 0; };
@@ -22,6 +23,7 @@ struct CapeBord_None : public ICapeBordInterface
 	virtual void TurnOffLED() {};
 };
 
+//LEDチカチカ
 class AutoLEDOn
 {
 public:

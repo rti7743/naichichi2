@@ -5,6 +5,7 @@
 #include "ScriptWebRunner.h"
 #include "XLHttpHeader.h"
 
+//スクリプトエンジンの管理 
 class ScriptManager
 {
 public:

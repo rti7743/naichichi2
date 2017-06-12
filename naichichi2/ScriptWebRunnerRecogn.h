@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Callbackable.h"
 
+//Web画面を実装するうえでの、音声認識関係の動作
 class ScriptWebRunnerRecogn : public CallbackPP
 {
 public:

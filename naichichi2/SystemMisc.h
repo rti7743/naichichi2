@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 
-
+//システム関係のユーティリティ
 class SystemMisc
 {
 public:

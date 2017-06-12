@@ -6,6 +6,7 @@
 #include "ScriptWebRunnerSpeak.h"
 #include "ScriptWebRunnerTrigger.h"
 
+//Web画面の実装 
 class ScriptWebRunner
 {
 public:

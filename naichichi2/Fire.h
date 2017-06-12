@@ -2,6 +2,7 @@
 #if WITH_CLIENT_ONLY_CODE==1
 #pragma once
 
+//機器に動作信号を送る.
 class Fire
 {
 public:

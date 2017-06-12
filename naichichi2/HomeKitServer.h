@@ -13,6 +13,7 @@
 
 class PHKNetworkIP;
 
+//Homekitエミュレーションの実装
 class HomeKitServer
 {
     thread* HomeKitThread;

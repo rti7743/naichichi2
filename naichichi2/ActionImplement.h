@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "XLHttpHeader.h"
 
+//javascriptから呼ばれる、特定の機能を実装する
 class ActionImplement
 {
 public:

@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+//旧リモコンボードEndelと通信するプロトコル
+//速度がほしいのでC++で書き直す.
+
 const unsigned char SERIAL_STX = 0x2;
 const unsigned char SERIAL_ETX = 0x3;
 const unsigned char SERIAL_ESC = 0x1b;

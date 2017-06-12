@@ -3,6 +3,8 @@
 #include "CapeBord_EndelSCommander.h"
 #include "CapeBord.h"
 
+//旧リモコンボードEndel
+
 #include <vector>
 #include <string>
 struct IRData

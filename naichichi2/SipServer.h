@@ -11,7 +11,8 @@
 
 #include "XLPOpen2.h"
 
-
+//sipサーバ
+//pjsipがGPLなのでリンクせずに popen2で呼び出す.
 class SipServer
 {
 public:

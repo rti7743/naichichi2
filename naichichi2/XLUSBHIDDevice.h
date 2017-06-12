@@ -1,6 +1,9 @@
 ﻿#pragma once
 #if _WITH_USB
 
+///linuxとwindows両対応なUSBコントロールクラス
+//結局使わなかったけどな
+
 #if _MSC_VER
 	#include "XLLoadLibraryHelper.h"
 #else

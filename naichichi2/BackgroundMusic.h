@@ -10,6 +10,7 @@
 #else
 #endif
 
+//裏側で音楽を再生する
 class BackgroundMusic
 {
 public:

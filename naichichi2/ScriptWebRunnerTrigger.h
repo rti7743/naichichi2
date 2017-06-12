@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Callbackable.h"
 
+//Web画面を実装するうえでの、特定の時間に実行するトリガー関係の動作
 class ScriptWebRunnerTrigger : public CallbackPP
 {
 public:
