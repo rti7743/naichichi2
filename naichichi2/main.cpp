@@ -12,15 +12,6 @@ int main(int argc, const char **argv)
 {
 	ASSERT_IS_MAIN_THREAD_RUNNING(); //メインスレッドでしか動きません
 
-	for(int i = 0 ; i < 10000; i ++)
-	{
-		int a = xlrandom(64);
-		if (a < 0 || a >= 64)
-		{
-			ASSERT(0);
-		}
-	}
-
 
 #if _MSC_VER && _DEBUG
 //	_CrtSetBreakAlloc(144);
