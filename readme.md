@@ -27,9 +27,11 @@ VS2013未満は、 std::threadがないので boost::threadで代用します。
 * 音声認識エンジン  
 * 合成音声エンジン  
 * webサーバと画面  
-* 同期エンジン  
+* テンプレートエンジン  
+* サーバ同期エンジン(ロングポーリング)  
 * 複数台同期  
 * javascript実行処理系  
+* ホームコントロール処理系  
 * Homekitエミュレーション  
 * HEMS(EcoNetLite)  
 * UPNP(SSDP)  
