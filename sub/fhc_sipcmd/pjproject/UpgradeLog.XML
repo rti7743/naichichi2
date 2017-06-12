@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="pjproject-vs8">
+</Property><Property Name="ソリューション ファイル" Value="C:\Users\rti\Desktop\pjproject-master\pjproject-vs8.sln">
+</Property><Property Name="Date" Value="2017年4月18日">
+</Property><Property Name="Time" Value="13:20">
+</Property></Properties><Event ErrorLevel="3" Project="pjlib" Source="pjlib\build\pjlib.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjlib_test" Source="pjlib\build\pjlib_test.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjlib_util" Source="pjlib-util\build\pjlib_util.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjlib_util_test" Source="pjlib-util\build\pjlib_util_test.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjmedia" Source="pjmedia\build\pjmedia.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjmedia_codec" Source="pjmedia\build\pjmedia_codec.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsip_core" Source="pjsip\build\pjsip_core.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsip_simple" Source="pjsip\build\pjsip_simple.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsip_ua" Source="pjsip\build\pjsip_ua.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsua" Source="pjsip-apps\build\pjsua.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsua_lib" Source="pjsip\build\pjsua_lib.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="sample_debug" Source="pjsip-apps\build\sample_debug.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjnath" Source="pjnath\build\pjnath.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libgsmcodec" Source="third_party\build\gsm\libgsmcodec.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libilbccodec" Source="third_party\build\ilbc\libilbccodec.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libresample" Source="third_party\build\resample\libresample.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libspeex" Source="third_party\build\speex\libspeex.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libmilenage" Source="third_party\build\milenage\libmilenage.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libsrtp" Source="third_party\build\srtp\libsrtp.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjnath_test" Source="pjnath\build\pjnath_test.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjmedia_test" Source="pjmedia\build\pjmedia_test.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjmedia_audiodev" Source="pjmedia\build\pjmedia_audiodev.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libg7221codec" Source="third_party\build\g7221\libg7221codec.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="samples" Source="pjsip-apps\build\samples.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsip_test" Source="pjsip\build\pjsip_test.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libpjproject" Source="pjsip-apps\build\libpjproject.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="python_pjsua" Source="pjsip-apps\build\python_pjsua.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsystest" Source="pjsip-apps\build\pjsystest.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjmedia_videodev" Source="pjmedia\build\pjmedia_videodev.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="libbaseclasses" Source="third_party\build\baseclasses\libbaseclasses.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="3" Project="pjsua2_lib" Source="pjsip\build\pjsua2_lib.vcproj" Description="変換の必要なし">
+</Event><Event ErrorLevel="0" Project="" Source="pjproject-vs8.sln" Description="ソリューションは正常に変換されました">
+</Event><Event ErrorLevel="3" Project="" Source="pjproject-vs8.sln" Description="Converted">
+</Event></UpgradeLog>

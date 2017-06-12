@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="server|Win32">
+      <Configuration>server</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ActionImplement.cpp" />
+    <ClCompile Include="BackgroundMusic.cpp" />
+    <ClCompile Include="Callbackable.cpp" />
+    <ClCompile Include="CapeBord.cpp" />
+    <ClCompile Include="CapeBord_IRR.cpp" />
+    <ClCompile Include="CMUDict.cpp" />
+    <ClCompile Include="ColudSyncConfig.cpp" />
+    <ClCompile Include="ColudSyncPooling.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="NetDevice.cpp" />
+    <ClCompile Include="NetDeviceEcoNetLite.cpp" />
+    <ClCompile Include="NetDeviceWemo.cpp" />
+    <ClCompile Include="EcoNetLiteServer.cpp" />
+    <ClCompile Include="FHCCommander.cpp" />
+    <ClCompile Include="Fire.cpp" />
+    <ClCompile Include="HomeKitServer.cpp" />
+    <ClCompile Include="HttpServer.cpp" />
+    <ClCompile Include="IRDevice.cpp" />
+    <ClCompile Include="IRDevice_Cape.cpp" />
+    <ClCompile Include="JuliusOnsoUtil.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="MecabControl.cpp" />
+    <ClCompile Include="MultiRoom.cpp" />
+    <ClCompile Include="MultiRoomUtil.cpp" />
+    <ClCompile Include="MusicPlayAsync.cpp" />
+    <ClCompile Include="Recognition_Factory.cpp" />
+    <ClCompile Include="Recognition_JuliusPlus.cpp" />
+    <ClCompile Include="Recognition_JuliusPlusEnglish.cpp" />
+    <ClCompile Include="ResetConfig.cpp" />
+    <ClCompile Include="ResetConfigEndel.cpp" />
+    <ClCompile Include="ResetConfigIRR.cpp" />
+    <ClCompile Include="ScriptManager.cpp" />
+    <ClCompile Include="ScriptRemoconWeb.cpp" />
+    <ClCompile Include="ScriptRunner.cpp" />
+    <ClCompile Include="ScriptWebRunner.cpp" />
+    <ClCompile Include="ScriptWebRunnerRecogn.cpp" />
+    <ClCompile Include="ScriptWebRunnerSpeak.cpp" />
+    <ClCompile Include="ScriptWebRunnerTrigger.cpp" />
+    <ClCompile Include="SensorGraph.cpp" />
+    <ClCompile Include="Sensor_CapeBord.cpp" />
+    <ClCompile Include="Sensor_Cat.cpp" />
+    <ClCompile Include="Sensor_Factory.cpp" />
+    <ClCompile Include="Sensor_Process.cpp" />
+    <ClCompile Include="ServerScript.cpp" />
+    <ClCompile Include="ServerScriptWeAreHere.cpp" />
+    <ClCompile Include="SipServer.cpp" />
+    <ClCompile Include="SpeakCacheDB.cpp" />
+    <ClCompile Include="Speak_Factory.cpp" />
+    <ClCompile Include="Speak_Festival.cpp" />
+    <ClCompile Include="Speak_OpenJTalk.cpp" />
+    <ClCompile Include="TranslateFile.cpp" />
+    <ClCompile Include="Trigger.cpp" />
+    <ClCompile Include="TwitterOAuth.cpp" />
+    <ClCompile Include="UPNPServer.cpp" />
+    <ClCompile Include="VolumeControll.cpp" />
+    <ClCompile Include="XLDebugUtil.cpp" />
+    <ClCompile Include="XLException.cpp" />
+    <ClCompile Include="XLFileUtil.cpp" />
+    <ClCompile Include="XLGISAddress.cpp" />
+    <ClCompile Include="XLGZip.cpp" />
+    <ClCompile Include="XLHTMLScrapper.cpp" />
+    <ClCompile Include="XLHttpHeader.cpp" />
+    <ClCompile Include="XLHttpSocket.cpp" />
+    <ClCompile Include="XLPOpen2.cpp" />
+    <ClCompile Include="XLSocket.cpp" />
+    <ClCompile Include="XLStringUtil.cpp" />
+    <ClCompile Include="SystemMisc.cpp" />
+    <ClCompile Include="XLUrlParser.cpp" />
+    <ClCompile Include="XLUSBHIDDevice.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActionImplement.h" />
+    <ClInclude Include="BackgroundMusic.h" />
+    <ClInclude Include="Callbackable.h" />
+    <ClInclude Include="CapeBord.h" />
+    <ClInclude Include="CapeBord_IRR.h" />
+    <ClInclude Include="CMUDict.h" />
+    <ClInclude Include="ColudSyncConfig.h" />
+    <ClInclude Include="ColudSyncPooling.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="NetDevice.h" />
+    <ClInclude Include="NetDeviceEcoNetLite.h" />
+    <ClInclude Include="NetDeviceWemo.h" />
+    <ClInclude Include="EcoNetLiteServer.h" />
+    <ClInclude Include="FHCCommander.h" />
+    <ClInclude Include="Fire.h" />
+    <ClInclude Include="HomeKitServer.h" />
+    <ClInclude Include="HttpServer.h" />
+    <ClInclude Include="IRDevice.h" />
+    <ClInclude Include="IRDevice_Cape.h" />
+    <ClInclude Include="JuliusOnsoUtil.h" />
+    <ClInclude Include="MecabControl.h" />
+    <ClInclude Include="MultiRoom.h" />
+    <ClInclude Include="MultiRoomUtil.h" />
+    <ClInclude Include="MusicPlayAsync.h" />
+    <ClInclude Include="Recognition_JuliusPlus.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="methodcallback.h" />
+    <ClInclude Include="Recognition_Factory.h" />
+    <ClInclude Include="Recognition_JuliusPlusEnglish.h" />
+    <ClInclude Include="ResetConfig.h" />
+    <ClInclude Include="ResetConfigEndel.h" />
+    <ClInclude Include="ResetConfigIRR.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="ScriptManager.h" />
+    <ClInclude Include="ScriptRemoconWeb.h" />
+    <ClInclude Include="ScriptRunner.h" />
+    <ClInclude Include="ScriptWebRunner.h" />
+    <ClInclude Include="ScriptWebRunnerRecogn.h" />
+    <ClInclude Include="ScriptWebRunnerSpeak.h" />
+    <ClInclude Include="ScriptWebRunnerTrigger.h" />
+    <ClInclude Include="SensorGraph.h" />
+    <ClInclude Include="Sensor_CapeBord.h" />
+    <ClInclude Include="Sensor_Cat.h" />
+    <ClInclude Include="Sensor_Factory.h" />
+    <ClInclude Include="Sensor_None.h" />
+    <ClInclude Include="Sensor_Process.h" />
+    <ClInclude Include="ServerScript.h" />
+    <ClInclude Include="ServerScriptWeAreHere.h" />
+    <ClInclude Include="sexylog.h" />
+    <ClInclude Include="sexytest.h" />
+    <ClInclude Include="SipServer.h" />
+    <ClInclude Include="SpeakCacheDB.h" />
+    <ClInclude Include="Speak_Factory.h" />
+    <ClInclude Include="Speak_Festival.h" />
+    <ClInclude Include="Speak_OpenJTalk.h" />
+    <ClInclude Include="TranslateFile.h" />
+    <ClInclude Include="Trigger.h" />
+    <ClInclude Include="TwitterOAuth.h" />
+    <ClInclude Include="UPNPServer.h" />
+    <ClInclude Include="VolumeControll.h" />
+    <ClInclude Include="windows_encoding.h" />
+    <ClInclude Include="XLDebugUtil.h" />
+    <ClInclude Include="XLException.h" />
+    <ClInclude Include="XLFileUtil.h" />
+    <ClInclude Include="XLGISAddress.h" />
+    <ClInclude Include="XLGZip.h" />
+    <ClInclude Include="XLHTMLScrapper.h" />
+    <ClInclude Include="XLHttpHeader.h" />
+    <ClInclude Include="XLHttpSocket.h" />
+    <ClInclude Include="XLPOpen2.h" />
+    <ClInclude Include="XLSocket.h" />
+    <ClInclude Include="XLStringUtil.h" />
+    <ClInclude Include="SystemMisc.h" />
+    <ClInclude Include="XLUrlParser.h" />
+    <ClInclude Include="XLUSBHIDDevice.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="naichichi2.rc" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0F101CD2-1057-47DE-A73E-823615920B43}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>naichichi2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SolutionDir)$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SolutionDir)$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(SolutionDir)$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WITH_CLIENT_ONLY_CODE=1;WITH_SERVER_ONLY_CODE=0;WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>common.h</PrecompiledHeaderFile>
+      <DisableSpecificWarnings>4996;4995;4819;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\openssl\include;..\julius\libjulius\include;..\julius\libsent\include;..\julius\msvc\config;..\julius\msvc\portaudio;..\julius\msvc\zlib;$(BONJOUR_SDK_HOME)/Include;..\Personal-HomeKit-HAP\windows_support_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <MapExports>true</MapExports>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(BONJOUR_SDK_HOME)/Lib/$(PlatformName)/dnssd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;msvcrt.lib;libcd.lib;libcmtd.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WITH_CLIENT_ONLY_CODE=1;WITH_SERVER_ONLY_CODE=0;WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4996;4995;4819;4800;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>..\openssl\include;..\julius\libjulius\include;..\julius\libsent\include;..\julius\msvc\config;..\julius\msvc\portaudio;..\julius\msvc\zlib;$(BONJOUR_SDK_HOME)/Include;..\Personal-HomeKit-HAP\windows_support_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(BONJOUR_SDK_HOME)/Lib/$(PlatformName)/dnssd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

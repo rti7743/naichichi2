@@ -1,0 +1,12 @@
+-gram ./__temp__regexp_test
+-h ./voxforge/hmmdefs   # PTM triphone
+-hlist ./voxforge/tiedlist
+-input mic
+-n 1 -output 1
+-rejectshort 1000
+-gprune beam
+-walign
+-sb 600
+-b2 100
+-m 1000
+-s 250

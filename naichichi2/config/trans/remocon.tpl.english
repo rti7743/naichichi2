@@ -1,0 +1,47 @@
+:lang="ja"
+lang="en"
+
+:リモコン
+Remote control
+
+:温度
+Temperature
+
+:明るさ
+Brightness
+
+:状態
+Status
+
+:リモコンを編集
+Remote control Edit
+
+:設定画面を開く
+Manage Menu
+
+:Future Home Controller との接続が取れていません。
+We have no connection for Future Home Controller (FHC).
+
+:本体の電源が入っているか、ネットワークの設定が正しいか見なおしてください。
+Verify Power or Network configuration of Future Home Controller (FHC).
+
+:リロード
+Reload
+
+:ネットワークを再設定する
+Network Reconfigure
+
+:命令を出しましたが結果を受け取れませんでした。
+We have no results by the order.
+
+:音声認識に失敗しました。
+failed the speech recognition.
+
+:にマッチする命令はありません
+ There is no appropriate instruction.
+
+:操作に失敗しました。
+failed the operation.
+
+:エラーコード
+error code

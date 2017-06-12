@@ -1,0 +1,5 @@
+chmod +x configure
+chmod +x libjulius/configure
+chmod +x libsent/configure
+
+./configure  --disable-plugin --disable-pthread --enable-setup=fast  --enable-setup=alsa

@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="speak">
+      <UniqueIdentifier>{3ff5a650-ba9c-4d01-8fd1-b579c78d0ead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainlogic">
+      <UniqueIdentifier>{0710e3bd-021e-4ff4-9feb-5469ffc6c1a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="speak\sensor">
+      <UniqueIdentifier>{c015b00a-71cd-4bb5-858d-83dac50ca058}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Config.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpServer.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptManager.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptRunner.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLStringUtil.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLUrlParser.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLDebugUtil.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLHttpHeader.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLFileUtil.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Recognition_JuliusPlus.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="XLHttpSocket.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLSocket.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Callbackable.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptWebRunner.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Speak_OpenJTalk.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="MecabControl.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLException.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemMisc.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor_Process.cpp">
+      <Filter>speak\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor_Cat.cpp">
+      <Filter>speak\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor_Factory.cpp">
+      <Filter>speak\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="Speak_Factory.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="Recognition_Factory.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="ColudSyncPooling.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ColudSyncConfig.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerScript.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLGZip.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ResetConfig.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="SensorGraph.cpp">
+      <Filter>speak\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="XLUSBHIDDevice.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptRemoconWeb.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="FHCCommander.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicPlayAsync.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="Recognition_JuliusPlusEnglish.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="JuliusOnsoUtil.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="CMUDict.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslateFile.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Speak_Festival.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLHTMLScrapper.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLGISAddress.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundMusic.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="CapeBord_IRR.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="CapeBord.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor_CapeBord.cpp">
+      <Filter>speak\sensor</Filter>
+    </ClCompile>
+    <ClCompile Include="IRDevice_Cape.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="IRDevice.cpp">
+      <Filter>speak</Filter>
+    </ClCompile>
+    <ClCompile Include="ResetConfigIRR.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ResetConfigEndel.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerScriptWeAreHere.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionImplement.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeControll.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeakCacheDB.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="UPNPServer.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeKitServer.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="TwitterOAuth.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Fire.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptWebRunnerTrigger.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptWebRunnerRecogn.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptWebRunnerSpeak.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiRoomUtil.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiRoom.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="EcoNetLiteServer.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="NetDeviceEcoNetLite.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="NetDeviceWemo.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="NetDevice.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="SipServer.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+    <ClCompile Include="XLPOpen2.cpp">
+      <Filter>mainlogic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpServer.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWindow.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="methodcallback.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptManager.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptRunner.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLStringUtil.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLUrlParser.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLDebugUtil.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLHttpHeader.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="windows_encoding.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLFileUtil.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Recognition_JuliusPlus.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="XLException.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLHttpSocket.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLSocket.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptWebRunner.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Speak_OpenJTalk.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="MecabControl.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemMisc.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor_None.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor_Process.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor_Cat.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor_Factory.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="Speak_Factory.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="Recognition_Factory.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="ColudSyncPooling.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ColudSyncConfig.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerScript.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLGZip.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Callbackable.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetConfig.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="SensorGraph.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="XLUSBHIDDevice.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptRemoconWeb.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="FHCCommander.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicPlayAsync.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="Recognition_JuliusPlusEnglish.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="JuliusOnsoUtil.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="CMUDict.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslateFile.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Speak_Festival.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLHTMLScrapper.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="sexytest.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLGISAddress.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundMusic.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="CapeBord_IRR.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="CapeBord.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor_CapeBord.h">
+      <Filter>speak\sensor</Filter>
+    </ClInclude>
+    <ClInclude Include="IRDevice.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="IRDevice_Cape.h">
+      <Filter>speak</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetConfigIRR.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetConfigEndel.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerScriptWeAreHere.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionImplement.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeControll.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeakCacheDB.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="UPNPServer.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeKitServer.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="TwitterOAuth.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptWebRunnerSpeak.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptWebRunnerTrigger.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptWebRunnerRecogn.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiRoom.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiRoomUtil.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="EcoNetLiteServer.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="NetDeviceEcoNetLite.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="NetDeviceWemo.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="NetDevice.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="SipServer.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="XLPOpen2.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="sexylog.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon1.ico">
+      <Filter>リソース ファイル</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="naichichi2.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

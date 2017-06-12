@@ -1,0 +1,38 @@
+:つける
+on
+
+:けす
+off
+
+:小
+minimum
+
+:中
+normal
+
+:大
+maximum
+
+:冷房最小
+cooler Minimum.
+
+:冷房普通
+cooler normal
+
+:冷房最大
+cooler maximum
+
+:エアコンさいだい
+cooler maximum
+
+:暖房最小
+heater Minimum
+
+:暖房普通
+heater normal
+
+:暖房最大
+heater maximum
+
+:一覧表
+program list

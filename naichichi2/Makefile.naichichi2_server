@@ -1,0 +1,106 @@
+﻿CC=gcc
+CXX=g++
+CFLAGS+=-g
+
+CPPFLAGS+= \
+$(CFLAGS) \
+-std=gnu++0x \
+-Wwrite-strings \
+-I../julius/libsent/include \
+-I../julius/libjulius/include \
+`../julius/libsent/libsent-config --cflags` `../julius/libjulius/libjulius-config --cflags` \
+../pcre/.libs/libpcre.a \
+../babel/babel.a \
+-fpermissive \
+-finput-charset=UTF-8 -fexec-charset=UTF-8 \
+-DWITH_CLIENT_ONLY_CODE=0 -DWITH_SERVER_ONLY_CODE=1
+
+LDFLAGS= \
+../openjtalk/open_jtalk/bin/open_jtalkdll.a \
+../v8/out/$(BUILD_ARCH).release/obj.target/tools/gyp/*.a \
+../pcre/.libs/libpcre.a \
+../babel/babel.a \
+-L../julius/libjulius `../julius/libjulius/libjulius-config --libs` \
+-L../julius/libsent `../julius/libsent/libsent-config --libs` \
+-lssl -lcrypto -luuid -lpthread -lrt -lm -lasound
+
+OBJ = \
+main.o \
+Config.o \
+HttpServer.o \
+MainWindow.o \
+Callbackable.o \
+XLDebugUtil.o \
+XLFileUtil.o \
+XLException.o \
+XLSocket.o \
+XLHttpHeader.o \
+XLHttpSocket.o \
+XLStringUtil.o \
+XLHTMLScrapper.o \
+XLUrlParser.o \
+MecabControl.o \
+CMUDict.o \
+JuliusOnsoUtil.o \
+SystemMisc.o \
+XLGZip.o \
+ResetConfig.o \
+ResetConfigEndel.o \
+ResetConfigIRR.o \
+TranslateFile.o \
+Trigger.o \
+VolumeControll.o \
+SpeakCacheDB.o \
+MultiRoomUtil.o \
+ScriptRemoconWeb.o 
+
+#for client
+#OBJ += ScriptManager.o \
+#MultiRoom.o \
+#ScriptWebRunner.o \
+#ScriptRunner.o \
+#ActionImplement.o \
+#Recognition_Factory.o \
+#Recognition_JuliusPlus.o \
+#Recognition_JuliusPlusEnglish.o \
+#Speak_Factory.o \
+#Speak_OpenJTalk.o \
+#Speak_GoogleTranslate.o \
+#Speak_Festival.o \
+#ColudSyncConfig.o \
+#ColudSyncPooling.o \
+#Sensor_Cat.o \
+#Sensor_CapeBord.o \
+#Sensor_Factory.o \
+#Sensor_Process.o \
+#XLUSBHIDDevice.o \
+#CapeBord.o \
+#CapeBord_EndelS.o \
+#CapeBord_EndelSCommander.o \
+#CapeBord_IRR.o \
+#IRDevice.o \
+#IRDevice_Cape.o \
+#SensorGraph.o \
+#FHCCommander.o \
+#XLGISAddress.o \
+#BackgroundMusic.o \
+#UPNPServer.o \
+#Fire.o \
+#ScriptWebRunnerRecogn.o \
+#ScriptWebRunnerSpeak.o \
+#ScriptWebRunnerTrigger.o \
+#EcoNetLiteServer.o \
+#NetDevice.o \
+#NetDeviceEcoNetLite.o \
+#NetDeviceWemo.o \
+#SipServer.o \
+#MusicPlayAsync.o
+
+#for server
+OBJ += ServerScript.o \
+ServerScriptWeAreHere.o
+
+all: naichichi2_server
+naichichi2_server: $(OBJ)
+	$(CXX) $(CFLAGS) $(CPPFLAGS) -o $@ $(OBJ) $(LDFLAGS)
+

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2japanesefull.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:wm="http://www.weathermap.co.jp/rss/ns/forecast.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>千葉県北西部の天気予報 by ウェザーマップ</title>
+    <link>http://www.weathermap.co.jp/rss/hitokuchi/</link>
+    <description>今日明日・週間・３時間ごとの各天気予報に、気象予報士による解説「ひとくち予報」をプラス。テレビやラジオでおなじみの、あのお天気キャスターも登場します。</description>
+    <language>ja</language>
+    <copyright>2013 (C) Weather Map Co.,Ltd</copyright>
+    <lastBuildDate>Tue, 16 Apr 2013 22:40:02 +0900</lastBuildDate>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/hitokuchi_4510" /><feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="hitokuchi_4510" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item>
+      <title>服で気候を調節</title>
+      <link>http://www.weathermap.co.jp/index.php?guid=2013041617</link>
+      <guid isPermaLink="true">http://www.weathermap.co.jp/index.php?guid=2013041617</guid>
+      <pubDate>Tue, 16 Apr 2013 17:48:55 +0900</pubDate>
+      <description>きょう最も気温の上がった鳥取・米子は29.4℃と真夏日一歩手前に。ただ、朝の気温は9.5度と一日の気温差はなんと約20℃。一日の気温変化、そして日毎の気温変化も大きくて、毎日クローゼットの前で洋服とにらめっこする日々が続いています。&lt;br /&gt;そんな洋服選びが難しい季節、服装の面から少しでも快適に過ごしたいと考える人が多かったのか、“衣服内気候”なんていう言葉も存在しているようです。“素肌と衣服の間にできる温度や湿度のこと”で、そのわずか数ミリの温度が31℃から33℃、湿度は40％から60％で人間は快適に感じるんだとか。&lt;br /&gt;なんだかピンと来ませんが、あす夏日が続出しそうな北関東では、日中は半袖日和！その他も上着要らずの暖かさが続きますが、あすもまだ雪が降る北海道では、冬物コートを着ることで、快適な衣服内気候を保つことができそうです。 ( 気象予報士 福岡　良子 )</description>
+      <content:encoded><![CDATA[
+<table width="500" border="0"><tr><td>
+<table cellspacing="5" width="500"><tr>
+<td width="100" align="center">
+<a href="http://www.weathermap.co.jp/casters/fukuoka.php"><img src="http://www.weathermap.co.jp/person_images/62.jpg" border="0"><br />福岡　良子</a><br />気象予報士</td>
+<td>
+きょう最も気温の上がった鳥取・米子は29.4℃と真夏日一歩手前に。ただ、朝の気温は9.5度と一日の気温差はなんと約20℃。一日の気温変化、そして日毎の気温変化も大きくて、毎日クローゼットの前で洋服とにらめっこする日々が続いています。<br />そんな洋服選びが難しい季節、服装の面から少しでも快適に過ごしたいと考える人が多かったのか、“衣服内気候”なんていう言葉も存在しているようです。“素肌と衣服の間にできる温度や湿度のこと”で、そのわずか数ミリの温度が31℃から33℃、湿度は40％から60％で人間は快適に感じるんだとか。<br />なんだかピンと来ませんが、あす夏日が続出しそうな北関東では、日中は半袖日和！その他も上着要らずの暖かさが続きますが、あすもまだ雪が降る北海道では、冬物コートを着ることで、快適な衣服内気候を保つことができそうです。
+</td>
+</tr></table>
+</td></tr>
+<tr><td align="center">
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+  <td align="center" bgcolor="#DDFFDD"><font size="-1">千葉県北西部<br />明日(4/17)の天気</font></td>
+  <td width="80" align="center" bgcolor="#FFDDDD">気温</td>
+  <td width="110" align="center" bgcolor="#DDDDFF">降水確率</td>
+<tr>
+  <td align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+  <td align="center"><font color="#C00000">22℃</font>/<font color="#0000C0">7℃</font></td>
+  <td>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+      <tr>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font size="-1" color="#000000">午前</font></td>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font size="-1" color="#000000">午後</font></td>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font size="-1" color="#000000">夜</font></td>
+      </tr>
+      <tr>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font color="#000000">10%</font></td>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font color="#000000">10%</font></td>
+      <td align="center" bgcolor="#FFFFFF" width="33%"><font color="#000000">0%</font></td>
+      </tr>
+  </table>
+  </td>
+</tr></table><font size="-1">( 4/16 17時発表 )</font>
+
+</td></tr>
+<tr><td align="center">
+<br>
+<b>千葉の３時間ごとの天気</b>
+<br>
+<table border="1" cellspacing="0" cellpadding="0">
+<tr>
+              <td align="center" width="60" bgcolor="#DDFFDD">16日21時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">17日0時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">3時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">6時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">9時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">12時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">15時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">18時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">21時</td>
+                  <td align="center" width="60" bgcolor="#DDFFDD">18日0時</td>
+      </tr>
+<tr>
+              <td align="center" bgcolor="#C0C0C0"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+                  <td align="center" bgcolor="#C0C0C0"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+                  <td align="center" bgcolor="#C0C0C0"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/star.png"></td>
+                  <td align="center" bgcolor="#D0E0FF"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+                  <td align="center" bgcolor="#D0E0FF"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png"></td>
+                  <td align="center" bgcolor="#D0E0FF"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+                  <td align="center" bgcolor="#D0E0FF"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"></td>
+                  <td align="center" bgcolor="#D0E0FF"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png"></td>
+                  <td align="center" bgcolor="#C0C0C0"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/star.png"></td>
+                  <td align="center" bgcolor="#C0C0C0"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/star.png"></td>
+      </tr>
+<tr>
+        <td align="center" bgcolor="#FFDDDD">17℃</td>
+        <td align="center" bgcolor="#FFDDDD">17℃</td>
+        <td align="center" bgcolor="#FFDDDD">17℃</td>
+        <td align="center" bgcolor="#FFDDDD">18℃</td>
+        <td align="center" bgcolor="#FFDDDD">20℃</td>
+        <td align="center" bgcolor="#FFDDDD">21℃</td>
+        <td align="center" bgcolor="#FFDDDD">20℃</td>
+        <td align="center" bgcolor="#FFDDDD">19℃</td>
+        <td align="center" bgcolor="#FFDDDD">18℃</td>
+        <td align="center" bgcolor="#FFDDDD">17℃</td>
+  </tr>
+</table>
+
+</td></tr></table>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>千葉県の天気概況</title>
+      <link>http://www.weathermap.co.jp/monkeyweather/?guid=2013041616</link>
+      <guid isPermaLink="true">http://www.weathermap.co.jp/monkeyweather/?guid=2013041616</guid>
+      <pubDate>Tue, 16 Apr 2013 16:44:13 +0900</pubDate>
+      <description>天気概況&lt;br /&gt;
+平成２５年４月１６日１６時４４分　銚子地方気象台発表&lt;br /&gt;
+&lt;br /&gt;
+（（千葉県では、１６日夜のはじめ頃から強風や高波に、ここしばらく空気の乾燥による火の取り扱いに注意して下さい。））&lt;br /&gt;
+&lt;br /&gt;
+　日本の南には高気圧があって本州付近をおおっています。&lt;br /&gt;
+&lt;br /&gt;
+　現在、関東甲信地方は、晴れや曇りとなっています。&lt;br /&gt;
+&lt;br /&gt;
+　今夜は、おおむね高気圧におおわれる見込みですが、前線を伴った低気圧&lt;br /&gt;
+が日本海に進むでしょう。&lt;br /&gt;
+　このため、千葉県では、北西部と南部は晴れ夜曇り、北東部は曇りでしょ&lt;br /&gt;
+う。&lt;br /&gt;
+&lt;br /&gt;
+　明日は、高気圧が東日本をおおいますが、高気圧の中心は日本の東海上を&lt;br /&gt;
+次第に離れる見込みです。北日本を通過する低気圧からのびる寒冷前線が、&lt;br /&gt;
+日本海をゆっくりと南下し、夜には関東甲信地方に達するでしょう。&lt;br /&gt;
+　このため、千葉県では晴れ昼過ぎまで時々曇りでしょう。&lt;br /&gt;
+&lt;br /&gt;
+　太平洋沿岸では、今夜から明日にかけて波・うねりが高いでしょう。船舶&lt;br /&gt;
+等は注意して下さい。&lt;br /&gt;
+&lt;br /&gt;
+＜天気変化等の留意点＞&lt;br /&gt;
+　明日は、強風や波・うねりの高い所がある見込みです。飛散物、海岸での&lt;br /&gt;
+作業に注意して下さい。</description>
+      <content:encoded><![CDATA[天気概況<br /> 平成２５年４月１６日１６時４４分　銚子地方気象台発表<br /> <br /> （（千葉県では、１６日夜のはじめ頃から強風や高波に、ここしばらく空気の乾燥による火の取り扱いに注意して下さい。））<br /> <br /> 　日本の南には高気圧があって本州付近をおおっています。<br /> <br /> 　現在、関東甲信地方は、晴れや曇りとなっています。<br /> <br /> 　今夜は、おおむね高気圧におおわれる見込みですが、前線を伴った低気圧<br /> が日本海に進むでしょう。<br /> 　このため、千葉県では、北西部と南部は晴れ夜曇り、北東部は曇りでしょ<br /> う。<br /> <br /> 　明日は、高気圧が東日本をおおいますが、高気圧の中心は日本の東海上を<br /> 次第に離れる見込みです。北日本を通過する低気圧からのびる寒冷前線が、<br /> 日本海をゆっくりと南下し、夜には関東甲信地方に達するでしょう。<br /> 　このため、千葉県では晴れ昼過ぎまで時々曇りでしょう。<br /> <br /> 　太平洋沿岸では、今夜から明日にかけて波・うねりが高いでしょう。船舶<br /> 等は注意して下さい。<br /> <br /> ＜天気変化等の留意点＞<br /> 　明日は、強風や波・うねりの高い所がある見込みです。飛散物、海岸での<br /> 作業に注意して下さい。]]></content:encoded>
+    </item>
+    <item>
+      <title>4/16(火) 晴れのちくもり</title>
+      <link>http://www.weathermap.co.jp/monkeyweather/</link>
+      <guid isPermaLink="false">201304161745100416</guid>
+      <pubDate>Tue, 16 Apr 2013 17:00:00 +0900</pubDate>
+      <wm:forecast term="kyo_asu" announce="2013-04-16 17:00:00">
+        <wm:area>
+          <wm:prefecture>千葉県</wm:prefecture>
+          <wm:region>北西部</wm:region>
+          <wm:city>千葉</wm:city>
+        </wm:area>
+        <wm:content date="4/16" wday="Tue">
+          <wm:weather>晴れのちくもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>--</wm:max>
+            <wm:min>--</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob hour="18-24">10</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+      </wm:forecast>
+      <description>4/16(火) 晴れのちくもり&lt;br /&gt;
+&lt;br /&gt;降水確率&lt;br /&gt;
+18-24時：10%&lt;br /&gt;
+</description>
+    </item>
+    <item>
+      <title>4/17(水) 晴れ時々くもり 22℃/16℃</title>
+      <link>http://www.weathermap.co.jp/monkeyweather/</link>
+      <guid isPermaLink="false">201304161745100417</guid>
+      <pubDate>Tue, 16 Apr 2013 17:00:00 +0900</pubDate>
+      <wm:forecast term="kyo_asu" announce="2013-04-16 17:00:00">
+        <wm:area>
+          <wm:prefecture>千葉県</wm:prefecture>
+          <wm:region>北西部</wm:region>
+          <wm:city>千葉</wm:city>
+        </wm:area>
+        <wm:content date="4/17" wday="Wed">
+          <wm:weather>晴れ時々くもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>22</wm:max>
+            <wm:min>16</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob hour="00-06">10</wm:prob>
+            <wm:prob hour="06-12">10</wm:prob>
+            <wm:prob hour="12-18">10</wm:prob>
+            <wm:prob hour="18-24">0</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+      </wm:forecast>
+      <description>4/17(水) 晴れ時々くもり&lt;br /&gt;
+予想最高気温：22℃&lt;br /&gt;
+予想最低気温：16℃&lt;br /&gt;
+&lt;br /&gt;降水確率&lt;br /&gt;
+00-06時：10%&lt;br /&gt;
+06-12時：10%&lt;br /&gt;
+12-18時：10%&lt;br /&gt;
+18-24時：0%&lt;br /&gt;
+</description>
+    </item>
+    <item>
+      <title>千葉の３時間ごとの天気と気温</title>
+      <link>http://www.weathermap.co.jp/monkeyweather/?guid=2013041617</link>
+      <guid isPermaLink="true">http://www.weathermap.co.jp/monkeyweather/?guid=2013041617</guid>
+      <pubDate>Tue, 16 Apr 2013 17:00:00 +0900</pubDate>
+      <description>16日&lt;br /&gt;
+21時 くもり 17℃  &lt;br /&gt;
+17日&lt;br /&gt;
+0時 くもり 17℃  &lt;br /&gt;
+3時 晴れ 17℃  &lt;br /&gt;
+6時 くもり 18℃  &lt;br /&gt;
+9時 晴れ 20℃  &lt;br /&gt;
+12時 くもり 21℃  &lt;br /&gt;
+15時 くもり 20℃  &lt;br /&gt;
+18時 晴れ 19℃  &lt;br /&gt;
+21時 晴れ 18℃  &lt;br /&gt;
+18日&lt;br /&gt;
+0時 晴れ 17℃  &lt;br /&gt;
+</description>
+      <content:encoded><![CDATA[16日<br />
+21時 くもり 17℃  <br />
+17日<br />
+0時 くもり 17℃  <br />
+3時 晴れ 17℃  <br />
+6時 くもり 18℃  <br />
+9時 晴れ 20℃  <br />
+12時 くもり 21℃  <br />
+15時 くもり 20℃  <br />
+18時 晴れ 19℃  <br />
+21時 晴れ 18℃  <br />
+18日<br />
+0時 晴れ 17℃  <br />
+]]></content:encoded>
+    </item>
+    <item>
+      <title>千葉県北西部（千葉）の週間予報</title>
+      <link>http://www.weathermap.co.jp/monkeyweather/?guid=2013041617</link>
+      <guid isPermaLink="true">http://www.weathermap.co.jp/monkeyweather/?guid=2013041617</guid>
+      <pubDate>Tue, 16 Apr 2013 17:00:00 +0900</pubDate>
+      <wm:forecast term="week" announce="2013-04-16 17:00:00">
+        <wm:area>
+          <wm:prefecture>千葉県</wm:prefecture>
+          <wm:region>北西部</wm:region>
+          <wm:city>千葉</wm:city>
+        </wm:area>
+        <wm:content date="2013/4/16" wday="Tue">
+          <wm:weather>晴れのちくもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>--</wm:max>
+            <wm:min>--</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob hour="18-24">10</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/17" wday="Wed">
+          <wm:weather>晴れ時々くもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>22</wm:max>
+            <wm:min>16</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob hour="00-06">10</wm:prob>
+            <wm:prob hour="06-12">10</wm:prob>
+            <wm:prob hour="12-18">10</wm:prob>
+            <wm:prob hour="18-24">0</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/18" wday="Thu">
+          <wm:weather>晴れ時々くもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>20</wm:max>
+            <wm:min>14</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>20</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/19" wday="Fri">
+          <wm:weather>くもり時々晴れ</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>16</wm:max>
+            <wm:min>11</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>30</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/20" wday="Sat">
+          <wm:weather>晴れのちくもり</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>15</wm:max>
+            <wm:min>8</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>20</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/21" wday="Sun">
+          <wm:weather>くもり時々雨</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>16</wm:max>
+            <wm:min>10</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>50</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/22" wday="Mon">
+          <wm:weather>くもり時々晴れ</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>17</wm:max>
+            <wm:min>11</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>30</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+        <wm:content date="2013/4/23" wday="Tue">
+          <wm:weather>くもり時々晴れ</wm:weather>
+          <wm:temperature unit="℃">
+            <wm:max>18</wm:max>
+            <wm:min>10</wm:min>
+          </wm:temperature>
+          <wm:rainfall unit="%">
+            <wm:prob>30</wm:prob>
+          </wm:rainfall>
+        </wm:content>
+      </wm:forecast>
+      <description>
+4/16(火) 晴れのちくもり 降水確率: --/--/10%
+ &lt;br /&gt;
+4/17(水) 晴れ時々くもり 22℃/16℃ 降水確率: 10%/10%/0%
+ &lt;br /&gt;
+4/18(木) 晴れ時々くもり 20℃/14℃ 降水確率: 20%
+ &lt;br /&gt;
+4/19(金) くもり時々晴れ 16℃/11℃ 降水確率: 30%
+ &lt;br /&gt;
+4/20(土) 晴れのちくもり 15℃/8℃ 降水確率: 20%
+ &lt;br /&gt;
+4/21(日) くもり時々雨 16℃/10℃ 降水確率: 50%
+ &lt;br /&gt;
+4/22(月) くもり時々晴れ 17℃/11℃ 降水確率: 30%
+ &lt;br /&gt;
+4/23(火) くもり時々晴れ 18℃/10℃ 降水確率: 30%
+ &lt;br /&gt;
+※明後日以降は銚子の予想気温を表示しています。
+実際と異なる場合がありますので、ご了承下さい。</description>
+      <content:encoded><![CDATA[
+<h3>千葉県北西部（千葉）の週間予報</h3>
+<table border="1">
+<tr>
+<td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/16(火)</font></td><td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/17(水)</font></td><td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/18(木)</font></td><td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/19(金)</font></td><td width="72" align="left"><font color="#0000ff" style="font-size: 14px;">4/20(土)</font></td><td width="72" align="left"><font color="#ff0000" style="font-size: 14px;">4/21(日)</font></td><td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/22(月)</font></td><td width="72" align="left"><font color="#000000" style="font-size: 14px;">4/23(火)</font></td>
+</tr>
+<tr>
+<td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png">のち<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"><br><font size="-1">晴れのちくもり</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"><br><font size="-1">晴れ時々くもり</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"><br><font size="-1">晴れ時々くもり</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png"><br><font size="-1">くもり時々晴れ</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png">のち<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png"><br><font size="-1">晴れのちくもり</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/ame.png"><br><font size="-1">くもり時々雨</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png"><br><font size="-1">くもり時々晴れ</font></td><td width="72" align="center"><img src="http://www.weathermap.co.jp/rss/hitokuchi/images/kumori.png">時々<img src="http://www.weathermap.co.jp/rss/hitokuchi/images/hare.png"><br><font size="-1">くもり時々晴れ</font></td>
+</tr>
+<tr>
+<td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">--</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">--</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">22℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">16℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">20℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">14℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">16℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">11℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">15℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">8℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">16℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">10℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">17℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">11℃</font></td></tr></table></td><td width="72" align="center"><table width="100%"><tr><td width="38" align="center" bgcolor="#FFE8E8"><font color="#FF0000">18℃</font></td><td width="38" align="center" bgcolor="#E8F0FF"><font color="#0000FF">10℃</font></td></tr></table></td>
+</tr>
+<tr>
+    <td width="72" align="center"><table width="100%"><tr>
+              <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">--</font></td>
+    <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">--</font></td>
+    <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">10</font></td>
+    </tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+                                <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">10</font></td>
+    <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">10</font></td>
+    <td width="25" bgcolor="#FFFFFF" align="center"><font color="#0000A0">0</font></td>
+    </tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#FFFFFF" align="center"><font color="#0000A0">20</font></td></tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#DDDDFF" align="center"><font color="#0000A0">30</font></td></tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#FFFFFF" align="center"><font color="#0000A0">20</font></td></tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#BBBBFF" align="center"><font color="#0000A0">50</font></td></tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#DDDDFF" align="center"><font color="#0000A0">30</font></td></tr>
+  </table></td>
+    <td width="72" align="center"><table width="100%"><tr>
+  <td bgcolor="#DDDDFF" align="center"><font color="#0000A0">30</font></td></tr>
+  </table></td>
+</tr>
+</table>
+<font size="-1">※明後日以降は銚子の予想気温を表示しています。実際と異なる場合がありますので、ご了承下さい。</font>
+
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>

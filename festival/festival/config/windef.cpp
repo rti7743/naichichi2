@@ -1,0 +1,10 @@
+extern int nas_supported = 0;
+extern int esd_supported = 0;
+extern int sun16_supported = 0;
+extern int freebsd16_supported = 0;
+extern int linux16_supported = 0;
+extern int mplayer_supported = 0;
+extern int win32audio_supported = 1;
+extern int os2audio_supported = 0;
+extern int irix_supported = 0;
+extern int macosx_supported = 0;

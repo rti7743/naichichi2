@@ -1,0 +1,607 @@
+﻿<!doctype html>
+<html itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta property="og:title" content="FutureHomeController"/> 
+<meta property="og:url" content="http://rti-giken.jp/"/>
+<meta property="og:image" content="http://rti-giken.jp/img/iphone_icon.png"/>
+<meta name="description" content="フューチャーホームコントローラーは、音声で家中の家電を操作できるようになるガジェットです。" />
+<meta name="keywords" content="FutureHomeController,ホームコントロール,ガジェット,未来,赤外線リモコン,学習リモコン,未来部屋キット,株式会社rti技研" />
+<meta name="viewport" content="width=640" />
+<meta name="robots" content="index,follow" />
+<title>Future Home Controller フューチャーホームコントローラー</title>
+<link rel="apple-touch-icon" href="jscss/images/iphone_icon.png" />
+<link rel="shortcut icon" href="jscss/images/favicon.ico" />
+<link rel="stylesheet" href="jscss/index.css" type="text/css" media="all" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="/update/?page=feed_rdf">
+
+<style type="text/css">
+
+#tab {
+	margin-left: 0;
+	padding-left: 0;
+	margin-bottom: 1em;
+	height: 1.5em;
+	overflow: hidden;
+	margin:0 auto;
+	width:780px;
+	padding-bottom: 20px;
+}
+#tab li {
+	float: left;
+	width: 154px;
+	height: 1.5em;
+}
+#tab li a {
+	display: block;
+	width: 150px;
+	height: 1.5em;
+	border: 1px solid #16376d;
+	border-bottom: 0;
+	
+	color: #777;
+	text-align: center;
+	padding: 10px 0;
+}
+#tab li a:hover,
+#tab li.present a {
+	border-color: #16376d;
+	background-color:#16376d;
+	color: #fff;
+	padding: 10px 0;
+}
+
+
+#page1, #page2, #page3, #page4, #page5 {
+	margin-bottom: 0em;
+}
+
+/* iPhone Android */
+@media screen and (max-device-width: 640px), screen and (max-width: 640px) {
+	#tab li {
+		width: 122px;
+		height: 2em;
+	}
+	#tab li a {
+		width: 122px;
+		height: 2em;
+	}
+	#tab li a:hover,
+	#tab li.present a {
+		padding: 10px 0;
+	}
+	#tab {
+		margin-bottom: -1em;
+		padding-bottom: 40px;
+		width:640px;
+	}
+}
+
+</style>
+
+<!-- *** javascript *** -->
+<script type="text/javascript" src="jscss/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jscss/jquery.rollover.js"></script>
+
+<script type="text/javascript">
+// <![CDATA[
+
+var tab = {
+	init: function(){
+		var tabs = this.setup.tabs;
+		var pages = this.setup.pages;
+		
+		for(i=0; i<pages.length; i++) {
+			if(i !== 0) pages[i].style.display = 'none';
+			tabs[i].onclick = function(){ tab.showpage(this); return false; };
+		}
+		if ( window.location.href.match(/#page([0-9]+)/) )
+		{
+			var num = (RegExp.$1) - 1;
+			if (pages[num])
+			{
+				for(var i=0; i<pages.length; i++) {
+					if(i == num) {
+						pages[num].style.display = 'block';
+						tabs[num].className = 'present';
+					}
+					else{
+						pages[i].style.display = 'none';
+						tabs[i].className = null;
+					}
+				}
+			}
+		}
+	},
+	
+	showpage: function(obj){
+		var tabs = this.setup.tabs;
+		var pages = this.setup.pages;
+		var num;
+		
+		for(num=0; num<tabs.length; num++) {
+			if(tabs[num] === obj) break;
+		}
+		
+		for(var i=0; i<pages.length; i++) {
+			if(i == num) {
+				pages[num].style.display = 'block';
+				tabs[num].className = 'present';
+			}
+			else{
+				pages[i].style.display = 'none';
+				tabs[i].className = null;
+			}
+		}
+	}
+}
+
+// ]]>
+</script>
+</head>
+<body> 
+
+
+
+<div id="header">今、部屋は未来になる。―― あなたも「未来部屋キット」を手に入れてみませんか？</div>
+
+<!-- contents -->
+<div id="contents">
+		<h1><img src="jscss/images/FHCstlogo.png" alt="FutureHomeController" /></h1>
+		<h2><img src="jscss/images/h2image.png" alt="36800円で部屋を未来に。" /></h2>
+		<div style="text-align:center;margin-bottom:20px;"><img src="jscss/images/waiting.gif" alt="お待たせしました！購入できるようになりました！"></div>
+		<br />
+		<div class="funding_header">
+				<div class="movie"><iframe width="640" height="390" src="https://www.youtube.com/embed/Hq4WQ7Hd9tc" frameborder="0" allowfullscreen></iframe></div>
+		</div><!-- funding_header -->
+		<br class="clearfix" />
+
+		<!-- first-message -->
+		<div class="first-message">
+			<p>フューチャーホームコントローラーは、音声で家中の家電を操作できるようになるガジェットです。</p>
+			<p>このガジェットを設置すれば、今のエアコンやテレビを音声で操作できるようになります。</p>
+			<p>&nbsp;</p>
+			<p>おまたせしました。第三次ロットの注文を承らせて頂きます。</p>
+			<p>部品調達の関係上、第三次生産分は2013年4月30日（火）いっぱいまでにご注文をお受けします。</p>
+			<p>期間終了後に、部品調達と組立を行い、順次発送いたします。</p>
+			<p>受注生産のため、お手元に届くのが一ヶ月後ほど後になってしまいますが、ご了承ください。</p>
+
+		<div class="under_buy">
+			<div class="plain_funding_panel clearfix">
+				<ul class="residue clearfix">
+					<li>購入者数：</li>
+					<li>69人</li>
+<!--
+					<li>第三次生産分の募集は終了しました。</li>
+-->
+					<li>購入可能日数 残り：</li>
+					<li>23日</li>
+				</ul>
+				<br class="clearfix" />
+
+				<div class="menu">
+					<div class="menu_panel">
+						<div><a href="https://rti-giken.jp/?page=order"><img src="jscss/images/buy_btn.png" alt="注文に進む" /></a></div>
+					</div>
+				</div>
+<!--
+					第三次生産分の受付は終了しました。<br />
+					次回の募集については、詳細が決まりましたら、<br />
+					<a target="_blank" href="https://www.facebook.com/FutureHomeController">facebookグループ</a>または、<a target="_blank" href="http://rti-giken.jp/update/">rti技研アップデート</a>で告知いたします。<br />
+-->
+			</div>
+			<br class="clearfix">
+		</div><!-- under_buy -->	
+		<br class="clearfix">
+
+
+
+
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=249126425190708";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+
+	<div class="likebox">
+		<div class="fb-like-box" data-href="https://www.facebook.com/FutureHomeController" data-width="640" data-show-faces="true" data-stream="false" data-header="false"></div>
+	</div>
+	
+	<div style="margin:10px;"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="ja">ツイート</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+
+
+<div class="staffroll"><p><a href="staffroll.html" target="_blank"><img src="jscss/images/staffroll.png" alt="staffroll" /></a></p><p>WebGL/CSS3/HTML5で作ったスタッフロールです。　<a href="/update/" target="_blank">更新情報</a></p></div>
+<br />
+
+
+
+		</div>
+		<!-- /first-message -->
+
+
+
+</div>
+<!-- /contents -->
+
+<ul id="tab">
+<li class="present"><a href="#page1">製品説明</a></li>
+<li><a href="#page2">製品仕様</a></li>
+<li><a href="#page3">FAQ</a></li>
+<li><a href="#page4">写真</a></li>
+<li><a href="#page5">事例・掲載</a></li>
+</ul>
+
+
+<div id="page1">
+<!-- info -->
+<div id="info">
+	<h2><img src="jscss/images/what.png" alt="FutureHomeControllerって？" /></h2>
+	<div class="infoblock">
+
+	<div class="no1">
+		<h3>今ある家電を音声で操作できるようになります。</h3>
+		<p>家電の買い替えは必要ありません。 このガシェットが未来に進化させます。</p>
+		<p>音声認識で、魔法を現実の世界にすることが可能です。</p>
+		<p>(進化した科学は魔法と区別がつかないようです)</p>
+		<p>テレビ、照明、エアコン、プロジェクタ、さまざまな家電を音声で操作できるようになります。</p>
+	</div>
+
+	<div class="no2">
+		<h3>さまざまな機器に対応できます</h3>
+		<p>エアコン、電気の他にも、赤外線で操作できる機器であれば操作することができます。</p>
+		<p>別売の赤外線アダプタや赤外線コンセントを使えば、スイッチ式の照明やその他の電子ガジェットも操作できます。</p>
+		<p>※さまざまなメーカーに対応可能です。実際に動作確認がとれている家電一覧はこちらをご覧ください。</p>
+	</div>
+
+	<div class="no3">
+		<h3>家の外から家電を操作することもできます。</h3>
+		<p>設定は、スマホ風のわかりやすいwebインターフェースで操作可能です。</p>
+		<p>受け答えの文章や音声を簡単に変更できます。</p>
+		<p>外からエアコンを起動して帰宅時に快適な状態にすることができます。</p>
+	</div>
+
+	<div class="no4">
+		<h3>内蔵スクリプトやwebAPIを使うと、もっと複雑な処理もできます。</h3>
+		<p>内蔵スクリプトを使うとjavascript(V8 engine搭載)で自在に処理を拡張できます。</p>
+		<p>認識させる言葉やFHCからの返答の言葉も自由自在です。</p>
+		<p>これでパソコンを操作したり、言葉次第で魔法のような演出が可能になります。</p>
+	</div>
+
+	<div class="no5">
+		<h3>センサーを利用し家をマッシュアップできます。</h3>
+		<p>家の状態を取得できる、光センサーと温度センサーを搭載しています。</p>
+		<p>内蔵スクリプトや、webAPIで外部プログラムから操作することもできます。</p>
+		<p>家電やセンサーを利用して「家をマッシュアップするアプリケーション」を、<br />
+		自由に作ることができます。</p>
+	</div>
+
+	<br />
+
+	</div><!-- infoblock -->
+</div><!-- /info -->
+</div>
+
+<div id="page2">
+<!-- detail -->
+<div id="detail">
+	<ul class="detail_img">
+		<li><img src="jscss/images/002.jpg" /></li>
+		<li><img src="jscss/images/003.jpg" /></li>
+	</ul>
+	<br class="clearfix" />
+
+	<div class="detail_table">
+		<table>
+			<tr>
+				<th nowrap>項目</th>
+				<th>説明</th>
+			</tr>
+			<tr>
+				<th nowrap>大きさ</th>
+				<td>横120mm * 縦80mm * 高さ50mm</td>
+			</tr>
+			<tr>
+				<th nowrap>付属品</th>
+				<td>マイク　電源アダプタ　LANケーブル</td>
+			</tr>
+			<tr>
+				<th nowrap>物理<br />インターフェース</th>
+				<td>オーディオ入出力　赤外線延長ポート　LANポート　赤外線入出力　温度センサー　光センサー</td>
+			</tr>
+			<tr>
+				<th nowrap>論理<br />インターフェース</th>
+				<td>内蔵スクリプト(javascriptで家電操作)　webapi(jsonで家電操作)　UPnP(SSDP/Soap)　PCを操作するコマンダー機能　PCのスピーカーを利用するリモートスピーカ機能　SSTP　sshでroot接続</td>
+			</tr>
+			<tr>
+				<th nowrap>消費電力</th>
+				<td>常時稼動時:2.1W～2.3W程度　赤外線送信時(一瞬だけ)に2.6W程度</td>
+			</tr>
+			<tr>
+				<th nowrap>コピーライト/<br />クレジット</th>
+				<td>
+				Julius　liblinear　V8　openjtalk　mmdagent　naichichi2　bealgebone　CMUDict...etc...<br />
+				全部を見るには、<a href="staffroll.html" target="_blank">スタッフロール</a>をご覧ください。<br>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div class="detail_txt">
+	全機能を使うには、有線でインターネットに常時接続する必要があります。<br />
+	音声読み上げには、スピーカーが必要です。(マイクは付属します。)<br />
+	音声認識の学習アルゴリズムの改善により、誤認識率を下げていますが、技術制約上100%にはできません。<br />
+	災害や人命に関わる機材の操作には利用しないでください。<br />
+	</div>
+	<br />
+	<br />
+	<div class="infoblock">
+		<div class="qa">
+			<p>フューチャーホームコントローラーのオンラインマニュアル</p>
+			<span style="text-align:left;">
+				<p>・howto/チュートリアル</p>
+				<p><a href="http://rti-giken.jp/fhc/help/howto/">http://rti-giken.jp/fhc/help/howto/</a></p>
+				<p>・画面リファレンス</p>
+				<p><a href="http://rti-giken.jp/fhc/help/ref/">http://rti-giken.jp/fhc/help/ref/</a></p>
+				<p></p>
+				<p>・スクリプトリファレンス(開発者向け)</p>
+				<p><a href="http://rti-giken.jp/fhc/help/script/">http://rti-giken.jp/fhc/help/script/</a></p>
+				<p></p>
+				<p>・WebAPIリファレンス(開発者向け)</p>
+				<p><a href="http://rti-giken.jp/fhc/help/ref/setting_webapi.html">http://rti-giken.jp/fhc/help/ref/setting_webapi.html</a></p>
+			</span>
+		</div>
+	</div>
+
+	
+	
+</div><!-- /detail -->
+</div>
+
+<div id="page3">
+<!-- qa -->
+<div id="faq">
+
+	<div class="infoblock">
+
+	<div class="qa">
+		<h3>音声認識の精度は？</h3>
+		<p>雑音が少ない場所ではほぼ大丈夫です。</p>
+		<p>雑音が多い場所だと認識精度は低下します。その場合は、スマートフォンなどをお使いください。</p>
+		<br />
+		<p>音声認識の精度を100%にすることは現代の技術では不可能です。が、可能な限り近づけています。</p>
+	</div>
+
+	<div class="qa">
+		<h3>対応している家電の種類は？</h3>
+		<p>赤外線リモコンで動作する様々なメーカーの家電に対応しています。(一部メーカーを除く)</p>
+		<p>詳細は、<a href="?page=remocon_taiou">弊社でテストを行った対応表</a>を御覧ください。</p>
+	</div>
+
+	<div class="qa">
+		<h3>サポートは？</h3>
+		<p>基本的に、<a href="mailto:rti@rti-giken.jp">メール</a>にてサポートします。</p>
+		<br />
+		<p>とりあえず交通費とかをいただければ、千葉から出張して設定させていただくことも可能です。</p>
+	</div>
+
+	<div class="qa">
+		<h3>送料は？</h3>
+		<p>国内の発送は無料です。</p>
+		<p>国外発送については相談させてください。</p>
+	</div>
+
+	<div class="qa">
+		<h3>常時PCが必要ですか？</h3>
+		<p>いいえ。このホームコントローラーだけで動作します。</p>
+		<br />
+		<p>ただ、設定画面などの一部項目は、PCが必要ですが、一度設定を行なってしまえば、もうPCは不要です。</p>
+	</div>
+
+	<div class="qa">
+		<h3>常時インターネットが必要ですか？</h3>
+		<p>スマホや外出先から家電を操作する場合はインターネットが必要です。</p>
+	</div>
+
+	<div class="qa">
+		<h3>スマートフォンが必要ですか？</h3>
+		<p>いいえ。この端末だけで動作します。</p>
+		<p>外部からの家電操作は html5/css3 で作っていますので、これらに対応していればどんな環境からでも操作することができます。</p>
+	</div>
+
+	<div class="qa">
+		<h3>読み上げは音声を差し替えることはできますか？</h3>
+		<p>はい。お好きな音声に差し替えて利用できます。</p>
+		<p>合成音声での読み上げの他に、wav/mp3などの再生もできます。</p>
+	</div>
+
+	<div class="qa">
+		<h3>日本語以外への対応は？</h3>
+		<p>現在は日本語のみの対応になっています。</p>
+		<p>英語バージョンの開発も行いたいと考えています。</p>
+	</div>
+
+	<div class="qa">
+		<h3>動いている実物が見たいのですが？</h3>
+		<p>取り急ぎは、弊社までおいでになられるとお見せすることができます。</p>
+		<p>京葉線の海浜幕張の近くなので、イベントとかのついでに立ち寄っていただければとおもいます。</p>
+		<p>一応、いらっしゃる前日ぐらいにはメールください。掃除機かけないと・・・</p>
+	</div>
+
+	<br />
+
+	</div><!-- infoblock -->
+</div><!-- /qa -->
+</div>
+
+<div id="page4">
+<!-- screenshot -->
+<div id="screenshot">
+
+	<ul id="img_gallery">
+		<li><img src="jscss/images/fhchd.jpg" /><p>筐体</p></li>
+		<li><img src="jscss/images/ss_setting.jpg" /><p>設定画面（PC）</p></li>
+		<li><img src="jscss/images/ss_setting2.jpg" /><p>設定画面（PC）</p></li>
+		<li><img src="jscss/images/ss_sp.jpg" /><p>スマホ操作画面</p></li>
+
+	</ul>
+	<br style="clear:both; float:none;" />
+</div><!-- /screenshot -->
+</div>
+
+<div id="page5">
+<!-- screenshot -->
+<div id="screenshot2">
+	<span class="subtitle"><h2>ユーザーレビュー</h2></span>
+	<ul id="img_small_gallery">
+		<li>
+			<a href="http://webooker.info/2013/02/future-home-contoroller/" target="_blank"><img src="jscss/images/jirei_1_1.jpg" alt="未来のリモコン「フューチャーホームコントローラー」が届きました！開封の儀！" /></a>
+			<p>webookerさんによるファーストレビューです。</p>
+		</li>
+		<li>
+			<a href="http://kentai-shiroma.blogspot.jp/2013/02/blog-post.html" target="_blank"><img src="jscss/images/jirei_2_1.jpg" alt="未来が我が家に！ Future Home Controllerを早速レビューしました" /></a>
+			<p>城間さんによるファーストレビューです。</p>
+		</li>
+		<li>
+			<a href="http://kentai-shiroma.blogspot.jp/2013/02/fhc.html" target="_blank"><img src="jscss/images/jirei_2_3.jpg" alt="【FHC】オペレーションルーム「オレンチ」" /></a>
+			<p>城間さんの家の設定です。<br />オペレーションルーム「オレンチ」</p>
+		</li>
+		<li>
+			<a href="http://d.hatena.ne.jp/syonbori_tech/20130204/1359995274" target="_blank"><img src="jscss/images/jirei_3_1.jpg" alt="Future Home Controller をRubyからいじるラッパを作った" /></a>
+			<p>(´･ω･`)しょんぼりさんによる<br />rubyとの連携の記事です。</p>
+		</li>
+		<li>
+			<a href="http://d.hatena.ne.jp/mi_kattun/20130221/1361456587" target="_blank"><img src="jscss/images/jirei_4_1.jpg" alt="フューチャーホームコントローラーの感想とそこから見るホームオートメーションの未来" /></a>
+			<p>かとさんによるレビューです。<br />ホームオートメーションの未来</p>
+		</li>
+	</ul>
+	<br style="clear:both; float:none;" />
+	<div><center>(FHCに関するブログ、動画、コメントなどありましたら、リンクいたしますので<a href="mailto:admin@rti-giken.jp">ご連絡ください</a>。)<center></div>
+	</br>
+	</br>
+	<hr>
+
+	<span class="subtitle"><h2>メディア掲載・取材</h2></span>
+	<ul id="img_small_gallery">
+		<li>
+			<a href="http://gadget.itmedia.co.jp/gg/articles/1212/04/news103.html" target="_blank">
+			<img src="jscss/images/news06.jpg" alt="「光あれ」で明かりがパッ　「未来のお部屋」システムがいよいよ販売開始" /></a>
+			<p>ITmedia ガジェット<br />販売開始時</p>
+		</li>
+
+		<li>
+			<a href="http://gadget.itmedia.co.jp/gg/articles/1208/16/news057.html" target="_blank">
+			<img src="jscss/images/news01.gif" alt="ナニコレ：あなたも「未来すぎるお部屋」の住人に　夢の未来部屋キット、3万6800円で製品化へ" /></a>
+			<p>ITmedia ガジェット<br />ティザーサイト時</p>
+		</li>
+
+		<li>
+			<a href="http://www.gizmodo.jp/2012/08/201210.html" target="_blank">
+			<img src="jscss/images/news04.gif" alt="2012年10月...あなたのお部屋に未来がやってくる!?　「フューチャーホームコントローラー」登場（動画あり） : ギズモード・ジャパン" /></a>
+			<p>ギズモード・ジャパン</p>
+		</li>
+
+		<li>
+			<a href="http://itpro.nikkeibp.co.jp/article/MAG/20120406/389941/" target="_blank">
+			<img src="jscss/images/linux5.jpg" alt="日経Linux 2012年5月号" /></a>
+			<p>日経Linux 2012年5月号<br />特集に寄稿<br />(開発時の取材)</p>
+		</li>
+		<li>
+			<img src="jscss/images/nhk.jpg" alt="NHK" />
+			<p>NHK「首都圏ネットワーク」<br />音声認識が変える生活についての取材<br />(開発時の取材)</p>
+		</li>
+		<li>
+			<a href="http://www.tv-asahi.co.jp/super-j/contents/daily/1604/index.html" target="_blank">
+			<img src="jscss/images/asahi.jpg" alt="住宅で音声認識を使って家電などをコントロールするシステム" /></a>
+			<p>テレビ朝日<br />「きょうナビ」の取材<br />(開発時の取材)</p>
+		</li>
+		<li>
+			<a href="https://store.stereosound.co.jp/products/detail.php?product_id=1434" target="_blank">
+			<img src="http://rti-giken.jp/jscss/images/jirei_home_theatre_foyer.jpg" /></a>
+			<p>Home Theatre Foyer誌<br />2013年春号/Vol.61</p>
+		</li>
+		
+		
+	</ul>
+	<br style="clear:both; float:none;" />
+
+</div><!-- /screenshot -->
+</div>
+
+	<div class="under_buy">
+			<div class="plain_funding_panel clearfix">
+				<ul class="residue clearfix">
+					<li>購入者数：</li>
+					<li>69人</li>
+<!--
+					<li>第三次生産分の募集は終了しました。</li>
+-->
+					<li>購入可能日数 残り：</li>
+					<li>23日</li>
+				</ul>
+				<br class="clearfix" />
+				<div class="menu">
+
+					<div class="menu_panel">
+						<div>
+							<a href="https://rti-giken.jp/?page=order"><img src="jscss/images/buy_btn.png" alt="注文に進む" /></a>
+						</div>
+					</div>
+<!--
+						第三次生産分の受付は終了しました。<br />
+-->
+				</div>
+			</div>
+		</div><!-- under_buy -->	
+		<br class="clearfix">
+
+
+
+<div class="top_anch"><a href="#header"><img src="jscss/images/top_anch.png" alt="top" /></a></div>
+<div id="footer">
+	<div><a href="?page=about_rti_giken" target="_blank">(C) 2013 株式会社rti技研 // rti Institute of Technology</a></div>
+	<div style="color:#fff;">お問合せは <a href="https://twitter.com/super_rti" target="_blank">@super_rti</a> / <a href="mailto:rti@rti-giken.jp">rti@rti-giken.jp</a> までお気軽にどうぞ。 / <a href="?page=law_privacypolicy" target="_blank">privacy policy</a> / <a href="?page=law_houmonhanbai" target="_blank">訪問販売法による表示</a> / <a href="/update/?page=feed_rdf" target="_blank">rss</a></div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33999097-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+// <![CDATA[
+
+tab.setup = {
+	tabs: document.getElementById('tab').getElementsByTagName('li'),
+	
+	pages: [
+		document.getElementById('page1'),
+		document.getElementById('page2'),
+		document.getElementById('page3'),
+		document.getElementById('page4'),
+		document.getElementById('page5'),
+	]
+}
+
+tab.init();
+
+
+// ]]>
+</script>
+
+</body>
+</html>

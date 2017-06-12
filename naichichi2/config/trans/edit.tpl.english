@@ -1,0 +1,1932 @@
+:lang="ja"
+lang="en"
+
+:エアコン
+air conditioner
+
+:テレビ
+TV
+
+:でんき
+light
+
+:照明
+light
+
+:カーテン
+curtain
+
+:空気清浄機
+Air cleaner
+
+:コンポーザ
+Composer
+
+:ゲーム機
+Game console
+
+:扇風機
+Electric fan
+
+:衛星放送
+Satellite broadcast
+
+:ディスプレイ
+Display
+
+:レコーダ
+Recorder
+
+:ドア
+Door
+
+:パソコン
+PC
+
+:プロジェクタ
+Projector
+
+:ファン
+Fan
+
+:窓
+Window
+
+:その他種類名
+Other items
+
+:つける
+ON
+
+:@けして
+@ off
+
+:@をけします
+Turn off the @.
+
+:けす
+OFF
+
+:大きさ
+Strength
+
+:@さいしょう
+@ minimum
+
+:@をさいしょうにします
+Adjust the @ to Minimum
+
+:小
+Minimum
+
+:@ふつう
+@ normal
+
+:@をふつうにします
+Adjust the @ to Normal.
+
+:中
+Normal
+
+:@さいだい
+@ maximum
+
+:@をさいだいにします
+Adjust the @ to Maximum.
+
+:大
+Maximum
+
+:エアコン
+Air Conditioner
+
+:エアコンけして|だんぼう、けして
+Air Conditioner, OFF|Heater, OFF.
+
+:エアコンをけします
+Turn off the air conditioner.
+
+:エアコンさいしょう
+Air conditioner, Minimum.
+
+:エアコンをさいしょうにします
+Adjust to the minimum temperature of the air conditioner.
+
+:冷房最小
+cooler Minimum.
+
+:エアコンつけて
+Turn on the cooler.
+
+:エアコンをつけます
+Turn on the cooler.
+
+:冷房普通
+cooler normal
+
+:エアコンさいだい
+cooler maximum
+
+:エアコンをさいだいにします
+Adjust to the maximum temperature of the cooler.
+
+:冷房最大
+cooler maximum
+
+:だんぼうさいしょう
+heater Minimum
+
+:だんぼうをさいしょうにします
+Adjust the heater to Minimum.
+
+:暖房最小
+heater Minimum
+
+:だんぼうつけて
+heater on
+
+:だんぼうをつけます
+Turn the Heater on.
+
+:暖房普通
+heater normal
+
+:だんぼうさいだい
+heater maximum
+
+:だんぼうをさいだいにします
+Adjust the heater to Maximum.
+
+:暖房最大
+heater maximum
+
+:その他
+other
+
+:その他種類名
+Other items.
+
+:間違って認識してる場合
+If it is recognized by mistake
+
+:音を聞いてみる
+Listening to the voice
+
+:詳細を確認する
+More Infomation
+
+:再生する
+Play voice
+
+:ダウンロードする
+Download Voice
+
+:あ-
+Cat1
+
+:か-
+Cat2
+
+:さ-
+Cat3
+
+:た-
+Cat4
+
+:な-
+Cat5
+
+:は-
+Cat6
+
+:ま-
+Cat7
+
+:余白
+Space
+
+:よはく
+Space
+
+:タイマー機能
+Timer
+
+
+:動作オプション
+Behavior options
+
+:余白として登録します。
+Register as a margin.
+
+
+:TVいちらんひょうだして
+TV Program list
+
+:@のいちらんひょうだします
+@ The ichirannhyou begins
+
+:一覧表
+program list
+
+:えぬえいちけーにして
+set the channel to one
+
+:@をえぬえいちけーにします
+@ on the channel one
+
+:きょういくにして
+set the channel to two
+
+:@をきょういくにします
+@ on the channel two
+
+:教育
+ch2
+
+:フジTVにして
+set the channel to eight
+
+:@をフジTVにします
+@ on the channel eight
+
+:フジTV
+ch8
+
+:TVあさひにして
+set the channel to five
+
+:@をTVあさひにします
+@ on the channel five
+
+:TV朝日
+ch5
+
+:にほんTVにして
+set the channel to four
+
+:@をにほんTVにします
+@ on the channel four
+
+:日本TV
+ch4
+
+:てぃーびーえすにして
+set the channel to six
+
+:@をてぃーびーえすにします
+@ on the channel six
+
+:TBS
+ch6
+
+:TVとうきょうにして
+set the channel to seven
+
+:@をTVとうきょうにします
+@ on the channel seven
+
+:TV東京
+ch7
+
+:がいぶしゅつりょくにして
+set the channel to output
+
+:@をがいぶしゅつりょくにします
+@ External to the output
+
+:外部接続1
+External connections 1
+
+:おんりょうあげて
+Give onnryou
+
+:@のおんりょうをあげます
+@ The onnryou.
+
+:音量上げ
+Volume up
+
+:おんりょうさげて
+volume up
+
+:@のおんりょうをさげます
+@ The sagemasu onnryou
+
+:音量下げ
+volume down
+
+:チャンネルまえへ
+Channel go
+
+:@のチャンネルをまえにもどします
+@ The channel returned to dance
+
+:チャンネル前へ
+Forward channel
+
+:チャンネルつぎへ
+Channel to the next
+
+:@のおんりょうをつぎにすすめます
+@ The onnreu recommend the following
+
+:チャンネル次へ
+Next channel
+
+:タイマーセット
+Set the timer
+
+:@のタイマーセット
+@ The timer set
+
+:@のタイマーとりけし
+@ The timer undoing
+
+:@のタイマーをとりけします
+@ The torieshimasu timer
+
+:@のタイマーセットをします
+@ Of the timer set
+
+:おんせいにんしきをていしします
+Voice REC, stopping the
+
+:音声認識停止
+Speech recognition stops
+
+:おんせいにんしきさいかい
+Voice REC abcdresume
+
+:おんせいにんしきをさいかいします
+The Saikai voice REC
+
+
+:設定
+Configuration
+:リモコンの編集
+Edit remote control
+:リモコン
+Remote controller
+:テレビなどの家電の項目を作ります。
+We will make items for home appliances such as television.
+:アイコンをドラッグして並び順を変えられます。
+You can change the order by dragging icons.
+:リモコンを使うには、「リモコンを使う」を押してください。
+To use the remote control, please press"Use remote control".
+:新規作成する
+Create a new
+:リモコンを使う
+Use remote control
+:設定中です・・・
+Setup is in progress...
+:赤外線信号を学習中です。
+I am learning the infrared signal.
+:フューチャーホームコントローラーの上面にある三角マークの先に向けて、リモコンボタンを押してください。
+Push the remote control button toward the end of the triangular mark on the top of the Future Home Controller.
+:再起動中です。
+Rebooting in progress.
+:1分ほどお待ちください。
+Please wait for about 1 minute.
+:アップデート中です。
+Update is in progress.
+:数分ほどお待ちください。
+Please wait for about several minutes.
+:アップデート中に電源を抜かないでください。
+Do not turn off the power while updating.
+:システムを停止しています。
+The system is stopped.
+:1分ほどしてから電源を抜いてください。
+Please turn off the power after about 1 minute.
+:新規ファイル名を入れてください
+Please enter a new file name
+:キーを変更してもよろしいですか？
+Are you sure you want to change the key?
+:削除してもよろしいですか？
+Are you sure you want to delete it?
+:アップデートしてもよろしいですか？
+Are you sure you want to update?
+:再起動してもよろしいですか？
+Are you sure you want to restart?
+:シャットダウンしてもよろしいですか？
+Are you sure you want to shut down?
+:戻る
+Return
+:アイコンの選択
+Select icon
+:スクリプトの選択
+Select script
+:mp3音楽の選択
+Mp3 music selection
+:検索
+Search
+:検索するファイル名
+File name to search
+:アップロード
+upload
+:未サポートのファイル形式です。
+Unsupported file format.
+:リモコン画面に表示したいアイコン画像を選択してください。
+Please select the icon image you want to display on the remote control screen.
+:しゃべらせる音声ファイルを選択してください。
+Please select an audio file to talk.
+:(会話なので数秒から数十秒の短いファイルをおすすめします。)
+(As a conversation, we recommend a short file of several seconds to several tens of seconds.)
+:外部の機材やパソコンと連携させるコマンドを指定してください
+Please specify a command to link with external equipment and PC
+:サイズ
+size
+:日付
+date
+:これを使う
+Use this
+:削除
+Delete
+:(再生しない)
+(Do not play)
+:機材設定
+Equipment setting
+:エラーが発生しました!!
+An error occurred!!
+:その他の名前を入れてください。
+Please put in other names.
+:この種類は既に使われています。
+This type is already in use.
+:別の種類を選択してください。
+Please select another type.
+:新規に登録する家電の種類を教えて下さい。
+Please tell me the type of home appliances to register newly.
+:リストにない場合は、その他を選択して名前を入れてください。
+If it is not on the list, please select another and enter a name.
+:複数台の機器を操作したい場合、その他を選択して別名をつけてください。
+If you want to operate more than one device, select another and give it an alias.
+:アイコンを変える
+Change icon
+:アイコンを変更する
+Change icon
+:リモコン画面に表示する
+Display on remote control screen
+:リモコン画面に表示するアイコンです。
+It is an icon displayed on the remote control screen.
+:好きなファイルをアップロードすることもできます。
+You can also upload your favorite files.
+:動作
+Behavior
+:動作を新規に追加する
+Add a new action
+:「つける」「けす」などの動作させる項目です。
+It is an item to operate such as"turn on"or"turn it off".
+:項目をドラッグすると並べ替えもできます。
+You can sort items by dragging them.
+:保存して戻る
+Save and return
+:アイコン選択
+Icon selection
+:elecページが壊れています。キーと現在編注中のデータが一致しません
+The elec page is broken.  Data does not match the data currently being edited
+:指定されたデータが見つかりません。削除されている可能性があります。
+The specified data can not be found.  It may have been deleted.
+:動作設定
+Operation setting
+:その他の動作名を入れてください。
+Please enter other action names.
+:この動作名は既に使われています。別の名前にしてください。
+This action name is already in use.  Please make it a different name.
+:どんな動作なのかを教えます
+I will tell you what kind of action it is
+:音声認識
+voice recognition
+:音声認識させたい項目を入力してください。(読み間違い防止の為、すべてひらがなかカタカナで入れてください)
+Please enter the item you want to recognize speech.  (Please put it all in hiragana or katakana for prevention mistake)
+:例:でんきつけて
+Example: turn on the light
+:認識できない文字列があります。
+There are unrecognized character strings.
+:既に別のコマンドで利用されています。
+It is already being used with another command.
+:例:おんせいにんしき、こうほそのにー
+Example: Elementary school teacher, like this
+:例:(せいきひょうげん|すっごいけんさく)もつかえます
+Example: (Regular Expression | It's awesome) can also be used
+:例:でんきけして|でんきけしてください|でんきけしてござらぬか
+Example: Please write it out | Please turn off the light | Do not touch it
+:例:バルス
+Example: Bals
+:こんなふうに喋ったら動きます
+I will move when I speak like this
+:平仮名かカタカナで入れてください。
+Please put it in hiragana or katakana.
+:実行時しゃべる
+Speak at runtime
+:音楽ファイル
+Music file
+:読み上げない
+Do not read it
+:文字列を読み上げる
+Read out a character string
+:例:それじゃあ、でんきつけるよ
+Example: Well then, I will keep it safe.
+:読み上げできない文字列があります。
+There are character strings that can not be read aloud.
+:応答時に文字列を合成音で読み上げます。
+Read out the string with synthetic notes on response.
+:誤読をさけるために平仮名かカタカナで入れることをおすすめします。
+To avoid misreading it is recommended to insert it in Hiragana or Katakana.
+:音楽ファイルを読み上げる
+Read out music files
+:ファイルを選択する
+Select a file
+:読み上げるファイル名を入れてください。
+Please enter the file name to read aloud.
+:応答時にmp3ファイルを再生します。
+Play mp3 file on response.
+:読み上げを行いません。
+No speech will be made.
+:操作方法
+Method of operation
+:赤外線学習
+Infrared Learning
+:コマンド実行
+Command execution
+:マクロ実行
+Macro execution
+:何もしない
+do nothing
+:リモコンの信号を記憶して再送することができます。
+You can remember the signal of the remote control and resend it.
+:現在登録されています。
+It is currently registered.
+:赤外線を学習させる
+Let infrared learn
+:リモコン学習がされていません。
+Remote control learning is not done.
+:学習は、「赤外線を学習させる」ボタンを押した後で、フューチャーホームコントローラーの上面にある三角マークの先に向かって、リモコンの信号を送信してください
+Learn to transmit the remote control signal toward the end of the triangle mark on the top of the Future Home Controller after pushing"Let the Infrared Learn"button
+:学習に失敗しました
+Learning failed
+:リモコンコードの学習に失敗しました。
+Learning remote control code failed.
+:お手数ですが、もう一度、「赤外線を学習させる」ボタンを押して学習し直させてください。
+Sorry to inconvenience you, but again, please let me learn again by pushing"learn infrared ray"button.
+:リモコンによっては、信号が弱いものがあり、学習しにくいものがあります。
+Depending on the remote control, some signals are weak and some are hard to learn.
+:赤外線も光なので、距離が開くと信号の強度が落ちてしまいます。
+Since infrared light is also light, the intensity of the signal drops when the distance opens.
+:フューチャーホームコントローラーの上面にある三角マークの先にリモコンを立てるように近づけてボタンを押してください。
+Push the button as close as possible so that the remote control stands at the tip of the triangular mark on the top of the Future Home Controller.
+:リモコンと本体の距離は数cmぐらいが目安です。
+The distance between the remote control and the main unit is about a few centimeters.
+:学習に成功しました
+I succeeded in learning
+:リモコン信号の学習が完了しました。
+Learning of the remote control signal is completed.
+:正しく学習されているか確認するために、「perview」ボタンをクリックしてください。
+Please click the"perview"button to see if it is learning correctly.
+:「perview」ボタンをクリックすると、記憶した信号を、フューチャーホームコントローラーが再送します。
+When you click the"perview"button, the stored signal is resent by the Future Home Controller.
+:覚えさせた家電が動作をするかをご確認ください。
+Please confirm whether home appliances that you remember do work.
+:正しく動作しない場合は、お手数ですが、もう一度、「赤外線を学習させる」ボタンを押して学習し直させてください。
+If it does not work properly, please take the"learn infrared"button again to learn it again.
+:動作時に赤外線を飛ばします。
+Skip infrared radiation during operation.
+:手元の赤外線リモコンを登録できます。
+You can register infrared remote control at hand.
+:マクロ
+macro
+:利用しない
+Do not use
+:次のコマンドへ
+To the next command
+:1秒待ってから次へ
+Wait one second before the next
+:2秒待ってから次へ
+Wait 2 seconds before next
+:マクロ1の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 1.
+:マクロ2の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 2.
+:マクロ3の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 3.
+:マクロ4の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 4.
+:マクロ5の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 5.
+:マクロ6の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 6.
+:マクロ7の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 7.
+:マクロ8の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 8.
+:マクロ9の中で無限ループに入っている可能性があります。
+There is a possibility that it is in an infinite loop in macro 9.
+:コマンド
+command
+:コマンドを選択する
+Select a command
+:未定義の引数1
+Undefined argument 1
+:未定義の引数2
+Undefined argument 2
+:未定義の引数3
+Undefined argument 3
+:未定義の引数4
+Undefined argument 4
+:未定義の引数5
+Undefined argument 5
+:メニューへの表示
+Display on menu
+:メニューの色を変更する
+Change the color of the menu
+:アカウント設定
+Account Setting
+:メールアドレス
+mail address
+:パスワード
+password
+:認証できませんでした。
+Authentication failed.
+:ネットワーク設定
+network settings
+:固定IP
+Static IP
+:DHCPか固定IPのいづれを選択してください。
+Please select either DHCP or fixed IP.
+:IPアドレス
+IP address
+:IPアドレスが正しくありません。
+The IP address is incorrect.
+:netmaskが正しくありません。
+The netmask is incorrect.
+:gatewayが正しくありません。
+The gateway is incorrect.
+:dnsが正しくありません。
+Dns is incorrect.
+:無線ケーブルのネットワーク
+Wireless cable network
+:DHCP、固定IP、NONEのいづれを選択してください。
+Please select either DHCP, fixed IP or NONE.
+:SSIDが正しくありません。
+The SSID is incorrect.
+:passwordが正しくありません。
+The password is incorrect.
+:暗号方式
+Encryption method
+:暗号方式が正しくありません。
+The encryption method is incorrect.
+:Future Home Controller の IPアドレスの設定を行います。
+Configure the IP address of the Future Home Controller.
+:ネットワークの設定を間違えて接続できなくなった場合は、リモートからのネットワークの設定が利用できます。
+If you can not connect by mistake in setting up the network, you can use the remote network settings.
+:音声認識設定
+Speech recognition setting
+:1次フィルタ強度
+Primary filter intensity
+:2次フィルタ強度
+Secondary Filter Strength
+:発話スピード
+Speech speed
+:マイク音量
+Microphone volume
+:音量
+Volume
+
+:既に利用されています
+already used
+
+:音声認識成功時のアラーム音
+Alarm sound at success
+
+:音声認識失敗時のアラーム音
+Alarm sound at failure
+
+:合成音声設定
+speech synthesis setting
+
+:合成音声
+speech synthesis
+
+:読み上げを行わない
+no speak
+
+:スピーカ音量
+Speaker volume
+
+:リモートスピーカー
+Remote speaker
+
+:リモートスピーカーを利用する
+Use Remote Speaker
+:IP
+IP
+
+:SECRETKEY
+SECRETKEY
+
+:設定する
+Setting
+
+:センサー設定
+Sensor setting
+
+:温度センサー
+Temperature sensor
+
+:取得しない
+none
+
+:光センサー
+Optical sensor
+
+:0～300の値を取ります。
+The value of 0 to 300 is taken. 
+
+:一日の温度
+Temperature for one day
+
+:時
+Hour
+
+:一週間の温度
+Temperature for one week
+
+:日
+day
+
+:一日の明るさ
+day of Brightness
+
+:度合い
+
+:一週間の明るさ
+Brightness for one week
+
+:システム全般
+System settings
+
+:システム全般の設定
+System settings
+
+:言語切り替え
+Language change
+
+:日本語
+Japanese
+
+:英語
+English
+
+:システム起動音
+System startup sound
+
+:フューチャーホームコントローラーが起動した時に鳴らす起動音を設定します。
+The start sounded when a future home controller starts is set up. 
+
+:バージョン情報
+Version information
+
+:UUID情報
+UUID
+
+:アップデートURL
+Update URL
+
+:アップデートする
+Update
+
+:著作表示とスタッフロール
+writing and a staff roll 
+
+:以下のハードウェア/ソフトウェアを含んでいます
+I include the following hardware / software
+
+:ログとサポート
+Log and Support 
+
+:過去のログを表示しています。
+Last log
+
+:ログを読み込んでいます
+Log loading...
+
+
+:サポート用のログを生成する
+Make a support log
+
+:オペレーション
+Operation
+
+
+:再起動する
+Reboot
+
+:シャットダウンする
+Shutdown
+
+:ログを読み込んでいます・・・
+Log loading...
+
+:検索
+Search
+
+:新規作成
+New Create
+
+:編集する
+Edit
+
+:削除する
+Delete
+
+:検索中・・・・
+Search...
+
+:会話シナリオ編集
+chat scenario setting
+
+:コマンド設定編集
+command setting
+
+:正常に実行されました
+Successful execution
+
+:スクリプトエラーが発生しました
+Script error occurred
+
+
+:APIについては、プログラミングリファレンスをご覧ください。
+About the API, see programming references.
+
+:コマンド引数ダイアログ
+Dialog of command argument
+
+:実行する
+Execute
+
+:未定義
+undefined
+
+:未定義の引数
+Undefined argument
+
+:必須
+required
+
+:任意
+
+:WebAPI
+
+:家電名一覧の取得
+Acquisition of a household appliance name list 
+:詳しくは、「リモコンを学習させるコツ」を御覧ください。
+For more information, please see the "knack to learn a remote control".
+
+:詳しくは、「PCのスピーカーを利用するには」を御覧ください。
+For more information, see "to use the PC speaker".
+
+:利用しません
+I will not use it
+:未知のエラーが発生しました
+An unknown error occurred
+:WebAPIを利用すると、LAN内の外部プログラムから、フューチャーホームコントローラーの機能を呼び出すことができます。
+By using WebAPI, you can recall the function of the Future Home Controller from an external program in the LAN.
+:家電と連携するアプリケーションを作成できます。
+You can create applications that work with home appliances.
+:WebAPIの詳細については、WebAPIリファレンスをご覧ください。
+For details on Web API, please refer to Web API Reference.
+:script_scripteditor_command_runに失敗しました
+Script_scripteditor_command_run failed
+:script_scripteditor_save 未知のエラーが発生しました
+Script_scripteditor_save An unknown error occurred
+:自動更新中。
+Automatic updating in progress.
+:1秒ごとにログを自動更新しています。
+The log is updated automatically every second.
+:設定されている家電名一覧を返します。
+Returns the set home appliance name list.
+:設定されている家電名一覧を配列で返します。
+Returns an array of home electronics names that have been set.
+:引数: なし
+Argument: None
+:家電のアクションの取得
+Acquisition of home appliance action
+:設定されている家電のアクション動作一覧を返します。
+Returns the action action list of the set home appliance.
+:家電名
+Home electronics name
+:設定されている家電のアクション動作一覧を配列で返します。
+Returns the action action list of the set home electronics as an array.
+:引数: 家電名
+Argument: Home appliance name
+:家電の情報の取得
+Acquisition of home electronics information
+:設定されている家電の詳細情報を連想配列で返します。
+Returns the detailed information on the set home electronics as an associative array.
+:家電に関するすべての情報の取得
+Acquisition of all information on home appliances
+:家電について設定されている詳細データを取得します
+Acquire detailed data set for home appliances
+:設定すべての家電の情報を連想配列で返します。
+Setting Return information on all appliances as an associative array.
+:家電操作
+Home electronics operation
+:家電に指定した動作をとらせることができます
+You can take action specified by home appliances
+:アクション名
+Action name
+:webAPI経由で家電を操作します。
+We operate home electronics via webAPI.
+:引数: 家電名,アクション名
+Argument: home appliance name, action name
+:センサー
+sensor
+:センサーの値を取得します。
+Get the value of the sensor.
+:センサーの値を連想配列で返します。
+Returns the value of the sensor as an associative array.
+:戻り値
+Return value
+:文字列
+String
+:読み上げない
+Do not read it
+:同期/非同期
+Synchronous / asynchronous
+:音声読上げ
+Speech reading
+:合成音声で読み上げを行います。
+Read aloud with synthesized speech.
+:音声で読み上げる
+Speak up by voice
+:音声で読み上げない(キャッシュだけを生成する)
+Do not read aloud by voice (generate only cache)
+:同期(読み上げが終わるまで応答を返さない)
+Synchronization (Does not return response until speech ended)
+:非同期(すぐに応答を返し、裏側で読み上げさせる)
+Asynchronous (return immediately, read aloud on backside)
+:合成音声で文字列を読み上げます。
+Read a character string with synthesized speech.
+:キャッシュにない初めて読み上げる音声は、合成音を生成するため数秒の時間がかかります。
+Speech to be read aloud for the first time in the cache takes several seconds to generate synthesized sound.
+:引数: 読みあげたい文字列,読み上げるかどうかのフラグ,同期非同期フラグ
+Argument: Character string to be read, flag to read aloud, synchronous asynchronous flag
+:でんきけして
+Keep it safe
+:でんきつけて
+Turn on the light
+:音楽ファイルの再生
+Playing music files
+:登録されている音楽ファイルを再生します。
+Play a registered music file.
+:ファイル名
+file name
+:引数: 読みあげたいファイル名,同期非同期フラグ
+Argument: The file name you want to read, synchronous async flag
+:登録されている音声認識ワード
+Registered voice recognition word
+:登録されている音声認識ワード一覧を返します。
+Returns the list of registered speech recognition words.
+:音声認識ワードの文字列呼び出し
+String call of speech recognition word
+:登録されている音声認識ワードを文字列で呼び出します。
+Call up registered speech recognition word with character string.
+:(呼びかけはあってもなくても、どちらでも動作します。)
+(Either way will work, even if there is no call.)
+:引数: 実行したい音声認識文字列
+Argument: Speech recognition string to be executed
+:環境情報
+Environment information
+:フューチャーホームコントローラーが動作している、バージョン情報、モデル型番、動作OSを取得します。
+We will acquire the version information, model model number, operating OS where the future home controller is running.
+:環境情報を取得します。
+We will acquire environment information.
+:戻り値: { "result": "ok","version": "バージョン番号","model": "FHCのモデル型番","os": "動作OS" }
+Return value: {"result":"ok","version":"version number","model":"model model number of FHC","os":"operating OS"}
+:API KEY
+Pick up Y
+:リモコン操作に戻る
+Return to remote control operation
+:リモコン編集を行う
+Perform remote control editing
+:アカウント設定を行う
+Set up account settings
+:ネットワーク設定を行う
+Perform network settings
+:音声認識設定を行う
+Perform speech recognition settings
+:音声認識の精度やマイクの音量を調整します。
+Adjust the accuracy of voice recognition and microphone volume.
+:合成音声設定を行う
+Perform synthetic voice setting
+:センサー設定を行う
+Perform sensor setting
+:システム全般の設定を行う
+Perform system general settings
+:バージョン情報を見る
+View version information
+:webapi設定を行う
+Perform webapi setting
+:コマンド設定を行う
+Perform command setting
+:会話シナリオ設定を行う
+Perform conversation scenario setting
+:APIを実行するためのキー情報です。
+Key information for executing the API.
+:APIキーは大切に保管してください。
+Keep the API key in a safe place.
+:読み上げるファイルの選択
+Selecting files to read aloud
+:家電を操作できる画面に戻ります。
+Return to the screen where you can operate the home electronics.
+:リモコンの編集を行います。
+Edit the remote control.
+:ユーザ名とパスワードの変更を行います。
+Change user name and password.
+:IPアドレス等の変更を行います。
+Change the IP address etc.
+:文字読み上げの音量調節を行います。
+We will adjust the volume of reading aloud text.
+:センサーの値を見ることができます。
+You can see the value of the sensor.
+:システム全般の様々な設定を行います。
+We will make various settings for the whole system.
+:バージョン情報の確認とアップデートを行えます。
+You can check and update version information.
+:他のアプリから操作するインターフェースを設定します。
+Set up an interface to operate from other applications.
+:複雑な受け答えのプログラムを作成します。(上級者用)
+We will create a complicated answer program.  (For advanced users)
+:外部機材を操作するプログラムを作成します。(上級者用)
+Create a program to operate external equipment.  (For advanced users)
+:アイコン
+icon
+:動作オプション
+Operation option
+:種類
+type
+:タイマー
+timer
+:例:コンピューター
+Example: Computer
+:例:コンピュータ
+Example: Computer
+:音声認識対象から消す
+Disappear from speech recognition target
+:クリックで動作ではなくメニューダイアログを開く
+Click menu to open menu dialog instead of action
+:チェックすると、機材に関連付けられている音声認識コマンドをすべて無効にします。
+If checked, all voice recognition commands associated with the equipment will be invalidated.
+:チェックすると、リモコン画面で、機材の大きなアイコンをクリックしたら、動作を繰り替えるのではなく、メニューダイアログを開きます。エアコンやテレビなどの複数の動作をたくさん持つ家電に設定すると便利です。
+If checked, when you click on the large icon of the equipment on the remote control screen, the menu dialog opens instead of repeating the action.  It is convenient to set it for home appliances that have many actions such as coolers and televisions.
+:「赤外線を学習させる」ボタンをクリックし、ホームコントローラーにリモコンのコマンドを送信してください。
+Click"Learn Infrared"button and send the remote controller command to the home controller.
+:状態をアイコンで表示する
+Display status as icon
+:状態を遷移させない
+Do not transition state
+:「リモコン画面に表示する」のチェックを外すと項目をリモコン画面に表示しなくなります。
+If you uncheck"Display on remote control screen", items will not be displayed on remote control screen.
+:チェックを外すのは、マクロのためだけに設置したコマンドに使います。
+To uncheck the checkbox, use it for commands set only for macros.
+:「状態を遷移させない」のチェックを入れると、家電アイコンボタンでの遷移を禁止します。
+If"Do not transition state"is checked, transition by the home electronics icon button is prohibited.
+:チェックを入れるのは、テレビの音量を変更するや、タイマー動作などのONOFF動作以外の補助的な動作なコマンドに使います。
+To turn on the check, change the volume of the TV, use it for auxiliary operation commands other than the ONOFF operation such as timer operation.
+:音声認識一時停止
+Speech recognition pause
+:音声認識再開
+Speech recognition restart
+:音声認識一時停止中のアラーム音
+Alarm sound during speech recognition pause
+:音声認識を再開もしないといけないので、一時停止を作るときは、必ず再開するも同時に作ってください。そうしないと、音声認識を永久に再開できません。
+I also have to restart speech recognition, so when making a pause, please be sure to restart it at the same time please make it.  Otherwise, speech recognition can not be restarted forever.
+:設定されているタイマーを停止させます。
+It stops the set timer.
+:タイマー実行時にmp3ファイルを再生します。
+Play mp3 file when running timer.
+:タイマー実行時に文字列を合成音で読み上げます。
+Reads the character string with synthesized sound when executing the timer.
+:誤読をさけるために平仮名かカタカナで入れることをおすすめします。
+To avoid misreading it is recommended to insert it in Hiragana or Katakana.
+:例:じかんだ、でんきをけそう
+For example: Jikan, let's keep the weather clean
+:タイマー動作時に読み上げ
+Speak at timer operation
+:今から数時間後に動作させます。
+I will operate it in a few hours from now.
+:「既にその状態にあれば追加で命令を送らない」をチェックにすると、
+If you check"Do not send additional instructions if already in that state"
+:タイマー動作時に電気が変えている時は、電気を消すタイマーが動いたとしても、追加で消す命令を送らなくなります。
+When the electricity is changing during the timer operation, even if the timer to turn off the electricity moves, it will not send an instruction to erase additionally.
+:家電によっては、ONの信号とOFFの信号が同一のものがあるため、誤動作を避けるために用意されています。
+Depending on the home appliance, there is the same ON signal and OFF signal, so it is prepared to avoid malfunction.
+:「状態を遷移させない」とセットでご利用ください。
+Please use"set not to transition state"as a set.
+:既にその状態にあれば追加で命令を送らない
+If you are already in that state do not send additional instructions
+:タイマー動作
+Timer operation
+:1分後
+After 1 minute
+:2分後
+In 2 minutes
+:3分後
+In 3 minutes
+:4分後
+In 4 minutes
+:5分後
+after 5 minutes
+:6分後
+In 6 minutes
+:7分後
+In 7 minutes
+:8分後
+8 minutes later
+:9分後
+In 9 minutes
+:10分後
+In ten minutes
+:15分後
+In 15 minutes
+:30分後
+In 30 minutes
+:45分後
+In 45 minutes
+:1時間後
+One hour later
+:1時間半後
+One and a half hours later
+:2時間後
+Two hours later
+:3時間後
+Three hours later
+:4時間後
+4 hours later
+:5時間後
+After 5 hours
+:6時間後
+6 hours later
+:7時間後
+After 7 hours
+:8時間後
+8 hours later
+:9時間後
+9 hours later
+:10時間後
+After 10 hours
+:11時間後
+After 11 hours
+:12時間後
+In 12 hours
+:13時間後
+After 13 hours
+:14時間後
+After 14 hours
+:15時間後
+After 15 hours
+:16時間後
+After 16 hours
+:17時間後
+17 hours later
+:18時間後
+18 hours later
+:19時間後
+After 19 hours
+:20時間後
+After 20 hours
+:21時間後
+After 21 hours
+:22時間後
+After 22 hours
+:23時間後
+After 23 hours
+:24時間後
+After 24 hours
+:タイマー取り消し
+Timer cancellation
+:時間差で動作させます。
+I will operate with time difference.
+:複数の動作を連動させることができます。
+Multiple actions can be linked.
+:ボタンを複数回押すといった動作は、マクロを使って設定します。
+Press the button more than once to set up using the macro.
+:状態が同じなら何もせず次へ
+If the state is the same, do nothing Next
+:操作を行わない
+Do not operate
+:複数の家電を連動させるといった使い方や、リモコンキーを2回押さないといけない動作などを設定できます。
+You can set usage such as interlocking multiple household appliances, operation that you must press the remote control key twice.
+:(無限再帰をさけるために最大30ステップまで実行できます)
+(Up to 30 steps can be executed to avoid infinite recursion)
+:WebAPIを利用すると、LAN内の外部プログラムから、フューチャーホームコントローラーの機能を呼び出すことができます。
+By using WebAPI, you can recall the function of the Future Home Controller from an external program in the LAN.
+:家電と連携するアプリケーションを作成できます。
+You can create applications that work with home appliances.
+:設定されている家電名一覧を返します。
+Returns the set home appliance name list.
+:webapi経由で呼び出してみる
+Invoke via webapi
+:家電のアクションの取得
+Acquisition of home appliance action
+:設定されている家電のアクション動作一覧を返します。
+Returns the action action list of the set home appliance.
+:remote webapi経由で呼び出してみる
+Invoke via remote webapi
+:webapiは、ローカルIPに対して動作させます。
+Webapi runs against local IP.
+:remote webapiは、インターネット経由で動作させます。
+Remote webapi will be operated via the Internet.
+:戻り値例
+Return value Example
+:1秒ごとにログを自動更新しています。
+The log is updated automatically every second.
+:ログのボックスから選択を外すと更新を再度開始します。
+If you deselect it from the log box, it will start updating again.
+:更新停止中。
+Update inactive.
+:自動更新中。
+Automatic updating in progress.
+:全部を見るにはスタッフロールでどうぞ
+Staff roll to see all
+:設定のインポート/エクスポート
+Import / export settings
+:設定の保存(エクスポート)
+Save setting (export)
+:設定の読込(インポート)
+Load settings (import)
+:システム全般の設定
+System General Settings
+:システム全般の設定を行う
+Perform system general settings
+:リモコンUI設定
+Remote control UI setting
+:リモコン画面をカスタマイズします。
+Customize the remote control screen.
+:トリガーの設定を行う
+Set the trigger
+:ある条件が発生した時に自動実行することできます。
+It can be executed automatically when certain conditions occur.
+:マイクテスト
+Microphone test
+:マイクテストを行う
+Perform a microphone test
+:音声認識ログから精度改善のアドバイスを行います。
+We will give advice on accuracy improvement from voice recognition log.
+:マイクに向かって話しかけてください。
+Talk to the microphone.
+:例:「コンピュータ、こんにちは」 「コンピュータ、電気消して」
+Example:"Computer, Hello""Computer, turn off the light"
+:音声認識のコツについてはヘルプを御覧ください。
+For help on speech recognition tips, please see Help.
+:音声認識ログ
+Speech recognition log
+:音声認識に成功しました。
+Speech recognition succeeded.
+:なんでもない会話を認識してしまった場合は、2パスチェックを検討してください。または、サポーター強度をもっと上げてください。
+If you have recognized anything but a conversation, please consider 2 pass check.  Or, please increase the supporter strength further.
+:なんでもない会話を認識してしまった場合は、サポーター強度をもっと上げてください。
+If you recognize anything but a conversation, please raise the supporter strength further.
+:解説マニュアルへ
+Go to explanation manual
+:別の命令と取り違えた場合は、1次通過確率をもっと上げてください。
+If you mistake another instruction, please increase the first-order probability.
+:失敗。回りが騒がしいようです。
+Failure.  It seems that the surroundings are noisy.
+:回りに音源がある場合は、マイクから音源を遠ざけてください。
+If there is a sound source around, please keep the sound source away from the microphone.
+:音源がない場合は、マイク端子を挿しなおしてください。半挿しの可能性があります。
+If there is no sound source, please insert the microphone terminal again.  There is a possibility of half insert.
+:それでも発生する場合は、マイクの音量をもっと下げてください。
+If it still occurs, please lower the volume of the microphone further.
+:失敗。1次フィルタの呼びかけサポーターで棄却しました。
+Failure.  It was rejected at the supplementary supporter of the primary filter.
+:もう少し正確に発音してください。
+Please pronounce it a little more accurately.
+:正確に発音しているのに、頻繁に表示される場合は、呼びかけのサポーター強度を下げてください。
+If you are pronounced correctly, but frequently displayed, please lower the strength of the supporter.
+:ただし、サポーター強度を下げすぎると、誤動作のリスクが高まりますので下げ過ぎには注意してください。
+However, if you lower the strength of the supporter too much, the risk of malfunction increases, so please be careful not to lower it too much.
+:失敗。1次フィルタの命令サポーターで棄却しました。
+Failure.  It was rejected by the command supporter of the primary filter.
+:正確に発音しているのに、頻繁に表示される場合は、命令のサポーター強度を下げてください。
+If you are pronouncing correctly, but frequently displayed, lower the supporter strength of the command.
+:ハードウェアエラーが発生しました。システムを自動再起動します。
+A hardware error occurred.  Automatically restart the system.
+:頻繁に起きるようでしたら、弊社までログを送ってください。
+If it seems to happen frequently, please send us a log.
+:ソフトウェアエラーが発生しました。
+A software error occurred.
+:失敗。1次フィルタを通過できるだけの確率ではありません。
+Failure.  It is not the probability that it can pass through the primary filter.
+:認識単語が正しければ、1次通過確率をもっと下げると動作するようになります。
+If the recognition word is correct, lowering the first order probability will make it work.
+:失敗。発音がゆっくり過ぎます。
+Failure.  Pronunciation is too slow.
+:もう少し早く発音してください。
+Please pronounce it somewhat earlier.
+:頻繁に起きるようでしたら、発話スピードを下げてください。
+If it seems to happen frequently, please lower the speech speed.
+:失敗。発音が早すぎます。
+Failure.  My pronunciation is too early.
+:もう少しゆっくり発音してください。
+Please pronounce it a little more slowly.
+:頻繁に起きるようでしたら、発話スピードを上げてください。
+If it seems to happen frequently, please increase the speech speed.
+:失敗。音のデータが過剰に詰まっています。
+Failure.  The sound data is over-packed.
+:失敗。音のデータが不正確です。
+Failure.  The sound data is inaccurate.
+:正確に発音しているのに多発する場合は、弊社までログを送ってください。
+If you frequently pronounce it correctly, please send logs to us.
+:失敗。終端データにマッチしました。
+Failure.  It matched the termination data.
+:失敗。2次フィルタのサポーターで棄却しました。
+Failure.  It was rejected by the supporter of the secondary filter.
+:正確に発音しているのに多発する場合は、2次フィルターのサポーター強度を下げてください。
+If you frequently pronounce it correctly, lower the supporter strength of the secondary filter.
+:ただ、サポーター強度を下げすぎると、誤動作のリスクが高まりますので下げ過ぎには注意してください。
+However, if you lower the strength of the supporter too much, the risk of malfunction increases, so please be careful not to lower it too much.
+:失敗。2次フィルタを通過できるだけの確率ではありません。
+Failure.  It is not the probability that it can pass through the second order filter.
+:正確に発音しているのに多発する場合は、2次フィルターの通過強度を下げてください。
+If you frequently pronounce it accurately, lower the passing strength of the secondary filter.
+:失敗。2次フィルタで棄却。呼びかけの発音が早すぎます。
+Failure.  Rejected by secondary filter.  The pronunciation of the call is too early.
+:もう少し早く正確に発音してください。
+Please pronounce it accurately a little more quickly.
+:早く正確に発音しているのに多発する場合は、発話スピードを下げてください。
+If you frequently pronounce it quickly and correctly, lower your speech speed.
+:失敗。2次フィルタで棄却。呼びかけの発音が長過ぎます。
+Failure.  Rejected by secondary filter.  The pronunciation of the call is too long.
+:もう少しゆっくり正確に発音してください。
+Please pronounce it more precisely and more slowly.
+:ゆっくり正確に発音しているのに多発する場合は、発話スピードを上げてください。
+If you frequently pronounce it slowly and accurately, increase the speech speed.
+:「不明な」ソフトウェアエラーが発生しました。
+An"unknown"software error occurred.
+:夜間は静かにする
+To quiet at night
+:夜間時間帯
+Night time zone
+:指定した夜間時間帯には、音量を下げます。
+Lower the volume in the designated night time zone.
+:夜間ボリューム
+Nocturnal volume
+:FHCコマンダーを動かしている別マシンで音を再生できます。
+You can play sound on another machine that moves the FHC Commander.
+:リモートスピーカーと接続できません
+Can not connect to remote speaker
+:呼び出し回数の上限を超えました。
+The maximum number of calls has been exceeded.
+:「何がが発生したら動作をさせる」トリガーをセット出来ます。
+You can set a trigger that will"let you act when something happens".
+:有線ケーブルのネットワーク
+Wired cable network
+:アップデートの必要はありません
+There is no need for updating
+:会話シナリオ選択コマンド設定選択
+Conversation scenario selection command setting selection
+:読み上げる声の大きさです。
+It is the size of the voice to read.
+:合成音声で読み上げる声を選択できます
+You can select the voice you want to read with synthetic voice
+:現在値
+Present value
+:取得元
+Acquisition source
+:ホームコントローラーより取得
+Acquired from home controller
+:室温温度を取ります。
+Take room temperature.
+:多少ズレる時があります。あくまで目安としてご利用ください。
+There are times when they are somewhat shifted.  Please use only as a guide.
+:0～300の値を取ります。
+It takes a value from 0 to 300.
+:300に近づくと明るくなります。
+Approaching 300 will make it brighter.
+:人センサー(音センサー)
+People sensor (sound sensor)
+:1時間でマイク音を拾った数を表しています。(最高200個)
+It represents the number of microphone sound picked up in one hour.  (Up to 200 items)
+:音がするということは、人が近くにいるという、指標の一つになります。
+To sound is one of the indicators that a person is nearby.
+:誤認識フィルタ
+Misrecognition filter
+:2パスチェックする
+2 pass check
+:簡易認識をする
+To make a simple recognition
+:精度:普通　速度:普通
+Accuracy: Normal Speed: Normal
+:一度認識したものを再度音声認識に投入することで、精度を確保します。
+By inserting once recognized speech again, we ensure accuracy.
+:精度:低い　速度:高速
+Accuracy: Low Speed: Fast
+:一度の音声認識の結果を採用します。
+We adopt the result of one speech recognition.
+:動作は高速ですが、精度が下がります。
+The operation speed is high, but accuracy decreases.
+:音声認識を利用しない
+Do not use speech recognition
+:精度:--　速度:--
+Accuracy: - Speed: -
+:音声認識を利用しません。
+Speech recognition is not used.
+:マイク音量を調整します。
+Adjust the microphone volume.
+:数字が100に近くなるほどマイクは小さい音を拾うようになります。
+As the number approaches 100, the microphone will pick up a small sound.
+:周りが騒がしいと、その雑音までを拾ってしまい音声認識に失敗します。
+If the surroundings are noisy, we will pick up up to that noise and fail voice recognition.
+:終わりが騒がしい場合は、マイクの音量を下げてみてください。
+If the end is noisy, try lowering the microphone volume.
+:呼びかけワード
+Calling Word
+:音声認識を開始する呼びかけワードを設定します。
+Set the calling word to start speech recognition.
+:呼びかけワードは表記の揺れを吸収するため、最大5個まで入れることができます。
+Since the calling word absorbs the notation of the notation, it can contain up to five pieces.
+:読み上げできない文字です
+Characters that can not be read aloud
+:呼びかけが短すぎます
+The call is too short
+:呼びかけの最初のニ文字までは同じ音でなければいけません
+The first two characters of the call must have the same sound
+:既に利用されています
+It is already in use
+:呼びかけは誤動作を防ぐために利用されます。
+Calls are used to prevent malfunctions.
+:フューチャーホームコントローラーでは、呼びかけ+命令という音声認識を行います。
+The Future Home Controller performs speech recognition called Call + Instruction.
+:例えば、呼びかけが「コンピュータ」で、命令が「電気つけて」の場合、「コンピュータ、電気つけて」のようになります。
+For example, if the calling is"computer"and the instruction is"turning on electricity", it becomes like"computer, electric lighting".
+:短すぎる呼びかけは誤動作のリスクがあるので、最低3文字以上は必要です。
+Calls that are too short have a risk of malfunctioning, so a minimum of 3 characters is required.
+:実際には、6文字ぐらいを推奨します。
+Actually, we recommend about 6 characters.
+:複数設定する目的は、表記のゆれ(発話の揺れ)を吸収するためのものです。
+The purpose of setting more than one is to absorb the notation of fluctuations (utterance shaking).
+:複数の呼びかけを設定する場合、
+When setting up multiple calls,
+:呼びかけワードの最初の2文字を同じ文字で始める必要があります。
+The first two letters of the calling word must begin with the same letters.
+:「コンピュータ」という呼びかけを設定した場合、
+When setting a calling of"computer"
+:次の呼びかけは、「コン○○○○」のように「コン」という最初の2文字が必要です。
+The next call requires the first two letters of"Con"like"Con ○ ○ ○ ○".
+:呼びかけを変更することもできますが、現在、コンピュータに、最適化しているのでそのまま使うことをおすすめします。
+Although you can change the appeal, we recommend that you use it as it is because it is currently optimized for computers.
+:部屋の名前
+Room name
+:ディフォルト
+default
+:フッターメニューボタン
+Footer menu button
+:フッターメニューボタンの色
+Footer menu button color
+:フッターメニューボタンのホバー
+Footer menu button hover
+:メニューダイアログ全般
+Menu dialog in general
+:メニューダイアログ挙動
+Menu Dialog Behavior
+:ニューダイアログのボタン
+New dialog button
+:メニューダイアログのボタンのホバー
+Menu dialog button button hover
+:部屋の名前の文字色を変更する
+Changing the text color of the room name
+:ディフォルト文字色を変更する
+Change default character color
+:ディフォルト背景色を変更する
+Change default background color
+:背景画像を変更する
+Change the background image
+:詳細メニューボタンを変更する
+Change detailed menu button
+:タイマーバッチのアイコンを変更する
+Change the timer batch icon
+:温度の文言
+Words of temperature
+:明るさの文言
+Wording of brightness
+:センサーの色を変更する
+Change the color of the sensor
+:リモコンを編集の文言
+Wording of remote control editing
+:リモコンを編集のアイコンを変更する
+Change remote icon edit icon
+:編集画面に行くの文言
+Words of going to the editing screen
+:編集画面に行くのアイコンを変更する
+Go to the edit screen Change the icon
+:ボタンの文字色を変更する
+Change the text color of the button
+:ボタンの背景色を変更する
+Change the background color of the button
+:ボタンのボーダーを変更する
+Change the border of the button
+:ボタンのホバー色を変更する
+Change the hover color of the button
+:メニューダイアログを閉じる文言
+Words to close the menu dialog
+:ダイアログのフォント色
+Dialog font color
+:ダイアログの背景色
+Dialog background color
+:ダイアログのボーダー色
+Dialog Border Color
+:ボタンを選択したら自動的に閉じる
+Automatically close when button is selected
+:ボタンを選択しても自動的に閉じない
+It does not close automatically even if button is selected
+:メニューダイアログから「電気つける」などのボタンを選択した時に、メニューダイアログを閉じるかどうかをきめます。
+When selecting a button such as"turn on"from the menu dialog, decide whether to close the menu dialog or not.
+:ディフォルトは、選択されると自動的に閉じます。
+The default will close automatically when selected.
+:ボタンを4つごとに並べる
+Arrange the buttons every four
+:ボタンを5つごとに並べる
+Arrange the buttons every 5
+:ボタンを6つごとに並べる
+Arrange the buttons every six
+:ボタンを7つごとに並べる
+Arrange the buttons every seven
+:ボタンを8つごとに並べる
+Arrange the buttons every eight
+:メニューダイアログの「つける」「けす」などのボタンを横方向にいくつ並べるのか指定します。
+Specify how many buttons such as"Tsuku"or"Kesu"in the menu dialog are arranged in the horizontal direction.
+:ボタンの背景色を変更する(グラデーション開始)
+Change the background color of the button (start gradation)
+:ボタンの背景色を変更する(グラデーション終了)
+Change the background color of the button (end of gradation)
+:ボタンのホバー色を変更する(グラデーション開始)
+Change the hover color of the button (start gradation)
+:ボタンのホバー色を変更する(グラデーション終了)
+Changing the hover color of the button (end of gradation)
+:ボタンのホバー色をボーダー色を変更する
+Change the hover color of the button to the border color
+:トリガーを新規に追加する
+Add a new trigger
+:トリガー設定
+Trigger settings
+:トリガーセット
+Trigger set
+:条件(この条件が成立した時に)
+Condition (when this condition is satisfied)
+:時間
+time
+:条件:時間
+Condition: time
+:繰り返し実行する
+To repeat
+:複数の家電を連動させるといった使い方や、
+Usage such as interlocking multiple home appliances,
+:リモコンキーを2回押さないといけない動作などを設定できます。
+You can set the operation etc. that you have to press the remote control key twice.
+:繰り返し実行する曜日
+Day of the week to repeat
+:曜日
+The day of the week
+:日曜日に実行する
+Run on Sunday
+:月曜日に実行する
+Run on Monday
+:火曜日に実行する
+Run on Tuesday
+:水曜日に実行する
+Run on Wednesday
+:木曜日に実行する
+Run on Thursday
+:金曜日に実行する
+Run on Friday
+:土曜日に実行する
+Run on Saturday
+:祝日
+public holiday
+:祝日関係なく
+Regardless of holidays
+:祝日を除く
+Excluding holidays
+:祝日のみ
+Holidays only
+:日本の祝日データに基づく
+Based on Japanese holiday data
+:毎時
+Every hour
+:毎時実行しない
+Do not run every hour
+:毎時指定のため、以下の時刻に動きます。
+Because it is specified every hour, it moves at the following time.
+:1時間毎
+Every hour
+:2時間毎
+Every 2 hours
+:3時間毎
+Every 3 hours
+:4時間毎
+Every 4 hours
+:6時間毎
+Every 6 hours
+:12時間毎
+Every 12 hours
+:条件:コマンド
+Condition: Command
+:条件:Web
+Condition: Web
+:GETするWebページのURL 例
+URL example of Web page to be got
+:URLを入れてください
+Please enter the URL
+:マッチ文字列
+Match character string
+:マッチする文字列を書きます 例:電気をつける
+Write a matching string Example: turn on electricity
+:マッチ文字列を入れてください
+Please enter a match string
+:ポーリング間隔
+Polling interval
+:1分間隔
+1 minute interval
+:2分間隔
+2 minute interval
+:5分間隔
+5 minute interval
+:10分間隔
+10 minutes interval
+:30分間隔
+30 minute interval
+:追加補助条件
+Additional supplementary condition
+:家電を条件にする
+Condition home appliances
+:追加条件:家電
+Additional Condition: Home Appliances
+:この状態の時発動する
+Activate in this state
+:この状態でない時発動する
+Activate when not in this state
+:近くに人がいるとき
+When there are people nearby
+:追加条件:近くに人がいるとき
+Additional condition: When there is a person nearby
+:しきい値以上の時(人がいるとき)
+When it is over threshold value (when there are people)
+:しきい値以下の時(人がいないとき)
+When it is below the threshold (when no one is present)
+:今日の天気
+today's weather
+:追加条件:今日の天気
+Additional Terms: Today's weather
+:場所
+place
+:例:東京都
+Example: Tokyo
+:条件
+conditions
+:雨が降る
+it rains
+:雨ではない
+It's not rainy.
+:もうすぐ雨が降る
+It will rain soon
+:もうすぐ雨がやむ
+The rain stops soon
+:前回動作時から
+Since the last operation
+:追加条件:前回の動作時から
+Additional condition: From last operation
+:60分後
+In 60 minutes
+:120分後
+In 120 minutes
+:300分後
+After 300 minutes
+:1440分後
+After 1440 minutes
+:実行(この動作を実行する)
+Execute (execute this operation)
+:トリガー実行時に文字列を合成音で読み上げます。
+Reads a character string with synthesized sound when executing a trigger.
+:トリガー実行時にmp3ファイルを再生します。
+Play mp3 file at trigger execution.
+:実行
+Execution
+:実行:マクロ
+Execution: Macro
+:Macro
+Watch
+:家電を操作する
+Operate home appliances
+:実行:コマンド
+Execute: Command
+:Command
+Buddy d
+:コマンドを実行する
+Execute the command
+:実行するコマンドを入れてください。
+Enter the command to be executed.
+:表示
+display
+:トリガーの名前
+Name of the trigger
+:トリガー名
+Trigger name
+:アカウントの設定に行く
+Go to account settings
+:ネットワークの設定に行く
+Go to network settings
+:言語切り替えに行く
+Go to language switching
+:利用する言語を切り替えます。(テスト版)
+Switch the language to use.  (Test version)
+:認証する
+Authenticate
+:認証解除
+Deauthorize
+:twitter認証が成功しています。
+Twitter authentication has succeeded.
+:twitter関係の命令を呼び出すことで操作することができます。
+You can operate by calling twitter related instructions.
+:詳しくはこちらをご覧ください。
+For details, please click here.
+:また、twitter認証を解除したい場合は、「認証解除」をクリックしてください。
+Also, if you want to cancel twitter authentication, please click"Cancel authentication".
+:twitter連携コマンドを利用するため認証します。
+We use twitter linkage command to authenticate.
+:天気取得スクリプト
+Weather acquisition script
+:電車遅延スクリプト
+Train delay script
+:天気予報を取得するスクリプトを選択します。
+Select the script to get the weather forecast.
+:電車などの遅延を取得するスクリプトを選択します。
+Select a script to get the delay of the train etc.
+:システムの言語を切り替えます。
+Switch the language of the system.
+:(この機能は実験的な機能です。通常は使用しないでください。)
+(This function is an experimental function, please do not use normally.)
+:日本語に変更すると、日本語の音声認識、合成音声を利用します。
+When changing to Japanese, we will use Japanese speech recognition, synthesized speech.
+:呼びかけワードのディフォルトはコンピュータです。
+The default for the calling word is computer.
+:ある程度の英語の日本語読みに対応しています
+It corresponds to Japanese reading of English to some extent
+:英語に変更すると、英語の音声認識、合成音声を利用します。呼びかけワードのディフォルトはcomputerです。
+When you change to English, you will use English speech recognition, synthesized speech.  The default calling word is computer.
+:命名の日本語読みには対応していないので、英語で読みを入れていく必要があります。例:computer, turn off light
+Because it does not correspond to Japanese reading of naming, we need to read in English.  Example: computer, turn off light
+:間違って認識してる場合
+In case of incorrect recognition
+
+::現在、機材設定で音声認識を無効にする設定がされています。
+Currently, setting to disable speech recognition in equipment setting is done.
+:三角マークの先に垂直に立てるようにして近づけてください。
+Make it as if it stands vertically at the tip of the triangular mark and bring it close.
+:音声認識の一時停止
+Pause speech recognition
+:音声認識を一時停止/再開を行います。
+Pause / restart voice recognition.
+:音声認識を一時停止にする
+Pause speech recognition
+:音声認識を再開する
+Resume speech recognition
+:音声認識を一時停止にします。
+Pause speech recognition.
+:特別なコマンドを実行することで、外部の機材やパソコンと連携させたりできます。
+By executing special commands, you can link with external equipment and PC.
+:actionページが壊れています。キーと現在編注中のデータが一致しません
+The action page is broken.  Data does not match the data currently being edited
+:操作を選択してください
+Please select operation
+:このIDは別の端末に関連付けされているので利用できません。
+This ID is associated with another terminal and can not be used.
+:(上級者向け)ここで指定したパスワードで ID:sshuser の ssh loginを利用できます。
+(For advanced users) You can use ssh login of ID: sshuser with the password specified here.
+:リモート操作のためのサーバ同期
+Server synchronization for remote operation
+:遠隔操作のためにサーバと常に設定を同期する
+Always synchronize settings with the server for remote operation
+:スマホとかで遠隔で家電を操作する場合は、有効にします。
+Enable it when operating home appliances remotely, such as with a smartphone.
+:ONだと、遠隔操作のために、サーバと端末とで設定を常に同期します。
+When it is ON, the settings are always synchronized between the server and the terminal for remote operation.
+:OFFだと、サーバと端末とで設定を同期しなくなりますが、スマホとかで遠隔操作はできなくなります。
+If it is OFF, the setting will not be synchronized between the server and the terminal, but it can not be controlled remotely, for example with a smartphone.
+:無線ケーブルのネットワーク
+Wireless cable network
+:DHCP、fixed IP、NONEのいづれを選択してください。
+Please select either DHCP, fixed IP or NONE.
+:ネットワークのSettingを間違えて接続できなくなった場合は、
+If you can not connect by making a mistake on the network setting,
+:リモートからのネットワークのSettingが利用できます。
+Remote network settings are available.
+:1次フィルタオプション
+Primary filter option
+:呼びかけサポーター強度: 大きいほど強度に弾きます。4が標準です。
+Appeal Supporter Strength: Larger it will play more strength.  4 is the standard.
+:命令サポーター強度: 大きいほど強度に弾きます。3が標準です。
+Instruction supporter strength: Larger the larger you play the strength.  3 is standard.
+:1次通過確率: 大きいほど強度に弾きます。45が標準です。
+First order passage probability: The greater the greater the probability, the higher the strength.  45 is the standard.
+:音声認識エンジンに渡すパラメータを指定します。
+Specify parameters to pass to the speech recognition engine.
+:値を小さくすると、曖昧な声でも認識しますが、誤動作のリスクがあります。
+Decreasing the value will recognize ambiguous voices, but there is a risk of malfunction.
+:大きくすると、より強固になりますが、曖昧な声では認識しなくなります。
+Increasing it makes it stronger, but it will not recognize with ambiguous voice.
+:呼びかけサポーター強度
+Calling supporter strength
+:呼びかけをチェックするときに、比較検討する候補のレベルを設定します。
+When checking a call, set the level of the candidate to be compared.
+:呼びかけとは、「コンピュータ、電気つけて」の「コンピュータ」と呼びかける部分です。
+The calling is the part called"Computer"of"Computer, turning on electricity".
+:命令サポーター強度
+Instruction supporter strength
+:命令をチェックするときに、比較検討する候補のレベルを設定します。
+When checking an instruction, set the level of the candidate to be compared.
+:命令とは、「コンピュータ、電気つけて」の「電気つけて」とやってほしい命令する部分のことです。
+An instruction is a part that orders you to do"turn on electricity"in"computer, turn on electricity".
+:1次通過確率
+1 st order probability
+:命令の認識精度として利用します。値は最終的に確率になります。
+It is used as recognition accuracy of instructions.  The value will ultimately be the probability.
+:2次フィルタオプション
+Secondary filter option
+:2次フィルタサポーター強度: 大きいほど強度に弾きます。5が標準です。
+Secondary Filter Supporter Strength: The greater the strength, the stronger it will be played.  5 is standard.
+:2次通過確率: 大きいほど強度に弾きます。25が標準です。
+2nd order passing probability: The greater the greater the probability, the stronger it plays.  25 is the standard.
+:音声認識エンジン(2パスチェック時)に渡すパラメータを指定します。
+Specify parameters to be passed to the speech recognition engine (2 pass check).
+:2パスチェックでは、呼びかけ部分を再評価します。
+In 2-pass check, re-evaluate the calling part.
+:2次フィルタサポーター強度
+Secondary filter supporter strength
+:2パスチェックするときに、比較検討する候補のレベルを設定します。
+When checking 2 pass, set the level of the candidate to be compared.
+:2次通過確率
+Second order passing probability
+:2パスチェックした場合の呼びかけの認識精度として利用します。値は最終的に確率になります。
+It is used as a recognition accuracy of a call when 2 pass check is done.  The value will ultimately be the probability.
+:発話スピード: 大きくするほどゆっくりした会話に最適化されます。13が標準です。
+Utterance Speed: Increasingly, it is optimized for a slow conversation.  13 is standard.
+:発話スピード
+Speech speed
+:発音するデータに対しての理想的な発話スピードをきめます。
+Determine the ideal utterance speed for data to be pronounced.
+:高齢の方などの場合、発話スピードが遅くなることがあるようなので、その場合は少しだけ大きめにしてください。
+For elderly people, it seems that the utterance speed may be delayed, so in that case please make it slightly larger.
+:通常は変更しないでそのままご利用ください。
+Please do not change normally as usual.
+:区間切り出しオプション
+Section extraction option
+:区間切り出し標準レベル: 大きいほど周囲の音の影響を受けなくなります。
+Section cutting out Standard level: The larger the area, the less affected by surrounding sound.
+:区間切り出し最大レベル: 周囲がうるさい時の切り出しレベルです。
+Section cutout maximum level: The cutout level when the surroundings are noisy.
+:マイクで拾った音から有効な音を切り出すときに利用するオプションです。
+It is an option to use when extracting a valid sound from the sound picked up by the microphone.
+:大きくすると、周囲の雑音に惑わされなく成りますが、大きな声でしゃべる必要があります。
+If you make it bigger, you will not be disturbed by ambient noise, but you need to speak loudly.
+:小さくすると、小さな声でも受け取りますが、雑音に惑わされます。
+If you make it smaller, you will get a small voice, but you will be misled by the noise.
+:区間切り出し標準レベルからスタートし、周囲がうるさいと判断されると、区間切り出し最大レベルまで上がります。
+Starting from the section cutout standard level, if it is judged that the surroundings are noisy, it will rise to the section extraction maximum level.
+:周囲が静かだと判断されると、区間切り出し標準レベルに戻します。
+If it is judged that the surroundings are quiet, it returns to the section cutout standard level.
+:コマンドの詳細はこちらをご覧ください。
+For details of the command, please click here.
+:設定は、再起動後に有効になります。
+The setting takes effect after rebooting.
+:Homekitエミュレーション
+Homekit emulation
+:Homekit設定に行く
+Go to Homekit setting
+:ios Homekitとの接続設定をします
+Configure connection with ios Homekit
+:Homekitエミュレーションは無効になっています。
+Homekit emulation is disabled.
+:有効にするには、「有効にする」ボタンを押してください。
+To activate, please press the"Enable"button.
+:Homekitを有効にする
+Enable Homekit
+:Homekitエミュレーションは有効になっています。
+Homekit emulation is enabled.
+:無効にするには、「無効にする」ボタンを押してください。
+To disable, please push"Disable"button.
+:Homekitを無効にする
+Disable Homekit
+:システムを開始できません。avahi(Bonjour)が無効です。
+The system can not be started.  Avahi (Bonjour) is invalid.
+:Homekitとの通信をエミュレーションします。
+Emulate communication with Homekit.
+:(この機能は実験的な機能です。)
+(This function is an experimental feature.)
+:PINコード
+PIN code
+:このPINコードを iosのホームアプリで入力すると接続できます。
+You can connect by entering this PIN code in ios' home application.
+:もし、接続できない場合は、「キーをリセット」を押してキーと接続情報をクリアしてください。
+If you can not connect, press"reset key"to clear the key and connection information.
+:詳細はこちらをご覧ください。
+For details, please click here.

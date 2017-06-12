@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="server|Win32">
+      <Configuration>server</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C8BF982C-62BF-4314-A938-0575DCDB24C6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>festival</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CHAR_SIZE=8;DATA="";ESTLIBDIR="";SYSTEM_IS_WIN32;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>festival\src\modules\UniSyn;festival\src\include;speech_tools\include;speech_tools\include\rxp</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4244;4996;4800;4099;4305;4101;4291</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='server|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>CHAR_SIZE=8;DATA="";ESTLIBDIR="";SYSTEM_IS_WIN32;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>festival\src\modules\UniSyn;festival\src\include;speech_tools\include;speech_tools\include\rxp</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4244;4996;4800;4099;4305;4101;4291</DisableSpecificWarnings>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>CHAR_SIZE=8;DATA="";ESTLIBDIR="";SYSTEM_IS_WIN32;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>festival\src\modules\UniSyn;festival\src\include;speech_tools\include;speech_tools\include\rxp</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4244;4996;4800;4099;4305;4101;4291</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>winmm.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="speech_tools\siod\slib_server.o" />
+    <None Include="speech_tools\siod\slib_sys.o" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="festival\config\windef.cpp" />
+    <ClCompile Include="festival\src\arch\festival\audspio.cc" />
+    <ClCompile Include="festival\src\arch\festival\client.cc" />
+    <ClCompile Include="festival\src\arch\festival\features.cc" />
+    <ClCompile Include="festival\src\arch\festival\festival.cc" />
+    <ClCompile Include="festival\src\arch\festival\linreg.cc" />
+    <ClCompile Include="festival\src\arch\festival\ModuleDescription.cc" />
+    <ClCompile Include="festival\src\arch\festival\ngram.cc" />
+    <ClCompile Include="festival\src\arch\festival\Phone.cc" />
+    <ClCompile Include="festival\src\arch\festival\server.cc" />
+    <ClCompile Include="festival\src\arch\festival\tcl.cc" />
+    <ClCompile Include="festival\src\arch\festival\utterance.cc" />
+    <ClCompile Include="festival\src\arch\festival\viterbi.cc" />
+    <ClCompile Include="festival\src\arch\festival\wagon_interp.cc" />
+    <ClCompile Include="festival\src\arch\festival\wave.cc" />
+    <ClCompile Include="festival\src\arch\festival\web.cc" />
+    <ClCompile Include="festival\src\arch\festival\wfst.cc" />
+    <ClCompile Include="festival\src\main\festival_main.cc" />
+    <ClCompile Include="festival\src\modules\base\ff.cc" />
+    <ClCompile Include="festival\src\modules\base\modules.cc" />
+    <ClCompile Include="festival\src\modules\base\module_support.cc" />
+    <ClCompile Include="festival\src\modules\base\parameters.cc" />
+    <ClCompile Include="festival\src\modules\base\phrasify.cc" />
+    <ClCompile Include="festival\src\modules\base\phrinfo.cc" />
+    <ClCompile Include="festival\src\modules\base\pos.cc" />
+    <ClCompile Include="festival\src\modules\base\postlex.cc" />
+    <ClCompile Include="festival\src\modules\base\word.cc" />
+    <ClCompile Include="festival\src\modules\clunits\acost.cc" />
+    <ClCompile Include="festival\src\modules\clunits\cldb.cc" />
+    <ClCompile Include="festival\src\modules\clunits\cljoin.cc" />
+    <ClCompile Include="festival\src\modules\clunits\clunits.cc" />
+    <ClCompile Include="festival\src\modules\clustergen\clustergen.cc" />
+    <ClCompile Include="festival\src\modules\clustergen\me_mlsa.cc" />
+    <ClCompile Include="festival\src\modules\clustergen\mlsa_resynthesis.cc" />
+    <ClCompile Include="festival\src\modules\clustergen\simple_mlpg.cc" />
+    <ClCompile Include="festival\src\modules\clustergen\vc.cc" />
+    <ClCompile Include="festival\src\modules\donovan\coeffs.c" />
+    <ClCompile Include="festival\src\modules\donovan\donovan.cc" />
+    <ClCompile Include="festival\src\modules\donovan\durations.c" />
+    <ClCompile Include="festival\src\modules\donovan\excitation.c" />
+    <ClCompile Include="festival\src\modules\donovan\load_diphs.c" />
+    <ClCompile Include="festival\src\modules\donovan\makewav.c" />
+    <ClCompile Include="festival\src\modules\donovan\pitch.c" />
+    <ClCompile Include="festival\src\modules\Duration\duration.cc" />
+    <ClCompile Include="festival\src\modules\Duration\dur_aux.cc" />
+    <ClCompile Include="festival\src\modules\Duration\Klatt.cc" />
+    <ClCompile Include="festival\src\modules\hts_engine\fest2hts_engine.cc" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_audio.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_engine.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_gstream.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_label.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_misc.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_model.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_pstream.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_sstream.c" />
+    <ClCompile Include="festival\src\modules\hts_engine\HTS_vocoder.c" />
+    <ClCompile Include="festival\src\modules\init_modules.cc" />
+    <ClCompile Include="festival\src\modules\Intonation\duffint.cc" />
+    <ClCompile Include="festival\src\modules\Intonation\gen_int.cc" />
+    <ClCompile Include="festival\src\modules\Intonation\int_aux.cc" />
+    <ClCompile Include="festival\src\modules\Intonation\int_tree.cc" />
+    <ClCompile Include="festival\src\modules\Intonation\simple.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\complex.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\lexicon.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\lex_aux.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\lex_ff.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\lts.cc" />
+    <ClCompile Include="festival\src\modules\Lexicon\lts_rules.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\DiphoneBackoff.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\DiphoneUnitVoice.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\DiphoneVoiceModule.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\EST_DiphoneCoverage.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\EST_FlatTargetCost.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\EST_JoinCost.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\EST_JoinCostCache.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\EST_TargetCost.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\TargetCostRescoring.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\UnitSelection.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\VoiceBase.cc" />
+    <ClCompile Include="festival\src\modules\MultiSyn\VoiceModuleBase.cc" />
+    <ClCompile Include="festival\src\modules\parser\pparser.cc" />
+    <ClCompile Include="festival\src\modules\rxp\ttsxml.cc" />
+    <ClCompile Include="festival\src\modules\Text\text.cc" />
+    <ClCompile Include="festival\src\modules\Text\text_aux.cc" />
+    <ClCompile Include="festival\src\modules\Text\text_modes.cc" />
+    <ClCompile Include="festival\src\modules\Text\token.cc" />
+    <ClCompile Include="festival\src\modules\Text\token_pos.cc" />
+    <ClCompile Include="festival\src\modules\Text\tok_ext.cc" />
+    <ClCompile Include="festival\src\modules\Text\xxml.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\ps_synthesis.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\UniSyn.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\us_features.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\us_mapping.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\us_prosody.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn\us_unit.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn_diphone\UniSyn_diphone.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn_diphone\us_diphone_index.cc" />
+    <ClCompile Include="festival\src\modules\UniSyn_diphone\us_diphone_unit.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Complex.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_DMatrix.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Featured.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_FeatureData.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Features.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_features_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_features_io.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_FMatrix.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_ilist_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_IMatrix.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_matrix_support.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Option.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Pathname_win32.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_slist_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_SMatrix.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_StringTrie.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_svec_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Token.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_UList.cc" />
+    <ClCompile Include="speech_tools\base_class\EST_Val.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\deq_i_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\deq_s_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_fi_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_ii_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_iv_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_sd_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_sfmp_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_sf_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_si_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_srp.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_ss_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\hash_sv_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_fi_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_ii_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_rs_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_sd_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_sf_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_si_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_ss_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_sv_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\kvl_vpi_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_c_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_d_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_f_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_i_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_li_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_si_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_s_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_val_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_vi_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\list_vs_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_d_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_f_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_i_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_si_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_s_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\matrix_val_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\tbuffer_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_c_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_dmatrix_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_dvector_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_d_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_fmatrix_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_fvector_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_f_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_i_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_ls_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_si_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_s_t.cc" />
+    <ClCompile Include="speech_tools\base_class\inst_tmpl\vector_val_t.cc" />
+    <ClCompile Include="speech_tools\base_class\rateconv.cc" />
+    <ClCompile Include="speech_tools\base_class\string\EST_Chunk.cc" />
+    <ClCompile Include="speech_tools\base_class\string\EST_Regex.cc" />
+    <ClCompile Include="speech_tools\base_class\string\EST_strcasecmp.c" />
+    <ClCompile Include="speech_tools\base_class\string\EST_String.cc" />
+    <ClCompile Include="speech_tools\base_class\string\regerror.c" />
+    <ClCompile Include="speech_tools\base_class\string\regexp.cc" />
+    <ClCompile Include="speech_tools\base_class\string\regsub.c" />
+    <ClCompile Include="speech_tools\base_class\THash_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\vec_mat_aux.cc" />
+    <ClCompile Include="speech_tools\base_class\vec_mat_aux_d.cc" />
+    <ClCompile Include="speech_tools\base_class\vec_mat_aux_i.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\EST_lattice.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\EST_lattice_io.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\EST_Ngrammar.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\EST_PST.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\freqsmooth.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\lattice_t.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\ngrammar_aux.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\ngrammar_io.cc" />
+    <ClCompile Include="speech_tools\grammar\ngram\ngrammar_utils.cc" />
+    <ClCompile Include="speech_tools\grammar\scfg\EST_SCFG.cc" />
+    <ClCompile Include="speech_tools\grammar\scfg\EST_SCFG_Chart.cc" />
+    <ClCompile Include="speech_tools\grammar\scfg\EST_SCFG_inout.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\EST_WFST.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\kkcompile.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\ltscompile.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\rgcompile.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\tlcompile.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\wfst_aux.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\wfst_ops.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\wfst_regex.cc" />
+    <ClCompile Include="speech_tools\grammar\wfst\wfst_transduce.cc" />
+    <ClCompile Include="speech_tools\ling_class\apml.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_FeatureFunctionContext.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_FeatureFunctionPackage.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_Item.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_item_aux.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_Item_Content.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_item_content_aux.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_Relation.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_relation_aux.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_relation_compare.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_Relation_mls.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_relation_track.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_Utterance.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_UtteranceFile.cc" />
+    <ClCompile Include="speech_tools\ling_class\EST_utterance_aux.cc" />
+    <ClCompile Include="speech_tools\ling_class\genxml.cc" />
+    <ClCompile Include="speech_tools\ling_class\item_aux.cc" />
+    <ClCompile Include="speech_tools\ling_class\item_feats.cc" />
+    <ClCompile Include="speech_tools\ling_class\ling_class_init.cc" />
+    <ClCompile Include="speech_tools\ling_class\ling_t.cc" />
+    <ClCompile Include="speech_tools\ling_class\relation_io.cc" />
+    <ClCompile Include="speech_tools\ling_class\solexml.cc" />
+    <ClCompile Include="speech_tools\ling_class\standard_feature_functions.cc" />
+    <ClCompile Include="speech_tools\rxp\charset.c" />
+    <ClCompile Include="speech_tools\rxp\ctype16.c" />
+    <ClCompile Include="speech_tools\rxp\dtd.c" />
+    <ClCompile Include="speech_tools\rxp\input.c" />
+    <ClCompile Include="speech_tools\rxp\stdio16.c" />
+    <ClCompile Include="speech_tools\rxp\string16.c" />
+    <ClCompile Include="speech_tools\rxp\system.c" />
+    <ClCompile Include="speech_tools\rxp\url.c" />
+    <ClCompile Include="speech_tools\rxp\xmlparser.c" />
+    <ClCompile Include="speech_tools\rxp\XML_Parser.cc" />
+    <ClCompile Include="speech_tools\sigpr\delta.cc" />
+    <ClCompile Include="speech_tools\sigpr\EST_Window.cc" />
+    <ClCompile Include="speech_tools\sigpr\fft.cc" />
+    <ClCompile Include="speech_tools\sigpr\filter.cc" />
+    <ClCompile Include="speech_tools\sigpr\misc.cc" />
+    <ClCompile Include="speech_tools\sigpr\pda\pcb_smoother.cc" />
+    <ClCompile Include="speech_tools\sigpr\pda\pda.cc" />
+    <ClCompile Include="speech_tools\sigpr\pda\smooth_pda.cc" />
+    <ClCompile Include="speech_tools\sigpr\pda\srpd1.3.cc" />
+    <ClCompile Include="speech_tools\sigpr\pitchmark.cc" />
+    <ClCompile Include="speech_tools\sigpr\sigpr_frame.cc" />
+    <ClCompile Include="speech_tools\sigpr\sigpr_utt.cc" />
+    <ClCompile Include="speech_tools\sigpr\spectrogram.cc" />
+    <ClCompile Include="speech_tools\siod\editline.c" />
+    <ClCompile Include="speech_tools\siod\el_complete.c" />
+    <ClCompile Include="speech_tools\siod\el_sys_win32.c" />
+    <ClCompile Include="speech_tools\siod\EST_SiodServer.cc" />
+    <ClCompile Include="speech_tools\siod\io.cc" />
+    <ClCompile Include="speech_tools\siod\siod.cc" />
+    <ClCompile Include="speech_tools\siod\siodeditline.c" />
+    <ClCompile Include="speech_tools\siod\siod_est.cc" />
+    <ClCompile Include="speech_tools\siod\siod_fringe.cc" />
+    <ClCompile Include="speech_tools\siod\siod_server.cc" />
+    <ClCompile Include="speech_tools\siod\slib.cc" />
+    <ClCompile Include="speech_tools\siod\slib_core.cc" />
+    <ClCompile Include="speech_tools\siod\slib_doc.cc" />
+    <ClCompile Include="speech_tools\siod\slib_file.cc" />
+    <ClCompile Include="speech_tools\siod\slib_format.cc" />
+    <ClCompile Include="speech_tools\siod\slib_list.cc" />
+    <ClCompile Include="speech_tools\siod\slib_math.cc" />
+    <ClCompile Include="speech_tools\siod\slib_repl.cc" />
+    <ClCompile Include="speech_tools\siod\slib_server.cc" />
+    <ClCompile Include="speech_tools\siod\slib_str.cc" />
+    <ClCompile Include="speech_tools\siod\slib_sys.cc" />
+    <ClCompile Include="speech_tools\siod\slib_xtr.cc" />
+    <ClCompile Include="speech_tools\siod\trace.cc" />
+    <ClCompile Include="speech_tools\speech_class\esps_io.cc" />
+    <ClCompile Include="speech_tools\speech_class\esps_utils.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_Track.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_TrackFile.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_TrackMap.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_track_aux.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_Wave.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_WaveFile.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_wave_aux.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_wave_cuts.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_wave_io.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_wave_temp.cc" />
+    <ClCompile Include="speech_tools\speech_class\EST_wave_utils.cc" />
+    <ClCompile Include="speech_tools\speech_class\ssff.cc" />
+    <ClCompile Include="speech_tools\speech_class\track_t.cc" />
+    <ClCompile Include="speech_tools\speech_class\wave_t.cc" />
+    <ClCompile Include="speech_tools\stats\confusion.cc" />
+    <ClCompile Include="speech_tools\stats\dynamic_program.cc" />
+    <ClCompile Include="speech_tools\stats\EST_cluster.cc" />
+    <ClCompile Include="speech_tools\stats\EST_Discrete.cc" />
+    <ClCompile Include="speech_tools\stats\EST_DProbDist.cc" />
+    <ClCompile Include="speech_tools\stats\EST_multistats.cc" />
+    <ClCompile Include="speech_tools\stats\EST_ols.cc" />
+    <ClCompile Include="speech_tools\stats\EST_viterbi.cc" />
+    <ClCompile Include="speech_tools\stats\kalman_filter\EST_kalman.cc" />
+    <ClCompile Include="speech_tools\stats\wagon\dlist.cc" />
+    <ClCompile Include="speech_tools\stats\wagon\wagon.cc" />
+    <ClCompile Include="speech_tools\stats\wagon\wagonint.cc" />
+    <ClCompile Include="speech_tools\stats\wagon\wagon_aux.cc" />
+    <ClCompile Include="speech_tools\utils\cmd_line.cc" />
+    <ClCompile Include="speech_tools\utils\cmd_line_aux.cc" />
+    <ClCompile Include="speech_tools\utils\EST_cutils.c" />
+    <ClCompile Include="speech_tools\utils\EST_error.c" />
+    <ClCompile Include="speech_tools\utils\est_file.cc" />
+    <ClCompile Include="speech_tools\utils\EST_FringeServer.cc" />
+    <ClCompile Include="speech_tools\utils\EST_Server.cc" />
+    <ClCompile Include="speech_tools\utils\EST_ServiceTable.cc" />
+    <ClCompile Include="speech_tools\utils\EST_swapping.cc" />
+    <ClCompile Include="speech_tools\utils\filetrans.cc" />
+    <ClCompile Include="speech_tools\utils\system_specific_win32.c" />
+    <ClCompile Include="speech_tools\utils\util_io.cc" />
+    <ClCompile Include="speech_tools\utils\walloc.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
