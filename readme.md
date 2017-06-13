@@ -17,7 +17,7 @@
 
 windowsと Linux で動作します。(クロスプラットフォームです)  
 VS2010以降でコンパイルできます。  
-gcc は、ver4系だったら動くと思います。  
+gcc は、ver4系以降だったら動くと思います。  
 
 VS2013未満は、 std::threadがないので boost::threadで代用します。  
 それ以外の処理系では、 std::thread を利用します。  
@@ -47,7 +47,7 @@ VS2013未満は、 std::threadがないので boost::threadで代用します。
 以下の環境で、コンパイルしてください。  
 Windows + VS2010 + boost(VS2010には std::threadがないためboostで代用)  
 Windows + VS2013以降  
-Linux + gcc ver4  
+Linux + gcc ver4以降
 
 
 windowsでは、 naichichi2.sln を開いて F5ビルドしてください。  
