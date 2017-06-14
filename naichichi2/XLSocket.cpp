@@ -489,7 +489,7 @@ string XLSocket::what()
 #if _MSC_VER
 	return XLException::StringWindows( WSAGetLastError() );
 #else
-	return XLException::StringErrNo( errorcode );
+	return XLException::StringErrNo( errno );
 #endif
 }
 
