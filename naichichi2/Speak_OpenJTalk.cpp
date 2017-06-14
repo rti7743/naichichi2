@@ -56,7 +56,7 @@ bool Speak_OpenJTalk::Create()
 	this->StopFlag = false;
 	if ( ! CreateOpenJtalk(this->VoiceType,&this->OpenJTalkHandle , &this->Options ) )
 	{
-		throw XLException(string("openjtalk構築失敗") + OpenJTalk_GetLastError(&this->OpenJTalkHandle));
+		throw XLEXCEPTION(string("openjtalk構築失敗") << OpenJTalk_GetLastError(&this->OpenJTalkHandle));
 	}
 
 	this->CacheDB.Create("wav");
@@ -113,7 +113,7 @@ bool Speak_OpenJTalk::CreateOpenJtalk(const string& voiceType,OpenJTalk** openJT
 
 	if (! OpenJTalk_Create(openJTalkHandle ,argc , argv)	)
 	{
-		throw XLException(string("openjtalk構築失敗") + OpenJTalk_GetLastError(openJTalkHandle));
+		throw XLEXCEPTION(string("openjtalk構築失敗") << OpenJTalk_GetLastError(openJTalkHandle));
 	}
 	return true;
 }

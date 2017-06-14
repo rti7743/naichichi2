@@ -55,7 +55,7 @@ void XLPOpen2::Open(const string& commandLine)
 		// パイプを作成（両ハンドルとも子プロセスへ継承不可）
 		if (!CreatePipe(&tempPipe, &this->WritePipe, NULL, 0)) 
 		{
-			throw XLException("CreatePipe" + XLException::StringWindows());
+			throw XLEXCEPTION("CreatePipe " << XLException::StringWindows());
 		}
 
 		// 読込ハンドルを複製（子プロセスへ継承可能な権限の読込ハンドルを作成）
@@ -67,12 +67,12 @@ void XLPOpen2::Open(const string& commandLine)
 			const string errmsg = XLException::StringWindows();
 
 			CloseHandle(tempPipe);
-			throw XLException("CreatePipe" + errmsg);
+			throw XLEXCEPTION("CreatePipe " << errmsg);
 		}
 
 		// 複製元のハンドルは使わないのでクローズ
 		if (!CloseHandle(tempPipe)) {
-			throw XLException("CloseHandle(tempPipe)" + XLException::StringWindows());
+			throw XLEXCEPTION("CloseHandle(tempPipe)" << XLException::StringWindows());
 		}
 	}
 
@@ -90,7 +90,7 @@ void XLPOpen2::Open(const string& commandLine)
 
 		if (!CreatePipe(&this->ReadPipe, &tempPipe, &sa, 0)) 
 		{
-			throw XLException("CreatePipe" + XLException::StringWindows());
+			throw XLEXCEPTION("CreatePipe" << XLException::StringWindows());
 		}
 
 		// 読込ハンドルを複製（子プロセスへ継承可能な権限の読込ハンドルを作成）
@@ -102,12 +102,12 @@ void XLPOpen2::Open(const string& commandLine)
 			const string errmsg = XLException::StringWindows();
 
 			CloseHandle(tempPipe);
-			throw XLException("CreatePipe" + errmsg);
+			throw XLEXCEPTION("CreatePipe" << errmsg);
 		}
 
 		// 複製元のハンドルは使わないのでクローズ
 		if (!CloseHandle(tempPipe)) {
-			throw XLException("CloseHandle(tempPipe)" + XLException::StringWindows());
+			throw XLEXCEPTION("CloseHandle(tempPipe)" << XLException::StringWindows());
 		}
 	}
 
@@ -136,11 +136,11 @@ void XLPOpen2::Open(const string& commandLine)
 		&si,
 		&pi)
 	) {
-		throw XLException("CreateProcess" + XLException::StringWindows());
+		throw XLEXCEPTION("CreateProcess" << XLException::StringWindows());
 	}
 	this->Process = pi.hProcess;
 	if (!CloseHandle(pi.hThread)) {
-		throw XLException("CloseHandle(hThread)" + XLException::StringWindows());
+		throw XLEXCEPTION("CloseHandle(hThread)" << XLException::StringWindows());
 	}
 #else
 	const int READ = 0;
@@ -157,7 +157,7 @@ void XLPOpen2::Open(const string& commandLine)
 	// パイプを生成
 	if (pipe(pipe_child2parent) < 0) {
 		// パイプ生成失敗
-		throw XLException("pipe(pipe_child2parent)" + XLException::StringErrNo());
+		throw XLEXCEPTION("pipe(pipe_child2parent)" << XLException::StringErrNo());
 	}
 
 	// パイプを生成
@@ -168,7 +168,7 @@ void XLPOpen2::Open(const string& commandLine)
 		close(pipe_child2parent[READ]);
 		close(pipe_child2parent[WRITE]);
 
-		throw XLException("pipe(pipe_child2parent)" + XLException::StringErrNo());
+		throw XLEXCEPTION("pipe(pipe_child2parent)" << XLException::StringErrNo());
 	}
 	NOTIFYLOG("fork");
 
@@ -184,7 +184,7 @@ void XLPOpen2::Open(const string& commandLine)
 		close(pipe_parent2child[READ]);
 		close(pipe_parent2child[WRITE]);
 
-		throw XLException("pipe(pipe_child2parent)" + XLException::StringErrNo());
+		throw XLEXCEPTION("pipe(pipe_child2parent)" << XLException::StringErrNo());
 	}
 
 	// 子プロセスか？

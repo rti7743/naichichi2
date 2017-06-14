@@ -52,7 +52,7 @@ string ActionImplement::Telnet(const string& host,const string& wait,const strin
 			total_recv_size += size;
 			if(total_recv_size >= buffersize)
 			{
-				throw XLException("waitまでにあまりに長いデータを受信したので終了します。");
+				throw XLEXCEPTION("waitまでにあまりに長いデータを受信したので終了します。");
 			}
 			if ( strstr(buffer , wait.c_str() ) != NULL )
 			{
@@ -82,7 +82,7 @@ string ActionImplement::Telnet(const string& host,const string& wait,const strin
 			total_recv_size += size;
 			if(total_recv_size >= buffersize)
 			{
-				throw XLException("waitまでにあまりに長いデータを受信したので終了します。");
+				throw XLEXCEPTION("waitまでにあまりに長いデータを受信したので終了します。");
 			}
 			if ( strstr(buffer , recv.c_str() ) != NULL )
 			{
@@ -224,7 +224,7 @@ string ActionImplement::SSTPSend11(const string& host,const string& message)
 	if (size <= 0)
 	{
 		int err = socket.getErrorCode();
-		throw XLException("送信中にエラー " + num2str(err) );
+		throw XLEXCEPTION("送信中にエラー " << err );
 	}
 
 	vector<char> buffermalloc(65535);
@@ -236,7 +236,7 @@ string ActionImplement::SSTPSend11(const string& host,const string& message)
 	if (size <= 0)
 	{
 		int err = socket.getErrorCode();
-		throw XLException("受信中にエラー " + num2str(err) );
+		throw XLEXCEPTION("受信中にエラー " << err );
 	}
 	buffer[size] = '\0';
 

@@ -65,7 +65,7 @@ void ScriptManager::loadScript(const string & baseDirectory)
 	});
 	if (!ret)
 	{
-		throw XLException("findfirstに失敗 ディレクトリ:" + baseDirectory + " を検索できません。",-1);
+		throw XLEXCEPTION("findfirstに失敗 ディレクトリ:" + baseDirectory + " を検索できません。",-1);
 	}
 
 	return ;
@@ -147,7 +147,7 @@ string ScriptManager::FireCommand(const CallbackPP& callback , const string & co
 	string commandScriptFilename = MainWindow::m()->GetConfigBasePath("/webroot/user/script_command/" + commandName );
 	if ( ! XLStringUtil::checkSafePath(commandName) )
 	{//危険なファイルなのでないことにする
-		throw XLException("コマンドファイル " + commandName + "は、無効なファイル名を含んでいます。");
+		throw XLEXCEPTION("コマンドファイル " + commandName + "は、無効なファイル名を含んでいます。");
 	}
 	if  (!XLFileUtil::Exist(commandScriptFilename)) 
 	{
@@ -156,7 +156,7 @@ string ScriptManager::FireCommand(const CallbackPP& callback , const string & co
 			commandScriptFilename += ".js";
 			if  (!XLFileUtil::Exist(commandScriptFilename)) 
 			{//ファイルがない
-				throw XLException("コマンドファイル " + commandName + "が存在しません。");
+				throw XLEXCEPTION("コマンドファイル " + commandName + "が存在しません。");
 			}
 		}
 	}

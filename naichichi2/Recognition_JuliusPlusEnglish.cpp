@@ -1240,7 +1240,7 @@ bool Recognition_JuliusPlusEnglish::JuliusStart()
 	//jconf = j_config_load_file_new(jconf_filename);
 	if (this->jconf == NULL) 
 	{
-		throw XLException("Try `-help' for more information.\n");
+		throw XLEXCEPTION("Try `-help' for more information.\n");
 	}
 
 	/* 2. create recognition instance according to the jconf */
@@ -1249,7 +1249,7 @@ bool Recognition_JuliusPlusEnglish::JuliusStart()
 	this->recog = j_create_instance_from_jconf(this->jconf);
 	if (this->recog == NULL)
 	{
-		throw XLException("Error in startup(j_create_instance_from_jconf)\n");
+		throw XLEXCEPTION("Error in startup(j_create_instance_from_jconf)\n");
 	}
 	struct _ref{
 		static void status_recready(Recog *recog, void *_this)
@@ -1282,7 +1282,7 @@ bool Recognition_JuliusPlusEnglish::JuliusStart()
 	// Initialize audio input
 	if (j_adin_init(this->recog) == FALSE) 
 	{
-		throw XLException("Error in startup(j_adin_init)\n");
+		throw XLEXCEPTION("Error in startup(j_adin_init)\n");
 	}
 	// update initial recognition process status
 	for(auto r=this->recog->process_list;r;r=r->next) {
@@ -1310,7 +1310,7 @@ bool Recognition_JuliusPlusEnglish::JuliusStart()
 	ret = j_open_stream(recog, NULL);
 	if(ret < 0)
 	{
-		throw XLException("Error in startup(j_open_stream)\n");
+		throw XLEXCEPTION("Error in startup(j_open_stream)\n");
 	}
 
 	this->JuliusThread = new thread( [&]()
@@ -1341,7 +1341,7 @@ bool Recognition_JuliusPlusEnglish::JuliusYobikakeStart()
 	//jconf = j_config_load_file_new(jconf_filename);
 	if (this->jconfYobikake == NULL) 
 	{
-		throw XLException("Try `-help' for more information.\n");
+		throw XLEXCEPTION("Try `-help' for more information.\n");
 	}
 
 	/* 2. create recognition instance according to the jconf */
@@ -1351,7 +1351,7 @@ bool Recognition_JuliusPlusEnglish::JuliusYobikakeStart()
 	this->recogYobikake = j_create_instance_from_jconf(this->jconfYobikake);
 	if (this->recogYobikake == NULL)
 	{
-		throw XLException("Error in startup(j_create_instance_from_jconf)\n");
+		throw XLEXCEPTION("Error in startup(j_create_instance_from_jconf)\n");
 	}
 
 
@@ -1375,7 +1375,7 @@ bool Recognition_JuliusPlusEnglish::JuliusYobikakeStart()
 	// Initialize audio input
 	if (j_adin_init(this->recogYobikake) == FALSE) 
 	{
-		throw XLException("Error in startup(j_adin_init)\n");
+		throw XLEXCEPTION("Error in startup(j_adin_init)\n");
 	}
 	// update initial recognition process status
 	for(auto r=this->recogYobikake->process_list;r;r=r->next) {
@@ -1418,7 +1418,7 @@ bool Recognition_JuliusPlusEnglish::JuliusWaveStart()
 	//jconf = j_config_load_file_new(jconf_filename);
 	if (this->jconfWave == NULL) 
 	{
-		throw XLException("Try `-help' for more information.\n");
+		throw XLEXCEPTION("Try `-help' for more information.\n");
 	}
 
 	/* 2. create recognition instance according to the jconf */
@@ -1428,7 +1428,7 @@ bool Recognition_JuliusPlusEnglish::JuliusWaveStart()
 	this->recogWave = j_create_instance_from_jconf(this->jconfWave);
 	if (this->recogWave == NULL)
 	{
-		throw XLException("Error in startup(j_create_instance_from_jconf)\n");
+		throw XLEXCEPTION("Error in startup(j_create_instance_from_jconf)\n");
 	}
 
 
@@ -1444,7 +1444,7 @@ bool Recognition_JuliusPlusEnglish::JuliusWaveStart()
 	// Initialize audio input
 	if (j_adin_init(this->recogWave) == FALSE) 
 	{
-		throw XLException("Error in startup(j_adin_init)\n");
+		throw XLEXCEPTION("Error in startup(j_adin_init)\n");
 	}
 	// update initial recognition process status
 	for(auto r=this->recogWave->process_list;r;r=r->next) {

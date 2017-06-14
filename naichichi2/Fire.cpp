@@ -68,21 +68,21 @@ void Fire::fireAction(int key1,int key2,int* nestcount)
 		{
 			if (r == -1)
 			{
-				throw XLException( "赤外線データがありません。最初にリモコンの記録を行なってください。");
+				throw XLEXCEPTION( "赤外線データがありません。最初にリモコンの記録を行なってください。");
 			}
 			else if (r == -2)
 			{
-				throw XLException( "赤外線を送信できるデバイスがありません。");
+				throw XLEXCEPTION( "赤外線を送信できるデバイスがありません。");
 			}
 			else if (r == -3)
 			{
-				throw XLException("赤外線データをロードできませんでした。もう一度、リモコンから学習させ直してください。");
+				throw XLEXCEPTION("赤外線データをロードできませんでした。もう一度、リモコンから学習させ直してください。");
 			}
 			else if (r == -4)
 			{
-				throw XLException( "赤外線データを送信出来ませんでした");
+				throw XLEXCEPTION( "赤外線データを送信出来ませんでした");
 			}
-			throw XLException( "不明なエラーにより赤外線を送信出来ませんでした。エラーコード:" + num2str(r));
+			throw XLEXCEPTION( "不明なエラーにより赤外線を送信出来ませんでした。エラーコード:" <<r);
 		}
 	}
 	else if ( execflag == "command" )
@@ -324,7 +324,7 @@ string Fire::run_commandE(const string& execcommand,const string& execargs1,cons
 {
 	if ( ! XLStringUtil::checkSafePath(execcommand) )
 	{
-		throw XLException("ファイル名がセキュアではありません");
+		throw XLEXCEPTION("ファイル名がセキュアではありません");
 	}
 	NOTIFYLOG("コマンド " << execcommand << "(" << execargs1 << ","<< execargs2 << ","<< execargs3 << ","<< execargs4 << ","<< execargs5 << ")" );
 
@@ -373,7 +373,7 @@ string Fire::run_commandE(const string& execcommand,const string& execargs1,cons
 	if (!exceptionMessage.empty())
 	{
 		this->ErrorMessage = exceptionMessage;
-		throw XLException("実行に失敗しました。" + exceptionMessage );
+		throw XLEXCEPTION("実行に失敗しました。" << exceptionMessage );
 	}
 	return result;
 }
@@ -450,7 +450,7 @@ void Fire::run_macroE(const map<string,string>& request , const string& prefix,i
 		*nestcount = *nestcount + 1;
 		if (*nestcount > NAICHICHI_MACRO_MAX_CALLCOUNT)
 		{//エラーマクロ多すぎ
-			throw XLException("マクロのネストが深すぎます");
+			throw XLEXCEPTION("マクロのネストが深すぎます");
 		}
 	}
 }
@@ -531,7 +531,7 @@ void Fire::run_multiroom(const string& uuid,const string& elec,const string& act
 	const int key = MultiRoomUtil::FindRoom(uuid,configmap);
 	if(key < 0 )
 	{
-		throw XLException("UUIDが正しくありません");
+		throw XLEXCEPTION("UUIDが正しくありません");
 	}
 	const string your_authkey = MainWindow::m()->Config.Get("multiroom_"+num2str(key)+"_authkey", "" );
 	const string your_url = MainWindow::m()->Config.Get("multiroom_"+num2str(key)+"_url", "" );

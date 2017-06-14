@@ -474,7 +474,7 @@ void SystemMisc::SetIPAddress(const string& ipaddress,const string& netmask,cons
 	if ( ! XLFileUtil::write("/etc/network/interfaces",newinterfaces) )
 	{
 		int error = errno;
-		throw XLException("/etc/network/interfacesファイルを開くことができません " + XLException::StringErrNo(error));
+		throw XLEXCEPTION("/etc/network/interfacesファイルを開くことができません " << XLException::StringErrNo(error));
 	}
 
 	string newresolve;
@@ -506,7 +506,7 @@ void SystemMisc::SetIPAddress(const string& ipaddress,const string& netmask,cons
 	if (! XLFileUtil::write("/etc/resolv.conf",newresolve) )
 	{
 		int error = errno;
-		throw XLException("/etc/resolv.confファイルを開くことができません " + XLException::StringErrNo(error));
+		throw XLEXCEPTION("/etc/resolv.confファイルを開くことができません " << XLException::StringErrNo(error));
 	}
 
 	//wifi wpa
@@ -553,7 +553,7 @@ void SystemMisc::SetIPAddress(const string& ipaddress,const string& netmask,cons
 		if ( ! XLFileUtil::write("/etc/wpa_supplicant/wpa_supplicant.conf",supplicant) )
 		{
 			int error = errno;
-			throw XLException("/etc/wpa_supplicant/wpa_supplicant.conf ファイルを開くことができません " + XLException::StringErrNo(error));
+			throw XLEXCEPTION("/etc/wpa_supplicant/wpa_supplicant.conf ファイルを開くことができません " << XLException::StringErrNo(error));
 		}
 	}
 	if (IsBeagleboneBlack() )
@@ -934,7 +934,7 @@ string SystemMisc::SendmailGetSubject(const string& tplString,const map<string,s
 	const char * firstNL = strstr(start ,"\n");
 	if (firstNL == NULL)
 	{
-		throw XLException( string("") + "subject改行がありません tpl " + tplString);
+		throw XLEXCEPTION( "subject改行がありません tpl " << tplString);
 	}
 	return XLStringUtil::chop( string(start,0 , (int) (firstNL - start)) );
 }
@@ -955,7 +955,7 @@ string SystemMisc::SendmailGetBody(const string& tplString,const map<string,stri
 	const char * firstNL = strstr(start ,"\n");
 	if (firstNL == NULL)
 	{
-		throw XLException( string("") + "subject改行がありません tpl " + tplString);
+		throw XLEXCEPTION( "subject改行がありません tpl " << tplString);
 	}
 	return firstNL + 1; //+1 は \n の分。
 }
@@ -1210,11 +1210,11 @@ void SystemMisc::Import(string filename)
 	Config config;
 	if (! config.loadConfig(basedir + "/config/config.conf") )
 	{
-		throw XLException( string("") + "exportしようとするconfigファイルを読み取ることができませんでした");
+		throw XLEXCEPTION( "exportしようとするconfigファイルを読み取ることができませんでした");
 	}
 	if ( config.Get("version_number","").empty() )
 	{
-		throw XLException( string("") + "バージョン番号がありません");
+		throw XLEXCEPTION("バージョン番号がありません");
 	}
 
 	//このキーはコピーしてはいけない.

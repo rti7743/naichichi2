@@ -128,11 +128,11 @@ void ColudSyncConfig::SyncConfgOnly()
 	auto it = vec.begin();
 	if ( it == vec.end())
 	{
-		throw XLException("受信したデータが壊れています データ:" + imglistTXT);
+		throw XLEXCEPTION("受信したデータが壊れています データ:" << imglistTXT);
 	}
 	if ( *it != "OK" )
 	{
-		throw XLException("サーバがエラーを返しました データ:" + imglistTXT);
+		throw XLEXCEPTION("サーバがエラーを返しました データ:" << imglistTXT);
 	}
 }
 
@@ -151,11 +151,11 @@ void ColudSyncConfig::SyncAll()
 	auto it = vec.begin();
 	if ( it == vec.end())
 	{
-		throw XLException("受信したデータが壊れています データ:" + imglistTXT);
+		throw XLEXCEPTION("受信したデータが壊れています データ:" << imglistTXT);
 	}
 	if ( *it != "OK" )
 	{
-		throw XLException("サーバがエラーを返しました データ:" + imglistTXT);
+		throw XLEXCEPTION("サーバがエラーを返しました データ:" << imglistTXT);
 	}
 	//OKを飛ばす
 	++it;

@@ -86,7 +86,7 @@ void XLHttpSocket::GetBinary(const string& url,const map<string,string> & header
 	if (ret < 0)
 	{
 		int err = socket.getErrorCode();
-		throw XLException("ヘッダー送信中にエラー " + num2str(err) );
+		throw XLEXCEPTION("ヘッダー送信中にエラー " << err );
 	}
 	//結果の受信
 	HTTPRecv( &socket , retBinary,retHeader);
@@ -203,13 +203,13 @@ void XLHttpSocket::PostBinary(const string& url,const map<string,string> & heade
 	if (ret < 0)
 	{
 		int err = socket.getErrorCode();
-		throw XLException("ヘッダー送信中にエラー " + num2str(err) );
+		throw XLEXCEPTION("ヘッダー送信中にエラー " << err );
 	}
 	ret = socket.Send(postBinaryData     ,postBinaryLength   );
 	if (ret < 0)
 	{
 		int err = socket.getErrorCode();
-		throw XLException("POSTコンテンツ送信中にエラーー " + num2str(err) );
+		throw XLEXCEPTION("POSTコンテンツ送信中にエラーー " << err );
 	}
 	//結果の受信
 	HTTPRecv( &socket , retBinary,retHeader);
@@ -235,7 +235,7 @@ void XLHttpSocket::HTTPRecv(XLSocket * socket , vector<char>* retBinary,XLHttpHe
 			if (size < 0)
 			{
 				int err = socket->getErrorCode();
-				throw XLException("受信中にエラー " + num2str(err) );
+				throw XLEXCEPTION("受信中にエラー " << err );
 			}
 			buffer[size] = '\0';
 			total_recv_size += size;
@@ -245,12 +245,12 @@ void XLHttpSocket::HTTPRecv(XLSocket * socket , vector<char>* retBinary,XLHttpHe
 			}
 			if(total_recv_size >= buffersize)
 			{
-				throw XLException("ヘッダがあまりにも長すぎます" );
+				throw XLEXCEPTION("ヘッダがあまりにも長すぎます" );
 			}
 		}
 		if (i >= HEADER_RETRY_MAX)
 		{
-			throw XLException("ヘッダーパース中にエラーが発生しました");
+			throw XLEXCEPTION("ヘッダーパース中にエラーが発生しました");
 		}
 		
 		//ヘッダーとボディを分離する
@@ -277,7 +277,7 @@ void XLHttpSocket::HTTPRecv(XLSocket * socket , vector<char>* retBinary,XLHttpHe
 			else if (size < 0)
 			{
 				int err = socket->getErrorCode();
-				throw XLException("受信中にエラーが発生しました err:"+ num2str(err) );
+				throw XLEXCEPTION("受信中にエラーが発生しました err:" << err );
 			}
 
 			retBinary->insert(retBinary->end() ,buffer,buffer +size );
@@ -295,7 +295,7 @@ void XLHttpSocket::HTTPRecv(XLSocket * socket , vector<char>* retBinary,XLHttpHe
 			else if (size < 0)
 			{
 				int err = socket->getErrorCode();
-				throw XLException("受信中にエラーが発生しました err:"+ num2str(err) );
+				throw XLEXCEPTION("受信中にエラーが発生しました err:" << err );
 			}
 			
 			retBinary->insert(retBinary->end() ,buffer,buffer +size );

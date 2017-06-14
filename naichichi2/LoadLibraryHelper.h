@@ -28,7 +28,7 @@ public:
 		if ( this->DllInstance == NULL )
 		{
 			DWORD lastError = ::GetLastError();
-			throw XLException(string() + "ライブラリ" + inDLLName + "を読み込めませんでした",lastError);
+			throw XLEXCEPTION(string() + "ライブラリ" + inDLLName + "を読み込めませんでした",lastError);
 		}
 		return true;
 	}

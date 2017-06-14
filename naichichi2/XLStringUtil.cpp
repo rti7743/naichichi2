@@ -4931,7 +4931,7 @@ list<string> XLStringUtil::RegexToPlain(const string & str)
 				else if (*p == '*' || *p == '+' || *p == '.' || *p == '[' || *p == ']')
 				{
 					const string msg = string("現在は、メタ文字 ") + p + " は利用できません。利用可能なメタ文字 () | .+ ?";
-					throw XLException(msg);
+					throw XLEXCEPTION(msg);
 				}
 				else
 				{
@@ -5056,7 +5056,7 @@ list<string> XLStringUtil::RegexToPlain(const string & str)
 						//SEXYTEST_ASSERT(0); //not implement! 未実装!
 						currentRule->AddWord("");
 						//currentRule->AddWord("");
-//						throw XLException("未対応の構文です");
+//						throw XLEXCEPTION("未対応の構文です");
 					}
 
 					splitPos = p + 1;
@@ -5931,7 +5931,7 @@ bool XLStringUtil::regex_checkE(const string& str , const string& regex )
 	if (!re)
 	{
 		string msg = "正規表現のコンパイルに失敗 エラー(" + string(errstr) + ")  正規表現(" + regex + ")" + " エラーの場所(" + num2str(erroffset) + ")";
-		throw XLException(msg);
+		throw XLEXCEPTION(msg);
 	}
 	int count = ::pcre_exec( re , NULL , str.c_str(),str.size() ,0,0,ovector, overcount);
 	free(re);
@@ -5983,7 +5983,7 @@ bool XLStringUtil::regex_matchE(const string& str , const string& regex,vector<s
 	if (!re)
 	{
 		string msg = "正規表現のコンパイルに失敗 エラー(" + string(errstr) + ")  正規表現(" + regex + ")" + " エラーの場所(" + num2str(erroffset) + ")";
-		throw XLException(msg);
+		throw XLEXCEPTION(msg);
 	}
 
 	int count = ::pcre_exec( re , NULL , str.c_str(),str.size() ,0,0,ovector, overcount);

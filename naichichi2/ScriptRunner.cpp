@@ -232,7 +232,7 @@ bool ScriptRunner::CreateV8Instance(const string& source)
 	v8::Handle<v8::Script> compiled_script = v8::Script::Compile(jssource);
 	if (compiled_script.IsEmpty())
 	{
-		throw XLException("スクリプトの読み込みに失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch) );
+		throw XLEXCEPTION("スクリプトの読み込みに失敗しました ファイル名:" << this->filename << " V8error:"  << ReportException(&try_catch) );
 	}
 
 	const auto backup_g_ScriptRunner_This = g_ScriptRunner_This;
@@ -245,11 +245,11 @@ bool ScriptRunner::CreateV8Instance(const string& source)
 	} );
 	if (!isComplate)
 	{
-		throw XLException("スクリプトの実行がタイムアウトしました ファイル名:"+ this->filename  );
+		throw XLEXCEPTION("スクリプトの実行がタイムアウトしました ファイル名:" << this->filename  );
 	}
 	if (result.IsEmpty())
 	{
-		throw XLException("スクリプトの実行に失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch) );
+		throw XLEXCEPTION("スクリプトの実行に失敗しました ファイル名:" << this->filename << " V8error:" << ReportException(&try_catch) );
 	}
 
 	g_ScriptRunner_This = backup_g_ScriptRunner_This;
@@ -345,7 +345,7 @@ string ScriptRunner::callFunction(const string& name)
 	if (result.IsEmpty())
 	{
 		ERRORLOG(string() + "callFunction:" + name + "()" + " エラー:" + "スクリプトの内関数" + name + "の実行に失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch));
-		throw XLException("スクリプトの内関数" + name + "の実行に失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch) );
+		throw XLEXCEPTION("スクリプトの内関数" << name << "の実行に失敗しました ファイル名:" << this->filename << " V8error:"  << ReportException(&try_catch) );
 	}
 	if (result->IsObject() || result->IsArray() )
 	{
@@ -397,8 +397,8 @@ string ScriptRunner::callFunction(const string& name,const list<string> & list)
 
 	if (result.IsEmpty())
 	{
-		DEBUGLOG(string() + "callFunction:" + name + "(!list!)" + " エラー" + "スクリプトの内関数" + name + "の実行に失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch));
-		throw XLException("スクリプトの内関数" + name + "の実行に失敗しました ファイル名:"+ this->filename + " V8error:"  + ReportException(&try_catch) );
+		DEBUGLOG("callFunction:" << name << "(!list!)" << " エラー" << "スクリプトの内関数" << name << "の実行に失敗しました ファイル名:" << this->filename << " V8error:"  << ReportException(&try_catch));
+		throw XLEXCEPTION("スクリプトの内関数" << name << "の実行に失敗しました ファイル名:"<< this->filename << " V8error:"  << ReportException(&try_catch) );
 	}
 	if (result->IsObject() || result->IsArray() )
 	{

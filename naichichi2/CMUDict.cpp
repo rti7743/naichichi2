@@ -24,7 +24,7 @@ void CMUDict::Create(const string& filename)
 	FILE * fp = fopen(this->Filename.c_str() ,"rb" );
 	if (!fp)
 	{
-		throw XLException("CMUDictファイル" + this->Filename +"が開けません");
+		throw XLEXCEPTION("CMUDictファイル" << this->Filename << "が開けません");
 	}
 	while(!feof(fp))
 	{
@@ -87,7 +87,7 @@ string CMUDict::GetYomi(const string& word) const
 	FILE * fp = fopen(this->Filename.c_str() ,"rb" );
 	if (!fp)
 	{
-		throw XLException("CMUDictファイル" + this->Filename +"が開けません");
+		throw XLEXCEPTION("CMUDictファイル" << this->Filename << "が開けません");
 	}
 	//索引の場所にワープ
 	fseek(fp , this->Index[index] ,0);

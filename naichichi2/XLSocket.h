@@ -139,14 +139,6 @@ public:
 protected:
 
 	/**
-	 * ErrorToMesage:		ソケットエラーを文字列化
-	 *
-	 * @param inErrorCode	
-	 * @return string 
-	 */
-	static string ErrorToMesage(unsigned long inErrorCode) ;
-
-	/**
 	 * Socket:	ソケットハンドル
 	 */
 	SOCKET	Socket;

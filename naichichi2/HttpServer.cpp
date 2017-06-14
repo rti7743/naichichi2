@@ -399,12 +399,12 @@ bool HttpWorker::HTTPRecvServerMode(XLSocket * socket , vector<char>* retBinary,
 			}
 			if(total_recv_size >= buffersize)
 			{
-				throw XLException("ヘッダがあまりにも長すぎます" );
+				throw XLEXCEPTION("ヘッダがあまりにも長すぎます" );
 			}
 		}
 		if (i >= HEADER_RETRY_MAX)
 		{
-			throw XLException("ヘッダーパース中にエラーが発生しました");
+			throw XLEXCEPTION("ヘッダーパース中にエラーが発生しました");
 		}
 		
 		//ヘッダーとボディを分離する
@@ -431,7 +431,7 @@ bool HttpWorker::HTTPRecvServerMode(XLSocket * socket , vector<char>* retBinary,
 			else if (size < 0)
 			{
 				int err = socket->getErrorCode();
-				throw XLException("受信中にエラーが発生しました err:"+ num2str(err) );
+				throw XLEXCEPTION("受信中にエラーが発生しました err:" << err );
 			}
 
 			retBinary->insert(retBinary->end() ,buffer,buffer +size );
@@ -519,6 +519,20 @@ bool HttpWorker::HttpTrans()
 	{
 	}
 #if WITH_SERVER_ONLY_CODE==1
+	#if WITH_CLIENT_ONLY_CODE==1
+	else if (host == "test.fhc.rti-giken.jp" || host == "fhc.rti-giken.jp" || host == "server.local")	//両対応の場合 http hostヘッダーで切り替える
+	#else
+	else if (1)  //本当にサーバだけしか使わんのなら、サーバに絶対流れるようにする
+	#endif
+	{
+		//サーバープロセス
+		if (!  MainWindow::m()->ServerScript.WebAccess(path,httpHeaders,&cookieArray,&result,&responsString) )
+		{//存在しないので 404
+				HTTP404();
+				NOTIFYLOG("404\t" << path << "\t" << cookieString << "\tserver処理系に存在しないパスです");
+				return false;
+		}
+	}
 #endif //WITH_SERVER_ONLY_CODE
 #if WITH_CLIENT_ONLY_CODE==1
 	else

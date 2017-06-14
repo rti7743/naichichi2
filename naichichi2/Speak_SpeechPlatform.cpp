@@ -62,14 +62,14 @@ bool Speak_SpeechPlatform::Run()
 	HRESULT hr;
 
 	hr = this->Engine.CoCreateInstance(CLSID_SpVoice);
-	if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 	//ボットを登録する
 	this->RegistVoiceBot("");
 
 	//http://msdn.microsoft.com/en-us/library/ms720164(v=vs.85).aspx
 	hr = this->Engine->SetInterest(SPFEI(SPEI_END_INPUT_STREAM), SPFEI(SPEI_END_INPUT_STREAM));
-	if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 	//文章が来たら読み上げる
 	while(!this->StopFlag)
@@ -103,7 +103,7 @@ bool Speak_SpeechPlatform::Run()
 		if (!task.noplay)
 		{
 			hr = this->Engine->Speak( _A2W(task.text.c_str()) ,  SVSFIsXML,NULL);
-			if(FAILED(hr))	throw XLException(XLException::StringWindows(hr));
+			if(FAILED(hr))	throw XLEXCEPTION(XLException::StringWindows(hr));
 		}
 		
 		if (this->CancelFlag)
@@ -127,27 +127,27 @@ bool Speak_SpeechPlatform::RegistVoiceBot(const string & botname)
 
 	CComPtr<IEnumSpObjectTokens>   cpEnum;
 	hr = SpEnumTokens(SPCAT_VOICES, NULL, NULL, &cpEnum);
-	if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 	ULONG ulCount;
 	hr = cpEnum->GetCount(&ulCount);
-	if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 	string foundBotName = "";
 	while (SUCCEEDED(hr) && ulCount--)
 	{
 		CComPtr<ISpObjectToken>        cpVoiceToken;
 		hr = cpEnum->Next(1, &cpVoiceToken, NULL);
-		if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 		CSpDynamicString curDesc;
 		hr = SpGetDescription(cpVoiceToken, &curDesc);
-		if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 		if (botname.empty() || strstr(_W2A(curDesc),botname.c_str()) != NULL )
 		{
 			hr = this->Engine->SetVoice(cpVoiceToken);
-			if(FAILED(hr))	 throw XLException(XLException::StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(XLException::StringWindows(hr));
 
 			return true;
 		}
@@ -156,7 +156,7 @@ bool Speak_SpeechPlatform::RegistVoiceBot(const string & botname)
 			foundBotName = foundBotName + _W2A(curDesc) + " ";
 		}
 	}
-	throw XLException("読み上げるボット" + botname + "がみつかりません。見つかったボット:" + foundBotName);
+	throw XLEXCEPTION("読み上げるボット" + botname + "がみつかりません。見つかったボット:" + foundBotName);
 }
 
 void Speak_SpeechPlatform::PushQueeOnly(const CallbackPP& callback,const string & str,bool noplay)
@@ -182,7 +182,7 @@ void Speak_SpeechPlatform::SpeakSync(const string & str,bool noplay)
 	if (!noplay)
 	{
 		hr = this->Engine->Speak( _A2W(str.c_str()) ,  SVSFIsXML,NULL);
-		if(FAILED(hr))	throw XLException(XLException::StringWindows(hr));
+		if(FAILED(hr))	throw XLEXCEPTION(XLException::StringWindows(hr));
 	}
 
 }

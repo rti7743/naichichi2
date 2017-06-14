@@ -36,111 +36,111 @@ bool Recognition_SAPI::Create(MainWindow* poolMainWindow)
 	//Dictation
 	{
 		hr = this->DictationEngine.CoCreateInstance(CLSID_SpInprocRecognizer);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationEngine->CreateRecoContext(&this->DictationRecoCtxt);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		ULONGLONG hookevent = SPFEI(SPEI_RECOGNITION)|SPFEI(SPEI_FALSE_RECOGNITION);
 		hr = this->DictationRecoCtxt->SetInterest(hookevent, hookevent);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 		hr = this->DictationRecoCtxt->SetAudioOptions(SPAO_RETAIN_AUDIO, NULL, NULL);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		//認識器始動
 		hr = this->DictationRecoCtxt->CreateGrammar(0, &this->DictationGrammar);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //		hr = this->DictationGrammar->LoadDictation(NULL, SPLO_STATIC);
-//		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationRecoCtxt->SetNotifyWin32Event();
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationGrammar->GetRule(_A2W("FilterRule") ,0,SRATopLevel | SRADynamic | SPRAF_Active, TRUE ,  &this->FilterRuleHandleHandle); 
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //		hr = this->DictationGrammar->GetRule(_A2W("FilterRule2") ,0,SRATopLevel | SRADynamic | SPRAF_Active, TRUE ,  &this->FilterRuleHandleHandle2); 
-//		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 //		hr = this->DictationGrammar->Commit(0);
-//		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	}
 	//ルールベースのエンジンを作る.
 	{
 		CComPtr<ISpAudio> cpAudio;
 		hr = SpCreateDefaultObjectFromCategoryId(SPCAT_AUDIOIN, &cpAudio);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->RuleEngine.CoCreateInstance(CLSID_SpInprocRecognizer);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		//オーディオから読み込んでね
 		hr = this->RuleEngine->SetInput( cpAudio, TRUE);  
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->RuleEngine->CreateRecoContext(&this->RuleRecoCtxt);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //		ULONGLONG hookevent = SPFEI(SPEI_RECOGNITION)|SPFEI(SPEI_FALSE_RECOGNITION)|SPFEI(SPEI_HYPOTHESIS)| SPFEI(SPEI_SOUND_START) | SPFEI(SPEI_SOUND_END);
 		ULONGLONG hookevent = SPFEI(SPEI_RECOGNITION);
 		hr = this->RuleRecoCtxt->SetInterest(hookevent, hookevent);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->RuleRecoCtxt->SetAudioOptions(SPAO_RETAIN_AUDIO, NULL, NULL);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		//認識器始動
 		hr = this->RuleRecoCtxt->CreateGrammar(0, &this->RuleGrammar);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	}
 	//トップレベルルールたちを作成する。
 //	hr = this->RuleGrammar->GetRule(_A2W("BasicRule") ,0,SRATopLevel | SRADynamic | SPRAF_Active, TRUE ,  &this->BasicRuleHandleHandle); 
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	hr = this->RuleGrammar->GetRule(_A2W("YobikakeRule") ,0,SRATopLevel | SRADynamic |  SPRAF_Active , TRUE ,  &this->YobikakeRuleHandle); 
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	hr = this->RuleGrammar->GetRule(_A2W("CommandRule") ,0,SRADynamic , TRUE ,  &this->CommandRuleHandle); 
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 /*
 	hr = this->RuleGrammar->GetRule(_A2W("MusicRule") ,0,SRADynamic , TRUE ,  &this->MusicRuleHandle); 
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	hr = this->RuleGrammar->GetRule(_A2W("VideoRule") ,0,SRADynamic , TRUE ,  &this->VideoRuleHandle); 
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	hr = this->RuleGrammar->GetRule(_A2W("BookRule") ,0,SRADynamic , TRUE ,  &this->BookRuleHandle); 
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 */
 	//http://msdn.microsoft.com/en-us/library/ee125671(v=vs.85).aspx
 	//BasicRule = YobikakeRule + CommandRule
 //	SPSTATEHANDLE appendState; //あとに続くを表現するためには、 新規にステートを作らないといけない。
 //	hr = this->RuleGrammar->Z(this->BasicRuleHandleHandle, &appendState);
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //	hr = this->RuleGrammar->AddRuleTransition(this->BasicRuleHandleHandle , appendState , this->YobikakeRuleHandle , 1.0f , NULL );
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //	hr = this->RuleGrammar->AddRuleTransition(appendState , NULL , this->CommandRuleHandle , 1.0f , NULL );
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	//////
 //	SPSTATEHANDLE appendState; //あとに続くを表現するためには、 新規にステートを作らないといけない。
 //	hr = this->RuleGrammar->CreateNewState(this->YobikakeRuleHandle, &appendState);
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //	hr = this->RuleGrammar->AddRuleTransition(this->YobikakeRuleHandle , appendState , this->CommandRuleHandle , 1.0f , NULL );
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //	hr = this->RuleGrammar->AddRuleTransition(appendState , NULL , this->CommandRuleHandle , 1.0f , NULL );
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 	//戻りはコールバックで。
 	//SAPIのコールバックはメインスレッドにコールバックされる。
 	hr = this->RuleRecoCtxt->SetNotifyCallbackFunction
 		( methodcallback::registstdcall<struct _sapi_callback1,SPNOTIFYCALLBACK*>(this, &Recognition_SAPI::Callback)  ,0,0);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	//ルールの適応
 //	this->CommitRule();
@@ -315,7 +315,7 @@ bool Recognition_SAPI::CallbackReco()
 	{
 		CSpEvent ruleEvent;
 		hr = ruleEvent.GetFrom( this->RuleRecoCtxt );
-		if ( FAILED(hr) )	throw XLException(StringWindows(hr));
+		if ( FAILED(hr) )	throw XLEXCEPTION(StringWindows(hr));
 
 		if ( ruleEvent.eEventId != SPEI_RECOGNITION )
 		{
@@ -330,7 +330,7 @@ bool Recognition_SAPI::CallbackReco()
 
 			SPPHRASE *pPhrase;
 			hr = result->GetPhrase(&pPhrase);
-			if ( FAILED(hr) )	throw XLException(StringWindows(hr));
+			if ( FAILED(hr) )	throw XLEXCEPTION(StringWindows(hr));
 
 			PhraseTo phraseTo(pPhrase);
 			if (phraseTo.IsError())
@@ -367,7 +367,7 @@ bool Recognition_SAPI::CallbackReco()
 
 	if ( funcID == UINT_MAX || funcID >= this->CallbackDictionary.size()  )
 	{//コールバックしようがないマッチは異常。
-		throw XLException("マッチした後のコールバック関数ID " + num2str(funcID) + " が存在しません" );
+		throw XLEXCEPTION("マッチした後のコールバック関数ID " + num2str(funcID) + " が存在しません" );
 	}
 
 
@@ -440,25 +440,25 @@ string Recognition_SAPI::convertDictation(ISpRecoResult* result,const string& ru
 	CComPtr<ISpStreamFormat>	resultStream;
 	{
 		hr = result->GetAudio( 0, 1, &resultStream );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		//オーディオから読み込んでね
 		hr = this->DictationEngine->SetInput( resultStream, TRUE);  
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationGrammar->SetRuleState(ruleName.empty() ? NULL : _A2W(ruleName.c_str()), NULL, SPRS_ACTIVE );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationRecoCtxt->WaitForNotifyEvent(2000); //2秒タイムアウト
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		hr = this->DictationGrammar->SetRuleState(NULL, NULL, SPRS_INACTIVE );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		{
 			CSpEvent tempevent;
 			hr = tempevent.GetFrom( this->DictationRecoCtxt );
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 			if (tempevent.eEventId == SPEI_RECOGNITION)
 			{//認識した結果
@@ -469,11 +469,11 @@ string Recognition_SAPI::convertDictation(ISpRecoResult* result,const string& ru
 					//認識した文字列の取得
 					CSpDynamicString tempdstrText;
 					hr = tempresult->GetText(SP_GETWHOLEPHRASE, SP_GETWHOLEPHRASE, TRUE, &tempdstrText, NULL);
-					if(FAILED(hr))	 throw XLException(StringWindows(hr));
+					if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 					SPPHRASE *pPhrase;
 					hr = tempresult->GetPhrase(&pPhrase);
-					if ( FAILED(hr) )	throw XLException(StringWindows(hr));
+					if ( FAILED(hr) )	throw XLEXCEPTION(StringWindows(hr));
 
 					double confidence = pPhrase->pElements->SREngineConfidence;
 
@@ -504,7 +504,7 @@ bool Recognition_SAPI::DebugSaveWavFile(const string& directory,ISpStreamFormat*
 
 	const SPSTREAMFORMAT spFormat = SPSF_22kHz8BitMono;
 	CSpStreamFormat Fmt( spFormat, &hr);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	{
 		CSpStreamFormat OriginalFmt;
@@ -519,7 +519,7 @@ bool Recognition_SAPI::DebugSaveWavFile(const string& directory,ISpStreamFormat*
 				// create file on hard-disk for storing recognized audio, and specify audio format as the retained audio format
 				string fff = directory + "\\" + num2str(time(NULL))+".wav";
 				hr = SPBindToFile(_A2W(fff.c_str()) , SPFM_CREATE_ALWAYS, &cpStream, &OriginalFmt.FormatId(), OriginalFmt.WaveFormatExPtr(), SPFEI_ALL_EVENTS);
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 				// Continuously transfer data between the two streams until no more data is found (i.e. end of stream)
 				// Note only transfer 1000 bytes at a time to creating large chunks of data at one time
@@ -528,7 +528,7 @@ bool Recognition_SAPI::DebugSaveWavFile(const string& directory,ISpStreamFormat*
 					// for logging purposes, the app can retrieve the recognized audio stream length in bytes
 					STATSTG stats;
 					hr = streamFormat->Stat(&stats, NULL);
-					if(FAILED(hr))	 throw XLException(StringWindows(hr));
+					if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 					// create a 1000-byte buffer for transferring
 					BYTE bBuffer[1000];
@@ -541,7 +541,7 @@ bool Recognition_SAPI::DebugSaveWavFile(const string& directory,ISpStreamFormat*
 					{
 						// then transfer/write the audio to the file-based stream
 						hr = cpStream->Write(bBuffer, cbRead, &cbWritten);
-						if(FAILED(hr))	 throw XLException(StringWindows(hr));
+						if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 					}
 
 					// since there is no more data being added to the input stream, if the read request returned less than expected, the end of stream was reached, so break data transfer loop
@@ -553,7 +553,7 @@ bool Recognition_SAPI::DebugSaveWavFile(const string& directory,ISpStreamFormat*
 			}
 			// explicitly close the file-based stream to flush file data and allow app to immediately use the file
 			hr = cpStream->Close();
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 		}
 	}
 	return true;
@@ -573,9 +573,9 @@ bool Recognition_SAPI::SetYobikake(const list<string> & yobikakeList)
 
 	SPSTATEHANDLE appendState; //あとに続くを表現するためには、 新規にステートを作らないといけない。
 	hr = this->RuleGrammar->CreateNewState(this->YobikakeRuleHandle, &appendState);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	hr = this->RuleGrammar->AddRuleTransition(appendState , NULL, this->CommandRuleHandle , 1.0f , NULL );
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 	this->YobikakeListArray = yobikakeList;
@@ -583,25 +583,25 @@ bool Recognition_SAPI::SetYobikake(const list<string> & yobikakeList)
 	{
 		//ふつー使う呼びかけ
 		hr = this->RuleGrammar->AddWordTransition(this->YobikakeRuleHandle , appendState , _A2W( it->c_str() ) , L" " , SPWT_LEXICAL , 1.0f , NULL );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		//ディクテーションフィルターの呼びかけ
 //		hr = this->DictationGrammar->AddWordTransition(this->FilterRuleHandleHandle , NULL , _A2W( it->c_str() ) , L" " , SPWT_LEXICAL , 1.0f , NULL );
 		hr = this->DictationGrammar->AddWordTransition(this->FilterRuleHandleHandle , NULL , _A2W( it->c_str() ) , L" " , SPWT_LEXICAL , 1.0f , NULL );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //		hr = this->DictationGrammar->AddWordTransition(this->FilterRuleHandleHandle2 , NULL , _A2W( it->c_str() ) , L" " , SPWT_LEXICAL , 2.0f , NULL );
-//		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	}
 	//ディクテーションフィルター その1はディクテーションノードを加える
 //	hr = this->DictationGrammar->AddRuleTransition(this->FilterRuleHandleHandle, NULL, SPRULETRANS_DICTATION, 1.0f, NULL);
-//	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	//ディクテーションフィルター その2はあ-んを加える.
 	{
 		wchar_t word[2]; word[0] = L'あ'; word[1] = 0;
 		for(; word[0] < L'ん' ; word[0] ++ )
 		{
 			hr = this->DictationGrammar->AddWordTransition(this->FilterRuleHandleHandle , NULL , word , L" " , SPWT_LEXICAL , 1.0f , NULL );
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 		}
 	}
 
@@ -636,23 +636,23 @@ bool Recognition_SAPI::CommitRule()
 	HRESULT hr;
 
 	hr = this->RuleGrammar->SetRuleState(NULL, NULL, SPRS_INACTIVE );
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	//通常ルールのコミット
 	hr = this->RuleGrammar->Commit(0);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	//ディクテーションフィルターのコミット
 	hr = this->DictationGrammar->Commit(0);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 ///これを入れるとキューが詰まる時があるような。(経験則)
 ///	hr = this->RuleEngine->SetRecoState(SPRST_ACTIVE);
-///	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+///	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //		hr = this->RuleGrammar->SetRuleState(_A2W("BasicRule"),NULL,SPRS_ACTIVE);
 		hr = this->RuleGrammar->SetRuleState(_A2W("YobikakeRule"),NULL,SPRS_ACTIVE);
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 		this->PoolMainWindow->SyncInvokeLog("音声認識ルールコミット:YobikakeRule以下を commit します",LOG_LEVEL_DEBUG);
 
@@ -683,14 +683,14 @@ return true;
 	}
 	else
 	{
-		throw XLException("未定義の" + name + "が選択されました。");
+		throw XLEXCEPTION("未定義の" + name + "が選択されました。");
 	}
 
 	//単語を追加していきます。
 	for(auto it = list.begin() ; it != list.end() ; ++it )
 	{
 		hr = this->RuleGrammar->AddWordTransition(targetHandle , NULL , _A2W( it->c_str() ) , L" " , SPWT_LEXICAL , 1.0f , NULL );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	}
 
 	return true;
@@ -746,14 +746,14 @@ bool Recognition_SAPI::AddRegexp(unsigned int id,const string & str ,SPSTATEHAND
 			const wchar_t * end = wcsstr(p+2 , L":]");
 			if (end == NULL)
 			{
-				throw XLException("[: があるのに :] がありませんでした");
+				throw XLEXCEPTION("[: があるのに :] がありませんでした");
 			}
 			optstr += wstring(p , (end - p) + 2);
 			p = end + 1;
         }
         else if (*p == L'*' || *p == L'+' || *p == L'.' || *p == L'[' || *p == L']')
         {
-			throw XLException(string("") + "現在は、メタ文字 " + _W2A(p) + " は利用できません。利用可能なメタ文字 () | .+ ?)");
+			throw XLEXCEPTION(string("") + "現在は、メタ文字 " + _W2A(p) + " は利用できません。利用可能なメタ文字 () | .+ ?)");
         }
         else
         {
@@ -831,17 +831,17 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
 
 			hr = this->RuleGrammar->GetRule(  (captureNodeName.length() <= 0 ? NULL : captureNodeName.c_str())
 														, this->GlobalRuleNodeCount ++ ,SRADynamic , TRUE ,  &nestRule); 
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 			//次の遷移へのステートが必要(ステートはルールをくっつけるためののりしろ)
 			SPSTATEHANDLE nestRuleState;
 			hr = this->RuleGrammar->CreateNewState(currentRule, &nestRuleState);
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 			//ネストする前の部分を挿入.
 			hr = this->RuleGrammar->AddWordTransition(currentRule , nestRuleState , matchString.length() <= 0 ? NULL : matchString.c_str()  , L" " , SPWT_LEXICAL , 1.0f , prop );
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 
 			//かっこの後にも構文が連続する場合、そのツリーを作成する.
@@ -849,23 +849,23 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
             {
                 //閉じかっこで構文がとまる場合はそこで終端
 				hr = this->RuleGrammar->AddRuleTransition(nestRuleState, NULL, nestRule, 1.0f , NULL);
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
             }
             else
             {
 				SPSTATEHANDLE afterRule;
 				hr = this->RuleGrammar->GetRule(NULL , this->GlobalRuleNodeCount ++ ,SRADynamic , TRUE ,  &afterRule); 
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 				SPSTATEHANDLE afterRuleState;
 				hr = this->RuleGrammar->CreateNewState(currentRule, &afterRuleState);
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 				hr = this->RuleGrammar->AddRuleTransition(nestRuleState, afterRuleState, nestRule, 1.0f , NULL);
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 				hr = this->RuleGrammar->AddRuleTransition(afterRuleState, NULL, afterRule, 1.0f , NULL);
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 				currentRule = afterRule;
             }
@@ -883,13 +883,13 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
 			if (matchString.length() >= 1)
             {
 				hr = this->RuleGrammar->AddWordTransition(currentRule , NULL , matchString.c_str() , L" " , SPWT_LEXICAL , 1.0f , prop );
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 			}
 			//空分岐 (A|) のような場合、空ノードを入れる.
 			if (matchString.length() <= 0 || *(p+1) == L'\0' )
 			{
 				hr = this->RuleGrammar->AddWordTransition(currentRule , NULL , NULL , L" " , SPWT_LEXICAL , 1.0f , prop );
-				if(FAILED(hr))	 throw XLException(StringWindows(hr));
+				if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 			}
 
 			splitPos = p + 1;
@@ -901,7 +901,7 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
 			const wchar_t * end = wcsstr(p+2 , L":]");
 			if (end == NULL)
 			{
-				throw XLException("[: があるのに :] がありませんでした");
+				throw XLEXCEPTION("[: があるのに :] がありませんでした");
 			}
 /*
 			wstring spname = wstring(p+2,0,end - (p + 2));
@@ -920,41 +920,41 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
 			}
 			else
 			{
-				throw XLException(string() + "[: " + _W2A(spname.c_str()) + " :] にマッチするルールはありません");
+				throw XLEXCEPTION(string() + "[: " + _W2A(spname.c_str()) + " :] にマッチするルールはありません");
 			}
 
 			//次の遷移へのステートが必要(ステートはルールをくっつけるためののりしろ)
 //			SPSTATEHANDLE nestRuleState;
 //			hr = this->RuleGrammar->CreateNewState(currentRule, &nestRuleState);
-//			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //
 //			hr = this->RuleGrammar->AddRuleTransition(currentRule, nestRuleState, targetHandle , 1.0f , NULL);
-//			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 //
 //			hr = this->RuleGrammar->AddRuleTransition(nestRuleState , NULL , targetHandle , 1.0f , NULL );
-//			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //			hr = this->RuleGrammar->AddWordTransition(currentRule , NULL , L"テスト" , L" " , SPWT_LEXICAL , 1.0f , prop );
-//			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 			SPSTATEHANDLE nestRule;
 			hr = this->RuleGrammar->GetRule(  NULL, this->GlobalRuleNodeCount ++ ,SRADynamic , TRUE ,  &nestRule); 
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 			//次の遷移へのステートが必要(ステートはルールをくっつけるためののりしろ)
 			SPSTATEHANDLE nestRuleState;
 			hr = this->RuleGrammar->CreateNewState(currentRule, &nestRuleState);
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 			//ネストする前の部分を挿入.
 			hr = this->RuleGrammar->AddWordTransition(currentRule , nestRuleState , NULL  , L" " , SPWT_LEXICAL , 1.0f , prop );
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
             //閉じかっこで構文がとまる場合はそこで終端
 			hr = this->RuleGrammar->AddRuleTransition(nestRuleState, NULL, targetHandle, 1.0f , NULL);
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 //			hr = this->RuleGrammar->AddWordTransition(nestRule , NULL , L"テスト" , L" " , SPWT_LEXICAL , 1.0f , prop );
-//			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+//			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 */
 			p = end + 1;
 			splitPos = p + 1;
@@ -962,7 +962,7 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
         else if (*p == L'.' && *(p+1) == L'+') 
         {
 			hr = this->RuleGrammar->AddRuleTransition(currentRule, NULL, SPRULETRANS_DICTATION, 1.0f, prop);
-			if(FAILED(hr))	 throw XLException(StringWindows(hr));
+			if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 			p += 1;
 			splitPos = p + 1;
@@ -974,7 +974,7 @@ bool Recognition_SAPI::AddRegexpImpl(const SPPROPERTYINFO* prop,const wstring & 
     if ( matchString.length() >= 1 &&str.length() >= 1 && *(p-1) != L')')
     {
         hr = this->RuleGrammar->AddWordTransition(currentRule , NULL , matchString.c_str() , L" " , SPWT_LEXICAL , 1.0f , prop );
-		if(FAILED(hr))	 throw XLException(StringWindows(hr));
+		if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
     }
 	return true;
 }

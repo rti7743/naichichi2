@@ -61,7 +61,7 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 	HDEVINFO hDevInfo = SetupDiGetClassDevs(&hidGuid, NULL, NULL, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
 	if (hDevInfo == INVALID_HANDLE_VALUE )
 	{
-		throw XLException("SetupDiGetClassDevsに失敗");
+		throw XLEXCEPTION("SetupDiGetClassDevsに失敗");
 	}
 
 	for(unsigned short i = 0; i < 128;i++)
@@ -124,7 +124,7 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 
 	if (this->Handle == NULL )
 	{
-		throw XLException("USB デバイスがありません VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("USB デバイスがありません VendorID:" << iVendorID << "ProductID:" << iProductID);
 	}
 
 #else
@@ -148,14 +148,14 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 	}
 	if (!this->Dev)
 	{
-		throw XLException("USB デバイスがありません VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("USB デバイスがありません VendorID:" << iVendorID << "ProductID:" << iProductID);
 	}
 
 	//デバイスを開きます
 	this->Handle = usb_open(this->Dev);
 	if(! this->Handle )
 	{
-		throw XLException(string() + "usb_openに失敗:" + usb_strerror() + " VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("usb_openに失敗:" << usb_strerror() << " VendorID:" << iVendorID << "ProductID:" << iProductID));
 	}
 
 	//オマジナイの儀式
@@ -165,7 +165,7 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 		{
 //			fprintf(stderr,"usb_set_configuration Error.\n");
 //			fprintf(stderr,"usb_detach_kernel_driver_np Error.(%s)\n",usb_strerror());
-			throw XLException(string() + "usb_set_configuration失敗後のusb_detach_kernel_driver_npに失敗:" + usb_strerror() + " VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+			throw XLEXCEPTION("usb_set_configuration失敗後のusb_detach_kernel_driver_npに失敗:" << usb_strerror() << " VendorID:" << iVendorID << "ProductID:" << iProductID);
 		}
 	}
 
@@ -175,14 +175,14 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 		{
 //			fprintf(stderr,"usb_claim_interface Error.\n");
 //			fprintf(stderr,"usb_detach_kernel_driver_np Error.(%s)\n",usb_strerror());
-			throw XLException(string() + "usb_claim_interface失敗後のusb_detach_kernel_driver_npに失敗:" + usb_strerror() + " VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+			throw XLEXCEPTION("usb_claim_interface失敗後のusb_detach_kernel_driver_npに失敗:" << usb_strerror() << " VendorID:" << iVendorID << "ProductID:" << iProductID);
 		}
 	}
 
 	if( usb_claim_interface(this->Handle,this->Dev->config->interface->altsetting->bInterfaceNumber)<0 )
 	{
 //		fprintf(stderr,"usb_claim_interface Error.(%s)\n",usb_strerror());
-		throw XLException(string() + "usb_claim_interfaceに失敗:" + usb_strerror() + " VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("usb_claim_interfaceに失敗:" << usb_strerror() << " VendorID:" + num2str(iVendorID) + "ProductID:" <<iProductID);
 	}
 	
 	//エントリーポイントを検索します 複数あったら最後にあったやつをとりあえず採用するw
@@ -219,11 +219,11 @@ void XLUSBHIDDevice::Open(int iVendorID, int iProductID)
 	printf("read %d %d\r\nwrite %d %d\r\n",this->ReadEndPoint,this->ReadEndPointMaxWriteSize,this->WriteEndPoint,this->WriteEndPointMaxWriteSize);
 	if (this->ReadEndPointMaxWriteSize <= 0)
 	{
-		throw XLException("ReadEndPointがないです VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("ReadEndPointがないです VendorID:" << iVendorID << "ProductID:" <<iProductID));
 	}
 	if (this->WriteEndPointMaxWriteSize <= 0)
 	{
-		throw XLException("WriteEndPointがないです VendorID:" + num2str(iVendorID) + "ProductID:" + num2str(iProductID));
+		throw XLEXCEPTION("WriteEndPointがないです VendorID:" << iVendorID << "ProductID:" << iProductID);
 	}
 #endif
 
@@ -251,7 +251,7 @@ void XLUSBHIDDevice::SetFeature(unsigned char* data,int len)
 //	int ret = usb_control_transfer(this->Handle,CTRL_OUT ,HID_GET_REPORT,(HID_REPORT_TYPE_FEATURE<<8)|0x00,0, data,len, 100000); 
 //	if (ret < 0)
 //	{
-//		throw XLException("libusb_control_transfer書き込みエラー:"+num2str(ret));
+//		throw XLEXCEPTION("libusb_control_transfer書き込みエラー:" << ret);
 //	}
 #endif
 }
@@ -264,7 +264,7 @@ void XLUSBHIDDevice::GetFeature(unsigned char* data,int len)
 //	int ret = usb_control_transfer(this->Handle,CTRL_IN,HID_SET_REPORT,(HID_REPORT_TYPE_FEATURE<<8)|0x00, 0,data,len, 100000);  
 //	if (ret < 0)
 //	{
-//		throw XLException("libusb_control_transfer読み込みエラー:"+num2str(ret));
+//		throw XLEXCEPTION("libusb_control_transfer読み込みエラー:" << ret);
 //	}
 #endif
 }
@@ -284,14 +284,14 @@ int XLUSBHIDDevice::Write(unsigned char* data,int len,unsigned int timeoutMS)
 		if (lasterror != ERROR_IO_PENDING)
 		{
 			CloseHandle(ol.hEvent);
-			throw XLException("WriteFileに失敗 "+ XLException::StringWindows(lasterror)  );
+			throw XLEXCEPTION("WriteFileに失敗 " << XLException::StringWindows(lasterror)  );
 		}
 		WaitForSingleObject(ol.hEvent,timeoutMS);
 		if (!GetOverlappedResult( this->Handle, &ol, &r, FALSE ))
 		{//timeout
 			CancelIoEx(this->Handle,&ol);
 			CloseHandle(ol.hEvent);
-			throw XLException("WriteFileに失敗 タイムアウト");
+			throw XLEXCEPTION("WriteFileに失敗 タイムアウト");
 		}
 	}
 
@@ -301,7 +301,7 @@ int XLUSBHIDDevice::Write(unsigned char* data,int len,unsigned int timeoutMS)
 	int ret=usb_bulk_write(this->Handle, this->WriteEndPoint, (char*)data, len, timeoutMS);
 	if (ret < 0)
 	{
-		throw XLException("usb_bulk_writeに失敗:"+num2str(ret) + " :"+ usb_strerror() );
+		throw XLEXCEPTION("usb_bulk_writeに失敗:" << ret<< " :" << usb_strerror() );
 	}
 	return ret;
 #endif
@@ -320,14 +320,14 @@ int XLUSBHIDDevice::Read(unsigned char* data,int len,unsigned int timeoutMS)
 		if (lasterror != ERROR_IO_PENDING)
 		{
 			CloseHandle(ol.hEvent);
-			throw XLException("ReadFileに失敗" + XLException::StringWindows(lasterror) );
+			throw XLEXCEPTION("ReadFileに失敗" << XLException::StringWindows(lasterror) );
 		}
 		WaitForSingleObject(ol.hEvent,timeoutMS);
 		if (!GetOverlappedResult( this->Handle, &ol, &r, FALSE ))
 		{//timeout
 			CancelIoEx(this->Handle,&ol);
 			CloseHandle(ol.hEvent);
-			throw XLException("ReadFileに失敗 timeout" );
+			throw XLEXCEPTION("ReadFileに失敗 timeout" );
 		}
 	}
 
@@ -337,7 +337,7 @@ int XLUSBHIDDevice::Read(unsigned char* data,int len,unsigned int timeoutMS)
 	int ret=usb_bulk_read(this->Handle, this->ReadEndPoint,(char*) data, len, timeoutMS);
 	if (ret < 0)
 	{
-		throw XLException("usb_bulk_readに失敗:"+num2str(ret) + " :" + usb_strerror() );
+		throw XLEXCEPTION("usb_bulk_readに失敗:" << ret << " :" << usb_strerror() );
 	}
 	return ret;
 #endif

@@ -66,7 +66,7 @@ bool Speak_Factory::Create()
 	{
 		this->Engine = new Speak_None();
 	}
-//	else if ( isuse(Speak_SpeechPlatform::Speak_AquesTalk() , name) )
+//	else if ( isuse(Speak_AquesTalk::getSpeakModelList() , name) )
 //	{ //ライセンス料が高すぎまするぞ陛下・・・
 //		this->Engine = new Speak_AquesTalk(name);
 //	}
@@ -76,7 +76,7 @@ bool Speak_Factory::Create()
 	}
 	else
 	{
-		throw XLException("合成音声エンジン" + name + "がありません");
+		throw XLEXCEPTION("合成音声エンジン" << name << "がありません");
 	}
 
 	this->Engine->Create();

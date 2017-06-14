@@ -134,7 +134,7 @@ bool Speak_AquesTalk::LoadAquesTalk()
 	}
 
 
-	throw XLException(aquesTalk2 + " または " + aquesTalk + " が読み込めません。" );
+	throw XLEXCEPTION(aquesTalk2 + " または " + aquesTalk + " が読み込めません。" );
 }
 
 

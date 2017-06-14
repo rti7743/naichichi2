@@ -42,7 +42,7 @@ bool XLImage::Load(const string & fileName)
 	this->image = Gdiplus::Bitmap::FromFile(_A2W(fileName.c_str()) , TRUE);
 	if (!this->image)
 	{
-		throw XLException(string() + "ファイル" + fileName + "の読み込みに失敗しました");
+		throw XLEXCEPTION(string() + "ファイル" + fileName + "の読み込みに失敗しました");
 	}
 	return true;
 }
@@ -63,13 +63,13 @@ bool XLImage::Load(const vector<char> & data)
 	//メモリからストリーム作成
 	CComPtr<IStream> iStream = NULL;
 	HRESULT hr = CreateStreamOnHGlobal(memoryHandle, TRUE, &iStream);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	
 
 	this->image = Gdiplus::Bitmap::FromStream(iStream , TRUE);
 	if (!this->image)
 	{
-		throw XLException(string() + "メモリから画像の読み込みに失敗しました");
+		throw XLEXCEPTION(string() + "メモリから画像の読み込みに失敗しました");
 	}
 	return true;
 }
@@ -81,7 +81,7 @@ bool XLImage::Load(HBITMAP hbitmap)
 	this->image = Gdiplus::Bitmap::FromHBITMAP(hbitmap,NULL);
 	if (!this->image)
 	{
-		throw XLException(string() + "HBITMAPからの読み込みに失敗しました");
+		throw XLEXCEPTION(string() + "HBITMAPからの読み込みに失敗しました");
 	}
 	return true;
 }
@@ -93,7 +93,7 @@ bool XLImage::Load(HICON hicon)
 	this->image = Gdiplus::Bitmap::FromHICON(hicon);
 	if (!this->image)
 	{
-		throw XLException(string() + "HBITMAPからの読み込みに失敗しました");
+		throw XLEXCEPTION(string() + "HBITMAPからの読み込みに失敗しました");
 	}
 	return true;
 }
@@ -110,7 +110,7 @@ bool XLImage::Save(const string & fileName,int option) const
 	auto r1 = findEncoder(ext,&clsid);
 	if (!r1)
 	{
-		throw XLException(r1.getError());
+		throw XLEXCEPTION(r1.getError());
 	}
 
 
@@ -134,7 +134,7 @@ bool XLImage::Save(const string & fileName,int option) const
 	}
 	if (status != Gdiplus::Ok)
 	{
-		throw XLException("保存に失敗しました");
+		throw XLEXCEPTION("保存に失敗しました");
 	}
 	return true;
 }
@@ -156,7 +156,7 @@ bool XLImage::Save(const string & ext,vector<char> * data,int option) const
 	//メモリからストリーム作成
 	CComPtr<IStream> iStream = NULL;
 	HRESULT hr = CreateStreamOnHGlobal(memoryHandle, TRUE, &iStream);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 
 	Gdiplus::Status status;
 	//メモリ内に保存
@@ -178,12 +178,12 @@ bool XLImage::Save(const string & ext,vector<char> * data,int option) const
 	}
 	if (status != Gdiplus::Ok)
 	{
-		throw XLException("保存に失敗しました");
+		throw XLEXCEPTION("保存に失敗しました");
 	}
 	//サイズを取得します。
 	STATSTG statstg;
 	hr = iStream->Stat(&statstg ,0);
-	if(FAILED(hr))	 throw XLException(StringWindows(hr));
+	if(FAILED(hr))	 throw XLEXCEPTION(StringWindows(hr));
 	//バッファ長確保して代入します。
 	data->resize(  statstg.cbSize.LowPart);
 
@@ -259,7 +259,7 @@ bool XLImage::findEncoder(const string & ext,CLSID* clsid) const
 	}
 	else
 	{
-		throw XLException(string() + "指定された拡張子" + ext +"に関連付けられたエンコーダーはありません");
+		throw XLEXCEPTION(string() + "指定された拡張子" + ext +"に関連付けられたエンコーダーはありません");
 	}
 	
 	UINT  num = 0;          // number of image encoders
@@ -267,14 +267,14 @@ bool XLImage::findEncoder(const string & ext,CLSID* clsid) const
 	Gdiplus::GetImageEncodersSize(&num, &size);
 	if(size == 0)
 	{
-		throw XLException("Gdiplus::GetImageEncodersSizeに失敗");
+		throw XLEXCEPTION("Gdiplus::GetImageEncodersSizeに失敗");
 	}
 
 	Gdiplus::ImageCodecInfo* pImageCodecInfo =
 				(Gdiplus::ImageCodecInfo*)(malloc(size));
 	if(pImageCodecInfo == NULL)
 	{
-		throw XLException("Gdiplus::ImageCodecInfo のメモリ確保に失敗");
+		throw XLEXCEPTION("Gdiplus::ImageCodecInfo のメモリ確保に失敗");
 	}
 
 	Gdiplus::GetImageEncoders(num, size, pImageCodecInfo);
@@ -290,7 +290,7 @@ bool XLImage::findEncoder(const string & ext,CLSID* clsid) const
 	}
 
 	free(pImageCodecInfo);
-	throw XLException("エンコーダが見つかりません");
+	throw XLEXCEPTION("エンコーダが見つかりません");
 }
 
 
@@ -302,7 +302,7 @@ bool XLImage::ConvertHBITMAPtoBytes(HBITMAP hbitmap,vector<char> * image) const
 	// Retrieve the bitmap color format, width, and height. 
 	if (!GetObject(hbitmap, sizeof(BITMAP), (LPSTR)&bmp)) 
 	{
-		throw XLException("HBITMAP から BITMAPに変換できません");
+		throw XLEXCEPTION("HBITMAP から BITMAPに変換できません");
 	}
  
 	// Convert the color format to a count of bits. 
@@ -369,7 +369,7 @@ bool XLImage::ConvertHBITMAPtoBytes(HBITMAP hbitmap,vector<char> * image) const
 	{
 		auto error = ::GetLastError();
 		ReleaseDC(NULL,dc);
-		throw XLException(StringWindows(error));
+		throw XLEXCEPTION(StringWindows(error));
 	}
 	ReleaseDC(NULL,dc);
 

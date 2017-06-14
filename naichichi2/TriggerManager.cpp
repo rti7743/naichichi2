@@ -64,7 +64,7 @@ string TriggerManager::Call(const string & triggerName ,const map<string,string>
 		}
 	}
 
-	throw XLException("指定された" + triggerName + "は存在しません");
+	throw XLEXCEPTION("指定された" + triggerName + "は存在しません");
 }
 
 bool TriggerManager::IsExist(const string & triggerName) const

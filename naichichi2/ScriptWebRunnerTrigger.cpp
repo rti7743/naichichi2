@@ -467,7 +467,7 @@ string ScriptWebRunnerTrigger::run_command_resultjson(const string& execcommand,
 {
 	if ( ! XLStringUtil::checkSafePath(execcommand) )
 	{
-		throw XLException("ファイル名がセキュアではありません");
+		throw XLEXCEPTION("ファイル名がセキュアではありません");
 	}
 	NOTIFYLOG("コマンド " << execcommand << "(" << execargs1 << ","<< execargs2 << ","<< execargs3 << ","<< execargs4 << ","<< execargs5 << ")" );
 
@@ -515,7 +515,7 @@ string ScriptWebRunnerTrigger::run_command_resultjson(const string& execcommand,
 
 	if (!exceptionMessage.empty())
 	{
-		throw XLException("実行に失敗しました。" + exceptionMessage );
+		throw XLEXCEPTION("実行に失敗しました。" << exceptionMessage );
 	}
 	return result;
 }

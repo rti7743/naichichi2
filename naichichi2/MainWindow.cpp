@@ -96,7 +96,7 @@ bool MainWindow::Create(bool isdebug)
 	myProg.lpszClassName    = HIDDEN_WINDOW_NAME;
 	if (!RegisterClass(&myProg))
 	{
-		throw XLException("windowクラスの登録に失敗!");
+		throw XLEXCEPTION("windowクラスの登録に失敗!");
 	}
 
 	this->MainWindowHandle = CreateWindow(HIDDEN_WINDOW_NAME
@@ -356,7 +356,7 @@ void MainWindow::PlayMCISync(const string& filename )
 		{
 			char errorMessage[MAX_PATH];
 			mciGetErrorString(r,errorMessage,MAX_PATH);
-			throw XLException("音楽を再生できません MCI_OPENに失敗(" + num2str(r) + " / " + errorMessage + ") filename:" + filename);
+			throw XLEXCEPTION("音楽を再生できません MCI_OPENに失敗(" <<r << " / " << errorMessage << ") filename:" << filename);
 		}
 
 	}
@@ -372,12 +372,12 @@ void MainWindow::PlayMCISync(const string& filename )
 		{
 			char errorMessage[MAX_PATH];
 			mciGetErrorString(r,errorMessage,MAX_PATH);
-			throw XLException("音楽を再生できません MCI_OPENに失敗(" + num2str(r) + " / " + errorMessage + ") filename:" + filename);
+			throw XLEXCEPTION("音楽を再生できません MCI_OPENに失敗(" << r << " / " << errorMessage << ") filename:" << filename);
 		}
 	}
 	else
 	{
-		throw XLException("サポートしていないファイル形式です。 filename:" + filename);
+		throw XLEXCEPTION("サポートしていないファイル形式です。 filename:" << filename);
 	}
 
 	//再生中だと終わるまで待つ
@@ -402,7 +402,7 @@ void MainWindow::PlayMCISync(const string& filename )
 	{
 		char errorMessage[MAX_PATH];
 		mciGetErrorString(r,errorMessage,MAX_PATH);
-		throw XLException("音楽を再生できません MCI_PLAYに失敗(" + num2str(r) + "/ " + errorMessage + ") filename:" + filename);
+		throw XLEXCEPTION("音楽を再生できません MCI_PLAYに失敗(" << r <<" / " << errorMessage << ") filename:" + filename);
 	}
 
 	if (::this_thread::get_id() == this->MainThreadID) 
@@ -1080,7 +1080,7 @@ bool MainWindow::OpenLogWindow()
 	//コンソールを作り、閉じるボタンを無効にする.
 	if ( ! AllocConsole() )
 	{
-		throw XLException(XLException::StringWindows() + "コンソールを確保できません");
+		throw XLEXCEPTION(XLException::StringWindows() << " コンソールを確保できません");
 	}
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 

@@ -39,7 +39,7 @@ bool MecabControl::Create(const string& dicpath,const string& cmudictFilename)
 	this->mecab = mecab_new(argc,argv);
 	if (!this->mecab)
 	{
-		throw XLException("mecabを構築できませんでした。" + string(argv[1]) );
+		throw XLEXCEPTION("mecabを構築できませんでした。" << argv[1] );
 	}
 	return true;
 }

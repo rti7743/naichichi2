@@ -44,20 +44,20 @@ void XLPipe::Create(const string& name)
 	if (this->Pipe == INVALID_HANDLE_VALUE) 
 	{
 		this->Pipe = NULL;
-		throw XLException("Create" + XLException::StringWindows());
+		throw XLEXCEPTION("Create" + XLException::StringWindows());
 	}
 #else
 	const string pipename = "/tmp/" + name;
 	int r = mkfifo(pipename.c_str(),0666);
 	if (r < 0)
 	{
-		throw XLException("Create" + XLException::StringErrNo());
+		throw XLEXCEPTION("Create" + XLException::StringErrNo());
 	}
 
 	this->Pipe = open(pipename.c_str(),O_WRONLY);
 	if (r < 0)
 	{
-		throw XLException("Create" + XLException::StringErrNo());
+		throw XLEXCEPTION("Create" + XLException::StringErrNo());
 	}
 #endif
 }
@@ -72,14 +72,14 @@ void XLPipe::Open(const string& name)
 	if (this->Pipe == INVALID_HANDLE_VALUE)
 	{
 		this->Pipe = NULL;
-		throw XLException("Open" + XLException::StringWindows());
+		throw XLEXCEPTION("Open" + XLException::StringWindows());
 		return 0;
 	}
 #else
 	this->Pipe = open(pipename.c_str(),O_RDONLY);
 	if (r < 0)
 	{
-		throw XLException("Open" + XLException::StringErrNo());
+		throw XLEXCEPTION("Open" + XLException::StringErrNo());
 	}
 #endif
 }

@@ -79,7 +79,7 @@ bool Config::saveConfig(const string & configFilename)
 	FILE * wfp = fopen( XLStringUtil::pathseparator(tmpfilename).c_str() ,"wb");
 	if (wfp == NULL)
 	{
-		throw XLException("設定保存用の一時ファイル" + tmpfilename + "を作成できませんでした。");
+		throw XLEXCEPTION("設定保存用の一時ファイル" << tmpfilename << "を作成できませんでした。");
 	}
 	FILE * fp = fopen( XLStringUtil::pathseparator(configFilename).c_str() ,"rb");
 	if (fp != NULL)
