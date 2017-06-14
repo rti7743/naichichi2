@@ -29,7 +29,6 @@
 	typedef struct in_addr     IN_ADDR;
 	const int INVALID_SOCKET = -1;
 	const int SOCKET_ERROR = -1;
-	#define WSAGetLastError() (errno)
 	#define closesocket(p)    close(p)
 	#define ioctlsocket(p,a,b)    ioctl((p),(a),(b))
 
@@ -126,9 +125,9 @@ public:
 	static SOCKADDR ToSockAddr(const string &inHost , int inPort, int sin_family = AF_INET) ;
 	static SOCKADDR ToSockAddr(unsigned long ip , int inPort, int sin_family = AF_INET) ;
 
-	int getErrorCode() const;
-	string what(int errorcode) const;
-	string what() const;
+	static int getErrorCode();
+	static string what(int errorcode) ;
+	static string what() ;
 
 	bool AddMulticastMembersip(const string& address);
 

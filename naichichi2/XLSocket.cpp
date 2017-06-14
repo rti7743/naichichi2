@@ -73,7 +73,7 @@ void XLSocket::CreateLow( int type , int protocol ,int timeout)
 	this->Socket = ::socket(AF_INET,type,protocol);
 	if (this->Socket == INVALID_SOCKET)
 	{
-		throw XLEXCEPTION( XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION( what() );
 	}
 	SetTimeout(timeout);
 } 
@@ -144,7 +144,7 @@ int XLSocket::IoctlSocket(long inCmd , unsigned long * ioArgp)
 	int ret =  ::ioctlsocket(this->Socket , inCmd , ioArgp);
 	if (ret == SOCKET_ERROR )
 	{
-		throw XLEXCEPTION( XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION( what() );
 	}
 	return ret;
 }
@@ -194,7 +194,7 @@ SOCKADDR_IN XLSocket::ToSockAddrIn(const string &inHost , int inPort, int sin_fa
 		hostEnt=gethostbyname(inHost.c_str() );
 		if(!hostEnt)
 		{
-			throw XLEXCEPTION("ホスト名を解決できません" << XLException::StringWindows(WSAGetLastError() ) );
+			throw XLEXCEPTION("ホスト名を解決できません" << what() );
 		}
 		sai.sin_addr=*((IN_ADDR*)*hostEnt->h_addr_list);
 	}
@@ -256,7 +256,7 @@ void XLSocket::Connect(const string &inHost , int inPort )
 	const int ret = connect(Socket,(SOCKADDR *)&sai,sizeof(SOCKADDR_IN));
 	if( ret == SOCKET_ERROR )
 	{	
-		throw XLEXCEPTION("接続に失敗しました" << XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION("接続に失敗しました" << what() );
 	}
 
 	this->Connected = true;
@@ -338,7 +338,7 @@ void XLSocket::Bind(const SOCKADDR * inSa)
 	int ret = ::bind( this->Socket ,inSa , sizeof(SOCKADDR) );
 	if (ret < 0)
 	{
-		throw XLEXCEPTION("bind に失敗しました" << XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION("bind に失敗しました" << what() );
 	}
 
 	this->Connected  = true;
@@ -349,7 +349,7 @@ void XLSocket::Listen(int inBacklog )
 	int ret = ::listen( this->Socket , inBacklog );
 	if (ret < 0)
 	{
-		throw XLEXCEPTION("listen に失敗しました" << XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION("listen に失敗しました" << what() );
 	}
 }
 
@@ -360,7 +360,7 @@ XLSocket* XLSocket::Accept()
 	SOCKET  newSock = ::accept( this->Socket , (struct sockaddr*) NULL , NULL);
 	if (newSock <= 0 )
 	{
-		throw XLEXCEPTION("accept に失敗しました" << XLException::StringWindows( WSAGetLastError() ) );
+		throw XLEXCEPTION("accept に失敗しました" << what() );
 	}
 	if (this->UseSSL)
 	{
@@ -468,17 +468,29 @@ int XLSocket::RecvFrom(char* outBuffer ,unsigned int inBufferLen , int inFlags,s
 	return ::recvfrom(this->Socket,outBuffer,inBufferLen,inFlags,(struct sockaddr *)senderinfo, fromlen );
 }
 
-int XLSocket::getErrorCode() const
+int XLSocket::getErrorCode() 
 {
+#if _MSC_VER
 	return WSAGetLastError();
+#else
+	return errno;
+#endif
 }
-string XLSocket::what(int errorcode) const
+string XLSocket::what(int errorcode)
 {
+#if _MSC_VER
 	return XLException::StringWindows( errorcode );
+#else
+	return XLException::StringErrNo( errorcode );
+#endif
 }
-string XLSocket::what() const
+string XLSocket::what() 
 {
+#if _MSC_VER
 	return XLException::StringWindows( WSAGetLastError() );
+#else
+	return XLException::StringErrNo( errorcode );
+#endif
 }
 
 //インターフェースがマルチキャストを受け取れるように設定する.
