@@ -55,8 +55,9 @@ windowsでは、 naichichi2.sln を開いて F5ビルドしてください。
 
 linux ubuntuであれば、必要なソフトウェアを入れた後で、  
 apt-get install gcc g++  
-apt-get install flex uuid uuid-dev libasound2 libasound2-dev mplayer  
-  
+apt-get install flex uuid uuid-dev libasound2 libasound2-dev mplayer libssl-dev libavahi-compat-libdnssd-dev
+
+
 sh build.sh  
 
 or  
