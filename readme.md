@@ -51,6 +51,8 @@ Linux + gcc ver4以降
 
 
 windowsでは、 naichichi2.sln を開いて F5ビルドしてください。  
+Windowsでは、Bonjour SDK が必要です。
+https://developer.apple.com/bonjour/
 
 
 linux ubuntuであれば、必要なソフトウェアを入れた後で、  
