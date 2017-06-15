@@ -457,6 +457,9 @@
       <Filter>mainlogic</Filter>
     </ClInclude>
     <ClInclude Include="resource1.h" />
+    <ClInclude Include="haikuwoyome.h">
+      <Filter>mainlogic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="icon1.ico">

@@ -96,6 +96,7 @@
     <ClInclude Include="ColudSyncConfig.h" />
     <ClInclude Include="ColudSyncPooling.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="haikuwoyome.h" />
     <ClInclude Include="NetDevice.h" />
     <ClInclude Include="NetDeviceEcoNetLite.h" />
     <ClInclude Include="NetDeviceWemo.h" />
