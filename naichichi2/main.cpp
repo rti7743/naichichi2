@@ -3,6 +3,10 @@
 #include "MainWindow.h"
 #include "SystemMisc.h"
 
+#define HAIKU_WO_YOME_OUTPUT_STDERR(MSG) ERRORLOG(MSG);sexylog::m()->Flush();
+#include "haikuwoyome.h"
+
+
 #if _MSC_VER
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst,
                    LPSTR lpszCmdLine, int nCmdShow)
@@ -39,7 +43,6 @@ int main(int argc, const char **argv)
 				SEXYTEST_RUNNER();
 			#endif //#if _DEBUG
 
-
 			bool isdebug = true;
 #if _MSC_VER && !_DEBUG
 			//windowsでデバッグビルドでなければコンソールを出さない.
@@ -47,7 +50,7 @@ int main(int argc, const char **argv)
 #endif
 
 			//これ以降、例外を受け取った時にログを書いて死ぬようにする.
-			XLDebugUtil::HaikuWoYome();
+			HaikuWoYome::KaisyakuShiteYaru();
 
 			//引数 --nostdout がなければ debug モードとしてログを吐きまくる
 			{

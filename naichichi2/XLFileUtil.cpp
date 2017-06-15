@@ -299,7 +299,7 @@ string XLFileUtil::getSelfExeDirectory()
 //自分自身へのパス
 string XLFileUtil::getSelfEXEPath()
 {
-	char buffer[MAX_PATH];
+	char buffer[MAX_PATH] = {0};
 #if _MSC_VER
 	if(!GetModuleFileName(NULL, buffer, MAX_PATH))
 	{

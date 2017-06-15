@@ -20,16 +20,6 @@ public:
 	//16進数dump
 	static string HexDump(const void* data,int len);
 
-	//バックトレースの取得
-	static std::string BackTrace();
-	//指定したstack領域にシンボルを埋められたら埋めて、見れるようにして返します.
-	static std::string BackTrace(void** stack,int length);
-	static std::string BackTraceNoSymbol(void** stack,int length);
-
-	//ハイクを詠め。カイシャクしてやる。
-	//未キャッチ例外などの異常事態が起きたときのフック
-	static void HaikuWoYome();
-
 };
 #if _DEBUG
 //メインスレッドでしか動きません
