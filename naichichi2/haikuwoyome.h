@@ -126,7 +126,7 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 {
 	int fd = open(filename.c_str(),O_RDONLY);
 	if (fd < 0)
-	{
+	{//ファイルを開けない.
 		return false;
 	}
 
@@ -136,12 +136,12 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 	Elf_Sym  sym;
 	int r = read(fd,&ehdr,sizeof(ehdr));
 	if (r < 0)
-	{
+	{//ファイル先頭のELFヘッダを読み込めない。
 		close(fd);
 		return false;
 	}
 	if ( memcmp(ehdr.e_ident,ELFMAG,SELFMAG) != 0 )
-	{//can not elf
+	{//ELF文字の確認。
 		close(fd);
 		return false;
 	}
