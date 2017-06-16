@@ -17,7 +17,7 @@ $(CFLAGS) \
 
 LDFLAGS= \
 ../openjtalk/open_jtalk/bin/open_jtalkdll.a \
-../v8/out/$(BUILD_ARCH).release/obj.target/tools/gyp/*.a \
+../v8/out/*.release/obj.target/tools/gyp/*.a \
 ../pcre/.libs/libpcre.a \
 ../babel/babel.a \
 -L../julius/libjulius `../julius/libjulius/libjulius-config --libs` \
