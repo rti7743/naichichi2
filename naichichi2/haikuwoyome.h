@@ -27,6 +27,8 @@
 #include <windows.h>
 #include <DbgHelp.h>
 #pragma comment(lib, "DbgHelp.lib")
+#include <time.h>
+
 #else
 #include <execinfo.h>
 #include <signal.h>
@@ -178,7 +180,7 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 			}
 
 			if (addr < sym.st_value || addr >= sym.st_value  + sym.st_size )
-			{
+			{//探しているアドレスではない
 				continue;
 			}
 			//found.
@@ -217,7 +219,7 @@ static std::string getSelfEXEPath()
 	}
 #else
 	char buffer[256] = {0};
-	int r = readlink("/proc/self/exe", buffer, 256); 
+	int r = readlink("/proc/self/exe", buffer, 255); 
 	if (r < 0)
 	{
 		return "";
@@ -242,21 +244,24 @@ static std::string BackTrace(void** stack,int length)
 	{
 		return BackTraceNoSymbol(stack,length);
 	}
+	symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+	symbol->MaxNameLen = MAX_SYM_NAME;
 
 	for(int i = 0; i < length; i++)
 	{
-		if ( SymFromAddr(process,(DWORD64) stack[i], NULL, symbol) )
+		DWORD64 displacement = 0;
+		if ( SymFromAddr(process,(DWORD64) stack[i], &displacement, symbol) )
 		{
 			out << symbol->Name << " ";
 
-			IMAGEHLP_LINE line;
-			if ( SymGetLineFromAddr(process, (DWORD64) stack[i],NULL,&line) )
+			IMAGEHLP_LINE64 line = { sizeof(IMAGEHLP_LINE64) };
+			if ( SymGetLineFromAddr64(process, (DWORD64) stack[i],(PDWORD)&displacement,&line) )
 			{
 				out << line.FileName << ":" << line.LineNumber;
 			}
 			else
 			{
-				out << "???" ;
+				out << "???";
 			}
 		}
 		else
@@ -428,14 +433,14 @@ static std::string StoreMiniDump(PEXCEPTION_POINTERS pep = NULL,const std::strin
 	std::string fullname = filename;
 	if (fullname.empty())
 	{
-		//自プロセスへのパス
 		const std::string myprocess = getSelfEXEPath();
 		time_t time = ::time(NULL);
-		struct tm *date = localtime(&time);
+		struct tm date ;
+		localtime_s(&date, &time);
 
 		char buf[MAX_PATH];
 		_snprintf_s(buf, MAX_PATH, _TRUNCATE, "%s.%04d%02d%02d_%02d%02d%02d.dmp",myprocess.c_str(),
-			date->tm_year + 1900,date->tm_mon + 1,date->tm_mday,date->tm_hour,date->tm_min,date->tm_sec);
+			date.tm_year + 1900,date.tm_mon + 1,date.tm_mday,date.tm_hour,date.tm_min,date.tm_sec);
 		fullname = buf;
 	}
 
