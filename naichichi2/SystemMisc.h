@@ -118,4 +118,7 @@ public:
 	static string GetMacaddress(const string& eth,const string& sep=".");
 	//マックアドレスを vector<uchar>で
 	static vector<unsigned char> GetMacaddressVec(const string& eth);
+
+	//welcomeデータをSDに書き込む
+	static void MakeClientWelcome();
 };

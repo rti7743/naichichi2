@@ -26,8 +26,6 @@ private:
 	//ステータスを jsonで
 	string RemoconStatus(const string& appendOption)  const;
 	string GetSensorJson() ;
-	//client側のwelcomeページを生成して、 /mn/sd/welcome.html として保存します
-	void MakeClientWelcome();
 	//変更画面全部
 	string EditIndex(const XLHttpHeader& httpHeaders) const;
 	string remocon_fire_bystring(const XLHttpHeader& httpHeaders) ;

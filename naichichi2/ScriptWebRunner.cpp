@@ -44,48 +44,7 @@ void ScriptWebRunner::Create()
 	Recogn.ReloadRecong(false);
 	Speak.ReloadSpeak(true);
 	Trigger.ReloadTrigger(time(NULL));
-	MakeClientWelcome();
-}
-
-
-
-
-
-
-//client側のwelcomeページを生成して、 /mn/sd/welcome.html として保存します
-void ScriptWebRunner::MakeClientWelcome()
-{
-	const string filename = MainWindow::m()->TranslateFile.TransClientWelcome( ScriptRemoconWeb::GetWebRootPath("client_welcome.tpl") );
-	string html = XLFileUtil::cat(filename);
-
-	const string server_url = MainWindow::m()->Config.Get("server_url", "" );
-	const string model = SystemMisc::GetModel();
-	const string backurl = MainWindow::m()->Config.Get("httpd__url", "" );
-
-	html = XLStringUtil::replace_low(html,"%SERVER_URL%", XLStringUtil::htmlspecialchars( server_url ) );
-	html = XLStringUtil::replace_low(html,"%MODEL%", XLStringUtil::htmlspecialchars( model ) );
-	html = XLStringUtil::replace_low(html,"%BACKURL%", XLStringUtil::htmlspecialchars( backurl ) );
-
-#ifdef _MSC_VER
-#else
-	XLFileUtil::write("/mnt/sd/welcome.html",html);
-
-	//ついでに ifconfigの情報も書いておこう
-	SystemMisc::PipeExec(": > /mnt/sd/support_log.txt");
-	SystemMisc::PipeExec("echo \"=====ifconfig ==\" >> /mnt/sd/support_log.txt ");
-	SystemMisc::PipeExec("ifconfig >> /mnt/sd/support_log.txt 2>&1");
-	SystemMisc::PipeExec("echo \"=====route -n ==\" >> /mnt/sd/support_log.txt");
-	SystemMisc::PipeExec("route -n >> /mnt/sd/support_log.txt 2>&1");
-	SystemMisc::PipeExec("echo \"=====dmesg ==\" >> /mnt/sd/support_log.txt");
-	SystemMisc::PipeExec("dmesg >> /mnt/sd/support_log.txt 2>&1");
-	SystemMisc::PipeExec("echo \"=====ping over ip ==\" >> /mnt/sd/support_log.txt");
-	SystemMisc::PipeExec("ping -c 1 -W 1 8.8.8.8 >> /mnt/sd/support_log.txt 2>&1");
-	SystemMisc::PipeExec("echo \"=====ping over name ==\" >> /mnt/sd/support_log.txt");
-	SystemMisc::PipeExec("ping -c 1 -W 1 rti-giken.jp >> /mnt/sd/support_log.txt 2>&1");
-
-	SystemMisc::PipeExec("umount /mnt/sd");
-	SystemMisc::PipeExec("mount /mnt/sd");
-#endif
+	SystemMisc::MakeClientWelcome();
 }
 
 //変更画面全部
