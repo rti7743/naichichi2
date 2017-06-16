@@ -1,28 +1,23 @@
 #!/bin/sh
 
 if [ "x$1" != "x" ];then
-	export BUILD_ARCH=$1
+	BUILD_ARCH="$1"
 else
 	if uname -a | grep -e beagle -e fhc ; then
-		export BUILD_ARCH=arm
+		BUILD_ARCH=arm
 		FPUHINT="-O3 -march=armv7-a -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp -mabi=aapcs-linux -fforce-addr -fomit-frame-pointer -fstrength-reduce -ftree-vectorize -mvectorize-with-neon-quad"
-		V8MAKENAME="$BUILD_ARCH"
 	elif uname -a | grep raspberrypi ; then
-		export BUILD_ARCH=arm
+		BUILD_ARCH="arm.release hardfp=on"
 		FPUHINT="-O3 -mfloat-abi=hard -mthumb -marm"
-		V8MAKENAME="$BUILD_ARCH.release hardfp=on"
 	elif uname -a | grep arm ; then
-		export BUILD_ARCH=arm
+		BUILD_ARCH=arm
 		FPUHINT="-O3"
-		V8MAKENAME="$BUILD_ARCH"
 	elif uname -a | grep x86_64 ; then
-		export BUILD_ARCH=x64
+		BUILD_ARCH=x64
 		FPUHINT="-O3"
-		V8MAKENAME="$BUILD_ARCH"
 	elif uname -a | grep x86 ; then
-		export BUILD_ARCH=ia32
+		BUILD_ARCH=ia32
 		FPUHINT="-O3"
-		V8MAKENAME="$BUILD_ARCH"
 	else
 		echo "architecture is unknown!"
 		exit;
@@ -60,7 +55,7 @@ cd v8
 export CXXFLAGS="$FPUHINT -Wno-strict-overflow -Wno-unused-local-typedefs -Wno-aggressive-loop-optimizations"
 chmod +x build/gyp/gyp
 make clean
-make $BUILD_ARCH.release hardfp=on
+make $BUILD_ARCH
 export CXXFLAGS="$CFLAGS $FPUHINT"
 cd ..
 
