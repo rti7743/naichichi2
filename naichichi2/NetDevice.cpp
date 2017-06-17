@@ -72,3 +72,17 @@ bool NetDevice::Fire(const string& name,const string& action,const string& value
 
 	return false;
 }
+
+string NetDevice::Pickup(const string& name,const string& action)
+{
+	if ( EcoNetLite.IsThisDevice(name) )
+	{
+		return EcoNetLite.Pickup(name,action);
+	}
+	if ( Wemo.IsThisDevice(name) )
+	{
+		return Wemo.Pickup(name,action);
+	}
+
+	return false;
+}

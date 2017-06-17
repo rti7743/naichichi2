@@ -1883,10 +1883,12 @@ function action_load(parentkey,key)
 		g_actionObject.find("#multiroom_elec").val("").change();
 		g_actionObject.find("#multiroom_action").val("").change();
 
-		make_netdevice_combo_elec(g_actionObject.find("#netdevice_elec"),0);
 		g_actionObject.find("#netdevice_elec").val("").change();
 		g_actionObject.find("#netdevice_action").val("").change();
 		g_actionObject.find("#netdevice_value").val("").change();
+		make_netdevice_combo_elec(g_actionObject.find("#netdevice_elec"),1,function(){
+			g_actionObject.find("#netdevice_elec").selectmenu("refresh");
+		});
 
 		g_actionObject.find("#sip_action_type").val("").change();
 		g_actionObject.find("#sip_call_number").val("").change();

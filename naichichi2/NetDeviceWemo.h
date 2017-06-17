@@ -22,6 +22,8 @@ public:
 	list<string> GetSetValueAll(const string& name,const string& action);
 	list<string> GetGetActionAll(const string& name);
 	bool Fire(const string& name,const string& action,const string& value);
+	string Pickup(const string& name,const string& action);
+
 private:
 	string ResolveName(const string& name);
 	unsigned int ResolveAction(const string& action);

@@ -733,6 +733,7 @@ list<string> NetDeviceEcoNetLite::GetAll()
 		const string name = MakeName(it->identification,it->deoj);
 		ret.push_back(name);
 	}
+	NOTIFYLOG("発見した機材 " << ret);
 	return ret;
 }
 
@@ -742,6 +743,7 @@ list<string> NetDeviceEcoNetLite::GetSetActionAll(const string& name)
 	string id = ResolveName(name);
 	if (id.empty())
 	{
+		ERRORLOG("機材名がEcoNetLiteのものではありません name:" << name);
 		return ret;
 	}
 
@@ -749,6 +751,7 @@ list<string> NetDeviceEcoNetLite::GetSetActionAll(const string& name)
 	bool r = MainWindow::m()->EcoNetLiteServer.Get(id,&m,2);
 	if (!r)
 	{
+		ERRORLOG("機材データが発見デバイスにありません name:" << name << " id:" << id);
 		return ret;
 	}
 
@@ -757,6 +760,7 @@ list<string> NetDeviceEcoNetLite::GetSetActionAll(const string& name)
 		const string name = MakeActionName(m.deoj,*it);
 		ret.push_back(name);
 	}
+	NOTIFYLOG("設定できる機能を返します name:" << name << " id:" << id << " ret:" << ret);
 	return ret;
 }
 
@@ -767,27 +771,32 @@ list<string> NetDeviceEcoNetLite::GetSetValueAll(const string& name,const string
 	id = ResolveName(name);
 	if (id.empty())
 	{
+		ERRORLOG("機材名がEcoNetLiteのものではありません name:" << name << " action:" << action);
 		return ret;
 	}
 	EcoNetLiteMap m;
 	bool r = MainWindow::m()->EcoNetLiteServer.Get(id,&m,2);
 	if(!r)
 	{
+		ERRORLOG("機材データが発見デバイスにありません name:" << name << " action:" << action << " id:" << id);
 		return ret;
 	}
 
 	unsigned char prop = ResolveActionName(action);
 	if (prop <= 0)
 	{
+		ERRORLOG("動作名を解決できません name:" << name << " action:" << action << " id:" << id);
 		return ret;
 	}
 
 	r = GetValue(m.deoj,prop,&ret);
 	if(!r)
 	{
+		ERRORLOG("動作の情報を取得できません name:" << name << " action:" << action << " id:" << id);
 		return ret;
 	}
 
+	NOTIFYLOG("設定できる値を返します name:" << name << " action:" << action << " id:" << id << " ret:" << ret);
 	return ret;
 }
 
@@ -798,6 +807,7 @@ list<string> NetDeviceEcoNetLite::GetGetActionAll(const string& name)
 	string id = ResolveName(name);
 	if (id.empty())
 	{
+		ERRORLOG("機材名がEcoNetLiteのものではありません name:" << name);
 		return ret;
 	}
 
@@ -805,6 +815,7 @@ list<string> NetDeviceEcoNetLite::GetGetActionAll(const string& name)
 	bool r = MainWindow::m()->EcoNetLiteServer.Get(id,&m,2);
 	if (!r)
 	{
+		ERRORLOG("機材データが発見デバイスにありません name:" << name << " id:" << id);
 		return ret;
 	}
 
@@ -813,6 +824,8 @@ list<string> NetDeviceEcoNetLite::GetGetActionAll(const string& name)
 		const string name = MakeActionName(m.deoj,*it);
 		ret.push_back(name);
 	}
+
+	NOTIFYLOG("取得できる機能を返します name:" << name << " id:" << id << " ret:" << ret);
 	return ret;
 }
 
@@ -822,18 +835,21 @@ bool NetDeviceEcoNetLite::Fire(const string& name,const string& action,const str
 	id = ResolveName(name);
 	if (id.empty())
 	{
+		ERRORLOG("機材名がEcoNetLiteのものではありません name:" << name << " action:" << action << " value:" << value);
 		return false;
 	}
 	EcoNetLiteMap m;
 	bool r = MainWindow::m()->EcoNetLiteServer.Get(id,&m,5);
 	if(!r)
 	{
+		ERRORLOG("機材データが発見デバイスにありません name:" << name << " id:" << id << " action:" << action << " value:" << value);
 		return false;
 	}
 
 	unsigned char prop = ResolveActionName(action);
 	if (prop <= 0)
 	{
+		ERRORLOG("動作名を解決できません name:" << name << " id:" << id << " action:" << action << " value:" << value);
 		return false;
 	}
 
@@ -841,30 +857,69 @@ bool NetDeviceEcoNetLite::Fire(const string& name,const string& action,const str
 
 	//リクエストの送信.UDPなので結果は不定.
 	MainWindow::m()->EcoNetLiteServer.sendSetRequest(m.ip,m.deoj,prop,valueUC);
+
+	NOTIFYLOG("機材へ信号を送ります name:" << name << " id:" << id << " action:" << action << " value:" << value << " prop:" << prop << " valueUC:" << valueUC );
 	return true;
 }
 
-bool NetDeviceEcoNetLite::Pickup(const string& name,const string& action,ECONETLITESERVER_TIDCALLBACK & callback )
+string NetDeviceEcoNetLite::Pickup(const string& name,const string& action )
 {
 	string id;
 	id = ResolveName(name);
 	if (id.empty())
 	{
-		return false;
+		ERRORLOG("機材名がEcoNetLiteのものではありません name:" << name << " action:" << action);
+		return "";
 	}
 	EcoNetLiteMap m;
 	bool r = MainWindow::m()->EcoNetLiteServer.Get(id,&m,5);
 	if(!r)
 	{
-		return false;
+		ERRORLOG("機材データが発見デバイスにありません name:" << name << " id:" << id << " action:" << action);
+		return "";
 	}
 
 	unsigned char prop = ResolveActionName(action);
 	if (prop <= 0)
 	{
-		return false;
+		ERRORLOG("動作名が解決できません name:" << name << " id:" << id << " action:" << action);
+		return "";
 	}
 
+	bool isUpdate = false;
+	std::string ret;
+	ECONETLITESERVER_TIDCALLBACK callback = [&](const EcoNetLiteData* data,const char* buffer,size_t size)->void 
+	{
+		char name[512] = {0};
+		list<unsigned char> getvalue;
+		EcoNetLiteServer::ParseDataList(data,buffer,size,&getvalue);
+
+		if ( getvalue.empty() )
+		{
+			ERRORLOG("戻り値が空です name:" << name << " action:" << action << " id:" << id);
+			isUpdate = true;
+			return ;
+		}
+		else 
+		{
+			auto it = getvalue.begin();
+
+			ret = MakeActionName(data->seoj,*it);
+			isUpdate = true;
+			return ;
+		}
+	};
+
 	MainWindow::m()->EcoNetLiteServer.sendGetRequest(m.ip,m.deoj,prop,callback);
-	return true;
+
+	//更新されるまで待つ.
+	for(int i = 0 ; i < 20 ; i ++)
+	{
+		if (isUpdate)
+		{
+			break;
+		}
+		MiriSleep(100);
+	}
+	return ret;
 }

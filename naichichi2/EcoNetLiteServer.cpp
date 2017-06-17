@@ -115,8 +115,11 @@ void EcoNetLiteServer::EcoNetLiteThreadMain()
 		{//固有ID
 			ParseRespons83(ip,data,buffer,size);
 		}
+
+		DoCallback(data,buffer,size);
 	}
 }
+
 
 void EcoNetLiteServer::ParseResponsD6(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
 {
@@ -143,25 +146,21 @@ void EcoNetLiteServer::ParseResponsD6(const string& ip,const EcoNetLiteData* dat
 	}
 }
 
-//setプロパティの検索
-void EcoNetLiteServer::ParseRespons9E(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
+void EcoNetLiteServer::ParseDataList(const EcoNetLiteData* data,const char* buffer,int size,list<unsigned char>* outValues)
 {
 	if (data->edt_1 < 16)
 	{
-		list<unsigned char> setprop;
 		const size_t n = MIN(data->edt_1,size-sizeof(EcoNetLiteData));
 		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
 		for(size_t i = 0 ; i < n ; i ++)
 		{
-			setprop.push_back(p[i]);
+			outValues->push_back(p[i]);
 		}
-		UpdateSetProp(ip,data->seoj,setprop);
 	}
 	else
 	{//16個を超えるので、ビット表記されている
 	 //see http://qiita.com/miyazawa_shi/items/4f11493079b5191bd5d5#_reference-3c80b969ad147c95ecb7
  	 //see http://qiita.com/katsumin/items/14970c340c6dc65dbd93
-		list<unsigned char> setprop;
 		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
 		const size_t n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
 		for(size_t i = 0 ; i < n ; i ++)
@@ -171,48 +170,27 @@ void EcoNetLiteServer::ParseRespons9E(const string& ip,const EcoNetLiteData* dat
 				if (p[i] & (0x01 << bit) )
 				{
 					unsigned char code = 0x80 + (bit*16) + i;
-					setprop.push_back(code);
+					outValues->push_back(code);
 				}
 			}
 		}
-		UpdateSetProp(ip,data->seoj,setprop);
 	}
+}
+
+//setプロパティの検索
+void EcoNetLiteServer::ParseRespons9E(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
+{
+	list<unsigned char> setprop;
+	EcoNetLiteServer::ParseDataList(data,buffer,size,&setprop);
+	UpdateSetProp(ip,data->seoj,setprop);
 }
 
 //getプロパティの検索
 void EcoNetLiteServer::ParseRespons9D(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
 {
-	if (data->edt_1 < 16)
-	{
-		list<unsigned char> getprop;
-		const size_t n = MIN(data->edt_1,size-sizeof(EcoNetLiteData));
-		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
-		for(size_t i = 0 ; i < n ; i ++)
-		{
-			getprop.push_back(p[i]);
-		}
-		UpdateGetProp(ip,data->seoj,getprop);
-	}
-	else
-	{//16個を超えるので、ビット表記されている
-	 //see http://qiita.com/miyazawa_shi/items/4f11493079b5191bd5d5#_reference-3c80b969ad147c95ecb7
- 	 //see http://qiita.com/katsumin/items/14970c340c6dc65dbd93
-		list<unsigned char> getprop;
-		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
-		const size_t n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
-		for(size_t i = 0 ; i < n ; i ++)
-		{
-			for(int bit = 0 ; bit < 8 ; bit ++)
-			{
-				if (p[i] & (0x01 << bit) )
-				{
-					unsigned char code = 0x80 + (bit*16) + i;
-					getprop.push_back(code);
-				}
-			}
-		}
-		UpdateGetProp(ip,data->seoj,getprop);
-	}
+	list<unsigned char> getprop;
+	EcoNetLiteServer::ParseDataList(data,buffer,size,&getprop);
+	UpdateGetProp(ip,data->seoj,getprop);
 }
 
 void EcoNetLiteServer::ParseRespons83(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
@@ -391,7 +369,7 @@ void EcoNetLiteServer::sendGetRequest(const string& ip,const EcoNetLiteObjCode& 
 		XLSocket::ToSockAddrIn(ip,3610);
 
 	unsigned short tid = NextTID();
-	AppendTIDCallback(ip,deoj,tid,callback);
+	AppendTIDCallback(tid,callback);
 
 	EcoNetLiteData data;
 	data.header[0] = 0x10; //eco net lite ヘッダー
@@ -602,20 +580,14 @@ unsigned short EcoNetLiteServer::NextTID()
 	volatile lock_guard<mutex> al(this->lock);
 	return this->TIDTotal++;
 }
-bool EcoNetLiteServer::AppendTIDCallback(const string& ip,const EcoNetLiteObjCode& deoj,unsigned short tid,ECONETLITESERVER_TIDCALLBACK& callback)
+bool EcoNetLiteServer::AppendTIDCallback(unsigned short tid,ECONETLITESERVER_TIDCALLBACK& callback)
 {
-	TIDWatch tidwatch;
-	tidwatch.callback = callback;
-	tidwatch.tid = tid;
+	TIDWatch* tidwatch = new TIDWatch;
+	tidwatch->callback = callback;
+	tidwatch->tid = tid;
 
 	volatile lock_guard<mutex> al(this->lock);
-	EcoNetLiteMap* m;
-	if ( ! EcoNetLiteServer::FindLow(ip,deoj,&m) )
-	{
-		return false;
-	}
-
-	m->tidWatch.push_back(tidwatch);
+	this->TidWatch.push_back(tidwatch);
 	return true;
 }
 
@@ -627,5 +599,38 @@ void EcoNetLiteServer::GetAll(list<EcoNetLiteMap>* outRet)
 	for(auto it = this->MappingList.begin() ; it!=this->MappingList.end() ; it++)
 	{
 		outRet->push_back( *(*it) );
+	}
+}
+
+unsigned short EcoNetLiteServer::ParseTID(const EcoNetLiteData* data) const
+{
+	unsigned short r = data->tid[0] ;
+	r = r << 8;
+	r = r + data->tid[1];
+	return r;
+}
+void EcoNetLiteServer::DoCallback(const EcoNetLiteData* data,const char* buffer,int size)
+{
+	const unsigned short tid = ParseTID(data);
+
+	volatile lock_guard<mutex> al(this->lock);
+	{
+		for(auto it = this->TidWatch.begin() ; it != this->TidWatch.end(); )
+		{
+			if ( (*it)->tid == tid )
+			{
+				auto nextIT = it;
+				nextIT++;
+				(*it)->callback(data,buffer,size);
+				this->TidWatch.erase(it);
+				delete (*it);
+
+				it = nextIT;
+			}
+			else
+			{
+				it++;
+			}
+		}
 	}
 }

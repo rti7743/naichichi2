@@ -79,6 +79,7 @@ bool NetDeviceWemo::Fire(const string& name,const string& action,const string& v
 	bool r = MainWindow::m()->UPNPServer.Get(uuid,&m);
 	if (!r)
 	{
+		ERRORLOG("WeMoを取得できません" << " name:" << name << " uuid:" << uuid );
 		return false;
 	}
 
@@ -119,4 +120,19 @@ bool NetDeviceWemo::Fire(const string& name,const string& action,const string& v
 		return true;
 	}
 	return false;
+}
+
+string NetDeviceWemo::Pickup(const string& name,const string& action)
+{
+	string uuid = ResolveName(name);
+
+	UPNPMap m;
+	bool r = MainWindow::m()->UPNPServer.Get(uuid,&m);
+	if (!r)
+	{
+		ERRORLOG("WeMoを取得できません" << " name:" << name << " uuid:" << uuid );
+		return false;
+	}
+	//未実装
+	return "";
 }

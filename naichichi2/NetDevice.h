@@ -20,6 +20,8 @@ public:
 	list<string> GetSetActionAll(const string& name);
 	list<string> GetSetValueAll(const string& name,const string& action);
 	bool Fire(const string& name,const string& action,const string& value);
+	string Pickup(const string& name,const string& action);
+
 private:
 	NetDeviceEcoNetLite EcoNetLite;
 	NetDeviceWemo Wemo;

@@ -24,7 +24,7 @@ public:
 	list<string> GetGetActionAll(const string& name);
 	bool IsThisDevice(const string& name);
 	bool Fire(const string& name,const string& action,const string& value);
-	bool Pickup(const string& name,const string& action,ECONETLITESERVER_TIDCALLBACK & callback );
+	string Pickup(const string& name,const string& action);
 
 	string MakeName(const string& identification,const EcoNetLiteObjCode& deoj);
 	static string CodeToNameDisp(const EcoNetLiteObjCode& deoj);

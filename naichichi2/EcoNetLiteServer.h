@@ -43,7 +43,7 @@ struct EcoNetLiteData{
 
 #pragma pack(pop)
 
-typedef std::function<void (size_t size,const char* buffer) > ECONETLITESERVER_TIDCALLBACK;
+typedef std::function<void (const EcoNetLiteData* data,const char* buffer,size_t size) > ECONETLITESERVER_TIDCALLBACK;
 
 struct TIDWatch{
 	unsigned short tid;
@@ -57,7 +57,6 @@ struct EcoNetLiteMap{
 
 	list<unsigned char> setProp;
 	list<unsigned char> getProp;
-	list<TIDWatch> tidWatch;
 };
 
 
@@ -86,6 +85,8 @@ public:
 	void sendSetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,unsigned char valueUC);
 	//値の取得 値が取れたらcallbackする
 	void sendGetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,ECONETLITESERVER_TIDCALLBACK& callback);
+	static void ParseDataList(const EcoNetLiteData* data,const char* buffer,int size,list<unsigned char>* outValues);
+
 private:
 	//受信のスレッドメイン
 	void EcoNetLiteThreadMain();
@@ -113,8 +114,9 @@ private:
 	bool FindLow(const string& ip,const EcoNetLiteObjCode& deoj,EcoNetLiteMap** outM);
 
 	unsigned short NextTID();
-	bool AppendTIDCallback(const string& ip,const EcoNetLiteObjCode& deoj,unsigned short tid,ECONETLITESERVER_TIDCALLBACK& callback);
-
+	bool AppendTIDCallback(unsigned short tid,ECONETLITESERVER_TIDCALLBACK& callback);
+	unsigned short ParseTID(const EcoNetLiteData* data) const;
+	void DoCallback(const EcoNetLiteData* data,const char* buffer,int size);
 
 	XLSocket		EcoNetLiteSocket;
 
@@ -122,6 +124,8 @@ private:
 
 	//発見した機材
 	list<EcoNetLiteMap*> MappingList;
+	//TIDCallback
+	list<TIDWatch*> TidWatch;
 
 	//次のTIDコード
 	unsigned short TIDTotal;

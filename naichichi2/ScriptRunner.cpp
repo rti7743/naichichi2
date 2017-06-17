@@ -11,6 +11,7 @@
 #include "SystemMisc.h"
 #include "XLGISAddress.h"
 #include "MultiRoomUtil.h"
+#include "NetDevice.h"
 
 #if _MSC_VER
 	#pragma comment(lib, "v8.lib")
@@ -214,6 +215,10 @@ bool ScriptRunner::CreateV8Instance(const string& source)
 
 	this->V8Global->Set(v8::String::New("multiroom_list"),v8::FunctionTemplate::New(v8_multiroom_list));
 	this->V8Global->Set(v8::String::New("multiroom_fire"),v8::FunctionTemplate::New(v8_multiroom_fire));
+
+	this->V8Global->Set(v8::String::New("netdevice_list"),v8::FunctionTemplate::New(v8_netdevice_list));
+	this->V8Global->Set(v8::String::New("netdevice_get"),v8::FunctionTemplate::New(v8_netdevice_get));
+	this->V8Global->Set(v8::String::New("netdevice_set"),v8::FunctionTemplate::New(v8_netdevice_set));
 
 	// Create a new context.
 	//Persistent<Context> context = Context::New();
@@ -1337,6 +1342,129 @@ v8::Handle<v8::Value> ScriptRunner::v8_multiroom_fire(const v8::Arguments& args)
 	}
 
 	return v8::Boolean::New(true);
+}
+
+v8::Handle<v8::Value> ScriptRunner::v8_netdevice_list(const v8::Arguments& args) 
+{
+	DEBUGLOG(string() + "js function:netdevice_list"  );
+	ScriptRunner* _this = g_ScriptRunner_This;
+
+	NetDevice netdev;
+	if (args.Length() < 0)
+	{//netdevice_list() 一覧の取得
+		std::list<string> l = netdev.GetAll(0);
+
+		v8::Local<v8::Array> arrayV8 = v8::Array::New(l.size());
+		unsigned countI = 0;
+		for(auto it = l.begin(); it != l.end(); it++)
+		{
+			auto objectV8 = v8::String::New( (*it).c_str() );
+			arrayV8->Set( v8::Uint32::New(countI) , objectV8 );
+			countI++;
+		}
+		return arrayV8;
+	}
+	else if (args.Length() < 1)
+	{//netdevice_list("機材") 機材のパラメタの一覧の取得
+		const string p1 = ToStdString(args[0]->ToString());
+		std::list<string> l = netdev.GetSetActionAll(p1);
+
+		v8::Local<v8::Array> arrayV8 = v8::Array::New(l.size());
+		unsigned countI = 0;
+		for(auto it = l.begin(); it != l.end(); it++)
+		{
+			auto objectV8 = v8::String::New( (*it).c_str() );
+			arrayV8->Set( v8::Uint32::New(countI) , objectV8 );
+			countI++;
+		}
+		return arrayV8;
+	}
+	else if ( args[1]->IsString() )
+	{//netdevice_list("機材","機能") 機材のパラメタの一覧の取得
+		const string p1 = ToStdString(args[0]->ToString());
+		const string p2 = ToStdString(args[1]->ToString());
+		std::list<string> l = netdev.GetSetValueAll(p1,p2);
+
+		v8::Local<v8::Array> arrayV8 = v8::Array::New(l.size());
+		unsigned countI = 0;
+		for(auto it = l.begin(); it != l.end(); it++)
+		{
+			auto objectV8 = v8::String::New( (*it).c_str() );
+			arrayV8->Set( v8::Uint32::New(countI) , objectV8 );
+			countI++;
+		}
+		return arrayV8;
+	}
+	else
+	{
+		const string ee = "netdevice_list() netdevice_list(\"機材\") netdevice_list(\"機材\",\"機能\")";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+}
+
+v8::Handle<v8::Value> ScriptRunner::v8_netdevice_set(const v8::Arguments& args) 
+{
+	DEBUGLOG(string() + "js function:netdevice_set"  );
+	ScriptRunner* _this = g_ScriptRunner_This;
+
+	if (args.Length() < 3)
+	{
+		const string ee = "netdevice_setには3つ以上の引数が必要です";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+
+	if (! args[0]->IsString() )
+	{
+		const string ee = "netdevice_setの第一引数が文字列ではありません";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+	if (! args[1]->IsString() )
+	{
+		const string ee = "netdevice_setの第二引数が文字列ではありません";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+	if (! args[2]->IsString() )
+	{
+		const string ee = "netdevice_setの第三引数が文字列ではありません";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+
+	const string p1 = ToStdString(args[0]->ToString());
+	const string p2 = ToStdString(args[1]->ToString());
+	const string p3 = ToStdString(args[2]->ToString());
+
+	NetDevice netdev;
+	bool r = netdev.Fire(p1,p2,p3);
+	return v8::Boolean::New(r);
+}
+v8::Handle<v8::Value> ScriptRunner::v8_netdevice_get(const v8::Arguments& args) 
+{
+	DEBUGLOG(string() + "js function:netdevice_get"  );
+	ScriptRunner* _this = g_ScriptRunner_This;
+
+	if (args.Length() < 2)
+	{
+		const string ee = "netdevice_getには2つ以上の引数が必要です";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+
+	if (! args[0]->IsString() )
+	{
+		const string ee = "netdevice_getの第一引数が文字列ではありません";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+	if (! args[1]->IsString() )
+	{
+		const string ee = "netdevice_getの第二引数が文字列ではありません";
+		return v8::ThrowException(v8::String::New(_A2U(ee.c_str() )));
+	}
+
+	const string p1 = ToStdString(args[0]->ToString());
+	const string p2 = ToStdString(args[1]->ToString());
+
+	NetDevice netdev;
+	std::string ret = netdev.Pickup(p1,p2);
+	return v8::String::New(ret.c_str() );
 }
 
 
