@@ -86,3 +86,19 @@ string NetDevice::Pickup(const string& name,const string& action)
 
 	return false;
 }
+
+list<string> NetDevice::GetGetActionAll(const string& name)
+{
+	if ( EcoNetLite.IsThisDevice(name) )
+	{
+		return EcoNetLite.GetGetActionAll(name);
+	}
+	if ( Wemo.IsThisDevice(name) )
+	{
+		return Wemo.GetGetActionAll(name);
+	}
+
+	list<string> ret;
+	return ret;
+}
+

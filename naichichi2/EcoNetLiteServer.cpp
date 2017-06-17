@@ -24,6 +24,7 @@ EcoNetLiteServer::~EcoNetLiteServer()
 
 	Stop();
 	DeleteList(&this->MappingList);
+	DeleteList(&this->TidWatch);
 
 	DEBUGLOG("done");
 }
@@ -88,11 +89,6 @@ void EcoNetLiteServer::EcoNetLiteThreadMain()
 		NOTIFYLOG("ECONETLITE " << XLDebugUtil::HexDump(buffer,size) );
 
 		const string ip = inet_ntoa(senderinfo.sin_addr);
-		if (size < sizeof(EcoNetLiteData)-1 )
-		{
-			continue;
-		}
-
 		const EcoNetLiteData* data = (EcoNetLiteData*)buffer;
 		if (!(data->header[0] == 0x10 && data->header[1] == 0x81))
 		{
@@ -360,7 +356,7 @@ void EcoNetLiteServer::sendSetRequest(const string& ip,const EcoNetLiteObjCode& 
 }
 
 //値の取得 値が取れたらcallbackする
-void EcoNetLiteServer::sendGetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,ECONETLITESERVER_TIDCALLBACK& callback)
+unsigned short EcoNetLiteServer::sendGetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,ECONETLITESERVER_TIDCALLBACK& callback)
 {
 	XLSocket socket;
 	socket.CreateUDP(1); //返事は期待していないので1秒だけ聞いてやる
@@ -387,6 +383,8 @@ void EcoNetLiteServer::sendGetRequest(const string& ip,const EcoNetLiteObjCode& 
 	data.edt_1 = 0;
 
 	socket.SendTo( (const char*) &data , sizeof(data) - 1, 0 , &addr , sizeof(addr) );
+
+	return tid;
 }
 
 bool EcoNetLiteServer::FindLow(const string& ip,const EcoNetLiteObjCode& deoj,EcoNetLiteMap** outM)
@@ -622,8 +620,32 @@ void EcoNetLiteServer::DoCallback(const EcoNetLiteData* data,const char* buffer,
 				auto nextIT = it;
 				nextIT++;
 				(*it)->callback(data,buffer,size);
-				this->TidWatch.erase(it);
 				delete (*it);
+				this->TidWatch.erase(it);
+
+				it = nextIT;
+			}
+			else
+			{
+				it++;
+			}
+		}
+	}
+}
+
+//tid watch から消す.
+void EcoNetLiteServer::EraseTidWatch(unsigned short tid)
+{
+	volatile lock_guard<mutex> al(this->lock);
+	{
+		for(auto it = this->TidWatch.begin() ; it != this->TidWatch.end(); )
+		{
+			if ( (*it)->tid == tid )
+			{
+				auto nextIT = it;
+				nextIT++;
+				delete (*it);
+				this->TidWatch.erase(it);
 
 				it = nextIT;
 			}

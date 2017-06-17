@@ -84,7 +84,9 @@ public:
 	//リクエストの送信.UDPなので結果は不定.
 	void sendSetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,unsigned char valueUC);
 	//値の取得 値が取れたらcallbackする
-	void sendGetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,ECONETLITESERVER_TIDCALLBACK& callback);
+	unsigned short sendGetRequest(const string& ip,const EcoNetLiteObjCode& deoj,unsigned char propUC,ECONETLITESERVER_TIDCALLBACK& callback);
+	//tid watch から消す.
+	void EraseTidWatch(unsigned short tid);
 	static void ParseDataList(const EcoNetLiteData* data,const char* buffer,int size,list<unsigned char>* outValues);
 
 private:

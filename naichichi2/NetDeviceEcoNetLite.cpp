@@ -910,16 +910,19 @@ string NetDeviceEcoNetLite::Pickup(const string& name,const string& action )
 		}
 	};
 
-	MainWindow::m()->EcoNetLiteServer.sendGetRequest(m.ip,m.deoj,prop,callback);
+	unsigned short tid = 
+		MainWindow::m()->EcoNetLiteServer.sendGetRequest(m.ip,m.deoj,prop,callback);
 
 	//更新されるまで待つ.
 	for(int i = 0 ; i < 20 ; i ++)
 	{
 		if (isUpdate)
 		{
-			break;
+			return ret;
 		}
 		MiriSleep(100);
 	}
+
+	MainWindow::m()->EcoNetLiteServer.EraseTidWatch(tid);
 	return ret;
 }

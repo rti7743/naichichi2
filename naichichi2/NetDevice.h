@@ -19,6 +19,7 @@ public:
 	list<string> GetAll(unsigned int searchtime);
 	list<string> GetSetActionAll(const string& name);
 	list<string> GetSetValueAll(const string& name,const string& action);
+	list<string> GetGetActionAll(const string& name);
 	bool Fire(const string& name,const string& action,const string& value);
 	string Pickup(const string& name,const string& action);
 
