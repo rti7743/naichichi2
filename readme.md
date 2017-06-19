@@ -64,9 +64,11 @@ sh build.sh
 
 or  
 
-sh build.sh arm  
-sh build.sh x86  
-sh build.sh ia32  
+sh build.sh beagle      //beaglebone用
+sh build.sh raspberrypi //raspberrypi用
+sh build.sh x86         //x86用
+sh build.sh ia32        //ia32用
+sh build.sh arm         //arm用
 
 長い長いコンパイルが終わったら、  
 
