@@ -127,4 +127,10 @@ https://rti-giken.jp/fhc/help/ref/setting_webapi.html
 https://rti-giken.jp/  
 
 
+バイナリコンパイルが苦手なフレンズのためにバイナリもあるよ
+=============
+詳細はこちら
+https://rti-giken.jp/update/219/
+
+
 作者 :: rti (rti@rti-giken.jp)  
