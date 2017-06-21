@@ -46,7 +46,8 @@ static unsigned int IRRecvBufferIndex = 0;
 
 static void* DMTIMERMemory = NULL;
 
-#define IR_RECV_GPIO_PIN 21
+//#define IR_RECV_GPIO_PIN 21
+#define IR_RECV_GPIO_PIN 9
 
 //IR受信のGPIO_to_IRQ
 static u16 IRRecvGPIO = 0; //GPIOを初期化したかのフラグ
