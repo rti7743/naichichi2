@@ -317,7 +317,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 	bool enable = MainWindow::m()->Config.GetBool(prefix + "_enable",false);
 	if (!enable)
 	{//無効なイベント
-		DEBUGLOG("トリガー(" << prefix << ")は無効です");
+		NOTIFYLOG("トリガー(" << prefix << ")は無効です");
 		return false;
 	}
 
@@ -330,12 +330,12 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 		const string elec_expr   = MainWindow::m()->Config.Get(prefix + "_if_elec_expr","");
 		const string now_status = ScriptRemoconWeb::getElecStatus(elec_type);
 
-		DEBUGLOG("トリガー(" << prefix << ")は家電を条件に使います 家電(" << elec_type << ")がステータス(" << elec_action << ")に("<<elec_expr<<")であるが、今は (" << now_status << ")です");
+		NOTIFYLOG("トリガー(" << prefix << ")は家電を条件に使います 家電(" << elec_type << ")がステータス(" << elec_action << ")に("<<elec_expr<<")であるが、今は (" << now_status << ")です");
 		if ( elec_expr == "equal" )
 		{
 			if(elec_action != now_status)
 			{
-				DEBUGLOG("トリガー(" << prefix << ")で、家電(" << elec_type <<")のステータス(" << elec_action << ")になっていることが期待されますが、今は (" << now_status << ")です");
+				NOTIFYLOG("トリガー(" << prefix << ")で、家電(" << elec_type <<")のステータス(" << elec_action << ")になっていることが期待されますが、今は (" << now_status << ")です");
 				return false;
 			}
 		}
@@ -343,7 +343,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 		{
 			if(elec_action == now_status)
 			{
-				DEBUGLOG("トリガー(" << prefix << ")で、家電(" << elec_type <<")のステータス(" << elec_action << ")になっていないことが期待されますが、今は (" << now_status << ")です");
+				NOTIFYLOG("トリガー(" << prefix << ")で、家電(" << elec_type <<")のステータス(" << elec_action << ")になっていないことが期待されますが、今は (" << now_status << ")です");
 				return false;
 			}
 		}
@@ -356,11 +356,11 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 		const string stopper_minute   = MainWindow::m()->Config.Get(prefix + "_if_stopper_minute","");
 		time_t value = now + MIN(atoi(stopper_minute)*60,60);
 		time_t lastfire = atou(lastFireTime);
-		DEBUGLOG("トリガー(" << prefix << ")は次回からN(" << stopper_minute<< ")分たっている必要がります 前回(" << XLStringUtil::timetostr( lastfire ) << ")動作していて、今回は(" << XLStringUtil::timetostr( value ) << ")でないとダメです");
+		NOTIFYLOG("トリガー(" << prefix << ")は次回からN(" << stopper_minute<< ")分たっている必要がります 前回(" << XLStringUtil::timetostr( lastfire ) << ")動作していて、今回は(" << XLStringUtil::timetostr( value ) << ")でないとダメです");
 
 		if ( lastfire > value )
 		{//まだ発動したらダメ
-			DEBUGLOG("トリガー(" << prefix << ")は、前回(" << XLStringUtil::timetostr( lastfire ) << ")に発動しているので、次の発動は(" << XLStringUtil::timetostr( value ) << ")です。まだです。");
+			NOTIFYLOG("トリガー(" << prefix << ")は、前回(" << XLStringUtil::timetostr( lastfire ) << ")に発動しているので、次の発動は(" << XLStringUtil::timetostr( value ) << ")です。まだです。");
 			return false;
 		}
 	}
@@ -372,13 +372,13 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 		const unsigned int trigger_if_sound_value = MainWindow::m()->Config.GetInt(prefix + "_if_sound_value",2);
 		const string trigger_if_sound_expr = MainWindow::m()->Config.Get(prefix + "_if_sound_expr","equal");
 		const float sensor_sound = MainWindow::m()->Config.GetDouble("sensor_sound_value",0.0f);
-		DEBUGLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")で "<<trigger_if_sound_expr<<" ある必要があります。");
+		NOTIFYLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")で "<<trigger_if_sound_expr<<" ある必要があります。");
 
 		if ( trigger_if_sound_expr == "equal" )
 		{
 			if (sensor_sound < trigger_if_sound_value)
 			{
-				DEBUGLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")以下なので起動しません。");
+				NOTIFYLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")以下なので起動しません。");
 				return false;
 			}
 		}
@@ -386,7 +386,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 		{
 			if (sensor_sound > trigger_if_sound_value)
 			{
-				DEBUGLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")以上なので起動しません。");
+				NOTIFYLOG("トリガー(" << prefix << ")は、近くに人がいるセンサー(" << sensor_sound << ")が、基準値(" << trigger_if_sound_value << ")以上なので起動しません。");
 				return false;
 			}
 		}
@@ -408,7 +408,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 
 		const string weather = retmap["weather"];
 
-		DEBUGLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")であるかチェックします。コマンド戻り値("<<weatherResult<<")  stdout:("<< stdout_ <<")");
+		NOTIFYLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")であるかチェックします。コマンド戻り値("<<weatherResult<<")  stdout:("<< stdout_ <<")");
 		if (trigger_if_weather_value == "rain")
 		{
 			if ( (weather == "rain" || weather == "snow") )
@@ -416,7 +416,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 			}
 			else
 			{
-				DEBUGLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")ではありませんでした");
+				NOTIFYLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")ではありませんでした");
 				return false;
 			}
 		}
@@ -427,7 +427,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 			}
 			else
 			{
-				DEBUGLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")ではありませんでした");
+				NOTIFYLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ")が 値(" << weather << ")ではありませんでした");
 				return false;
 			}
 		}
@@ -441,7 +441,7 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 				}
 				else
 				{
-					DEBUGLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ") 、値(" << next << ")ではありません");
+					NOTIFYLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ") 、値(" << next << ")ではありません");
 					return false;
 				}
 			}
@@ -452,14 +452,14 @@ bool ScriptWebRunnerTrigger::triggerCheckExIf(const string& prefix,const time_t&
 				}
 				else
 				{
-					DEBUGLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ") 、値(" << next << ")ではありません");
+					NOTIFYLOG("トリガー(" << prefix << ")は、天気(" << trigger_if_weather_value << ") 、値(" << next << ")ではありません");
 					return false;
 				}
 			}
 		}
 	}
 
-	DEBUGLOG("トリガー(" << prefix << ")追加発動条件はOKです。発動出来ます。");
+	NOTIFYLOG("トリガー(" << prefix << ")追加発動条件はOKです。発動出来ます。");
 	return true;
 }
 
@@ -525,8 +525,9 @@ void ScriptWebRunnerTrigger::triggerFire(int triggerkey,const time_t& now)
 {
 	const string prefix = "trigger_" + num2str(triggerkey) ;
 	//実行した時刻を記録
+	string last_fire = MainWindow::m()->Config.Get(prefix + "_lastfire" );
 	MainWindow::m()->Config.Set(prefix + "_lastfire",num2str(now) );
-	DEBUGLOG("トリガー " << triggerkey << " を実行します");
+	NOTIFYLOG("トリガー " << triggerkey << " 時刻:" << num2str(now) << " 前回発動:" << last_fire << " を実行します");
 
 	//読み上げ処理
 	const string tospeak_select = MainWindow::m()->Config.Get(prefix + "_then_tospeak_select","");
@@ -630,7 +631,7 @@ bool ScriptWebRunnerTrigger::convertTriggerDateWeekDay(const time_t& now,int day
 		{//祝日を除く
 			if (is_holiday)
 			{
-				DEBUGLOG("祝日を除く日に動作するオプションで、今日は祝日です");
+				NOTIFYLOG("祝日を除く日に動作するオプションで、今日は祝日です");
 				return false;
 			}
 		}
@@ -638,7 +639,7 @@ bool ScriptWebRunnerTrigger::convertTriggerDateWeekDay(const time_t& now,int day
 		{//祝日のみ
 			if (!is_holiday)
 			{
-				DEBUGLOG("祝日のみ動作するオプションで、今は祝日ではありません");
+				NOTIFYLOG("祝日のみ動作するオプションで、今は祝日ではありません");
 				return false;
 			}
 		}

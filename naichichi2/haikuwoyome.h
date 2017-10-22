@@ -27,8 +27,6 @@
 #include <windows.h>
 #include <DbgHelp.h>
 #pragma comment(lib, "DbgHelp.lib")
-#include <time.h>
-
 #else
 #include <execinfo.h>
 #include <signal.h>
@@ -126,7 +124,7 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 {
 	int fd = open(filename.c_str(),O_RDONLY);
 	if (fd < 0)
-	{//ファイルを開けない.
+	{
 		return false;
 	}
 
@@ -136,12 +134,12 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 	Elf_Sym  sym;
 	int r = read(fd,&ehdr,sizeof(ehdr));
 	if (r < 0)
-	{//ファイル先頭のELFヘッダを読み込めない。
+	{
 		close(fd);
 		return false;
 	}
 	if ( memcmp(ehdr.e_ident,ELFMAG,SELFMAG) != 0 )
-	{//ELF文字の確認。
+	{//can not elf
 		close(fd);
 		return false;
 	}
@@ -180,7 +178,7 @@ static bool ElfToSymbol(const std::string& filename,Elf_Addr addr,std::string* o
 			}
 
 			if (addr < sym.st_value || addr >= sym.st_value  + sym.st_size )
-			{//探しているアドレスではない
+			{
 				continue;
 			}
 			//found.
@@ -219,7 +217,7 @@ static std::string getSelfEXEPath()
 	}
 #else
 	char buffer[256] = {0};
-	int r = readlink("/proc/self/exe", buffer, 255); 
+	int r = readlink("/proc/self/exe", buffer, 256); 
 	if (r < 0)
 	{
 		return "";
@@ -244,24 +242,21 @@ static std::string BackTrace(void** stack,int length)
 	{
 		return BackTraceNoSymbol(stack,length);
 	}
-	symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
-	symbol->MaxNameLen = MAX_SYM_NAME;
 
 	for(int i = 0; i < length; i++)
 	{
-		DWORD64 displacement = 0;
-		if ( SymFromAddr(process,(DWORD64) stack[i], &displacement, symbol) )
+		if ( SymFromAddr(process,(DWORD64) stack[i], NULL, symbol) )
 		{
 			out << symbol->Name << " ";
 
-			IMAGEHLP_LINE64 line = { sizeof(IMAGEHLP_LINE64) };
-			if ( SymGetLineFromAddr64(process, (DWORD64) stack[i],(PDWORD)&displacement,&line) )
+			IMAGEHLP_LINE line;
+			if ( SymGetLineFromAddr(process, (DWORD64) stack[i],NULL,&line) )
 			{
 				out << line.FileName << ":" << line.LineNumber;
 			}
 			else
 			{
-				out << "???";
+				out << "???" ;
 			}
 		}
 		else
@@ -433,14 +428,14 @@ static std::string StoreMiniDump(PEXCEPTION_POINTERS pep = NULL,const std::strin
 	std::string fullname = filename;
 	if (fullname.empty())
 	{
+		//自プロセスへのパス
 		const std::string myprocess = getSelfEXEPath();
 		time_t time = ::time(NULL);
-		struct tm date ;
-		localtime_s(&date, &time);
+		struct tm *date = localtime(&time);
 
 		char buf[MAX_PATH];
 		_snprintf_s(buf, MAX_PATH, _TRUNCATE, "%s.%04d%02d%02d_%02d%02d%02d.dmp",myprocess.c_str(),
-			date.tm_year + 1900,date.tm_mon + 1,date.tm_mday,date.tm_hour,date.tm_min,date.tm_sec);
+			date->tm_year + 1900,date->tm_mon + 1,date->tm_mday,date->tm_hour,date->tm_min,date->tm_sec);
 		fullname = buf;
 	}
 
@@ -542,16 +537,42 @@ static const char* ConvertSigToString(int sig)
 	}
 	return "NAZO";
 }
+static std::string get_thread_name()
+{
+	char name[256]={0};
+	pthread_getname_np(pthread_self(), name, 255);
+	return name;
+}
 
-static void OnSignalFunction(int sig)
+#include <ucontext.h>
+static std::string DumpContext(void* context)
+{
+	void* stack[1];
+
+#if (__arm__)
+	stack[0] =(void*) ((ucontext_t*)context)->uc_mcontext.arm_pc;
+#elif (__x86_64__)
+	stack[0] =(void*) ((ucontext_t*)context)->uc_mcontext.gregs[REG_RIP];
+#else
+	stack[0] =(void*) ((ucontext_t*)context)->uc_mcontext.gregs[REG_EIP];
+#endif
+	return BackTrace(stack,1);
+}
+
+static void OnSigactionFunction(int sig,siginfo_t* info,void* context)
 {
 	std::stringstream out;
 	out << "=HAIKU=============================================" << std::endl;
 	out << "backtrace:" <<  std::endl;
-	out << BackTrace() << std::endl;
+//	out << BackTrace() << std::endl;
 
 	out << "signal: " << sig << " (" << ConvertSigToString(sig) << ")" << std::endl;
-	out << "process_id: " << getpid() << " thread_id:" << gettid() << std::endl;
+	out << "si_errno: " << info->si_errno << " si_code:" << info->si_code << std::endl;
+	out << "access address: " << info->si_addr << std::endl;
+	out << "process_id: " << getpid() << std::endl;
+	out << "thread_id:" << gettid() << " name:" << get_thread_name() << std::endl;
+//	out << DumpContext(context) << std::endl;
+
 	out << "===================================================" << std::endl;
 	HAIKU_WO_YOME_OUTPUT_STDERR( out.str().c_str() );
 
@@ -575,10 +596,25 @@ static void KaisyakuShiteYaru()
 	SetUnhandledExceptionFilter(OnHaikuFunction);
 #else
 	std::set_terminate(OnHaikuFunction);
-	signal(SIGSEGV, &OnSignalFunction);
-	signal(SIGILL,  &OnSignalFunction);
-	signal(SIGFPE,  &OnSignalFunction);
-	signal(SIGBUS,  &OnSignalFunction);
+	struct sigaction SIGSEGV_action= {0};
+	SIGSEGV_action.sa_sigaction = OnSigactionFunction;
+	SIGSEGV_action.sa_flags = SA_SIGINFO;
+	sigaction(SIGSEGV,&SIGSEGV_action,NULL);
+
+	struct sigaction SIGILL_action= {0};
+	SIGILL_action.sa_sigaction = OnSigactionFunction;
+	SIGILL_action.sa_flags = SA_SIGINFO;
+	sigaction(SIGILL,&SIGILL_action,NULL);
+
+	struct sigaction SIGFPE_action= {0};
+	SIGFPE_action.sa_sigaction = OnSigactionFunction;
+	SIGFPE_action.sa_flags = SA_SIGINFO;
+	sigaction(SIGFPE,&SIGFPE_action,NULL);
+
+	struct sigaction SIGBUS_action= {0};
+	SIGBUS_action.sa_sigaction = OnSigactionFunction;
+	SIGBUS_action.sa_flags = SA_SIGINFO;
+	sigaction(SIGBUS,&SIGBUS_action,NULL);
 #endif
 }
 

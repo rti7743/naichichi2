@@ -26,7 +26,6 @@ public:
 
 private:
 	string ResolveName(const string& name);
-	unsigned int ResolveAction(const string& action);
 	string GetNameDisp(const UPNPMap &upnp,const string& xml);
 
 };

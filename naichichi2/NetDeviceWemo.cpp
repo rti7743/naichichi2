@@ -8,6 +8,7 @@
 #include "XLGZip.h"
 #include "SystemMisc.h"
 #include "XLHttpSocket.h"
+#include "NetDevice.h"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -19,14 +20,14 @@ bool NetDeviceWemo::IsThisDevice(const string& name)
 }
 string NetDeviceWemo::ResolveName(const string& name)
 {
-	return XLStringUtil::cut(name,"(wemo://",")",NULL);
-}
-unsigned int NetDeviceWemo::ResolveAction(const string& action)
-{
-	unsigned int i=0;
-	string a = XLStringUtil::cut(action,"(#",")",NULL);
-	sscanf(a.c_str(),"%02x",&i);
-	return i;
+	//wemo://x.x.x.x かな・・・？
+	const string id = XLStringUtil::cut(name,"wemo://","",NULL);
+	if (! id.empty())
+	{
+		return id;
+	}
+	//それでもダメならあきらめる
+	return "";
 }
 
 string NetDeviceWemo::GetNameDisp(const UPNPMap &upnp,const string& xml)
@@ -83,8 +84,8 @@ bool NetDeviceWemo::Fire(const string& name,const string& action,const string& v
 		return false;
 	}
 
-	unsigned int actionU = ResolveAction(action);
-	unsigned int valueU = ResolveAction(value);
+	unsigned int actionU = NetDevice::ResolveValueName(action);
+	unsigned int valueU = NetDevice::ResolveValueName(value);
 	
 	if (actionU == 0x00)
 	{//POWER

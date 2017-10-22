@@ -24,6 +24,7 @@ void HttpWorker::Create()
 	this->StopFlag = false;
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("HttpWorker");
 		this->WorkThreadMain(); 
 	});
 }
@@ -344,8 +345,8 @@ void HttpWorker::WorkThreadMain()
 void HttpWorker::WorkHTTP1_1()
 {
 	ASSERT(this->ConnectSocket);
-	//タイムアウト10秒
-	this->ConnectSocket->SetTimeout(10);
+	//タイムアウト5秒
+	this->ConnectSocket->SetTimeout(5);
 
 	bool doContinue = false;
 
@@ -363,7 +364,8 @@ void HttpWorker::WorkHTTP1_1()
 		catch(XLException& e)
 		{
 			doContinue = false;
-			ERRORLOG("HTTPワーカー実行中に例外が投げられました。 " << e.what());
+			ERRORLOG("HTTPワーカー実行中に例外が投げられました。 " );
+			ERRORLOG(e.what());
 		}
 
 		//パイプライン転送を行います
@@ -679,7 +681,16 @@ void HttpServer::Create()
 	//acceptスレッド作成.
 	DEBUGLOG("httpd worker thread...");
 	this->Thread = new thread([=](){
-		this->acceptThreadMain(threadcount); 
+		try
+		{
+			XLDebugUtil::SetThreadName("HttpacceptThread");
+			this->acceptThreadMain(threadcount); 
+		}
+		catch(XLException& e)
+		{
+			ERRORLOG("HttpacceptThreadでException" << e.what() );
+			throw;
+		}
 	});
 	
 }
@@ -817,7 +828,7 @@ string HttpServer::procCookie(const XLHttpHeader& httpHeaders, const string& coo
 	// 1/4096 のタイミングで GCを動かす
 	if ( (now % 4096) == 0)
 	{
-		DEBUGLOG("クッキーのGCを動かします");
+		NOTIFYLOG("クッキーのGCを動かします");
 
 		time_t gctime = now;
 		//指定時間より前のものを消す
@@ -828,7 +839,7 @@ string HttpServer::procCookie(const XLHttpHeader& httpHeaders, const string& coo
 			const time_t t = XLFileUtil::getfiletime(fullfilename);
 			if (t < gctime )
 			{
-				DEBUGLOG("GCでクッキーを消します: " << fullfilename );
+				NOTIFYLOG("GCでクッキーを消します: " << fullfilename );
 				XLFileUtil::del(fullfilename);
 			}
 
@@ -838,8 +849,8 @@ string HttpServer::procCookie(const XLHttpHeader& httpHeaders, const string& coo
 	//cookie名の検証
 	if ( ! (XLStringUtil::checkSafePath(cookie) && XLStringUtil::checkSafePath(host)) )
 	{
-		DEBUGLOG("クッキー:" << cookie << "は危険な名前です");
-		DEBUGLOG("ヘッダー情報" << httpHeaders.Build() );
+		ERRORLOG("クッキー:" << cookie << "は危険な名前です");
+		ERRORLOG("ヘッダー情報" << httpHeaders.Build() );
 		return "";
 	}
 
@@ -848,8 +859,8 @@ string HttpServer::procCookie(const XLHttpHeader& httpHeaders, const string& coo
 	auto fp = fopen(fullname.c_str(),"rb");
 	if (!fp)
 	{
-		DEBUGLOG("クッキー:" << cookie << " file:(" << filename << ")が存在しません");
-		DEBUGLOG("ヘッダー情報" << httpHeaders.Build() );
+		ERRORLOG("クッキー:" << cookie << " file:(" << filename << ")が存在しません");
+		ERRORLOG("ヘッダー情報" << httpHeaders.Build() );
 		return "";
 	}
 

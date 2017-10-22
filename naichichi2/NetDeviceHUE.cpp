@@ -21,12 +21,23 @@ bool NetDeviceHUE::IsThisDevice(const string& name)
 }
 string NetDeviceHUE::ResolveName(const string& name)
 {
-	return XLStringUtil::cut(name,"(hue://",")",NULL);
+	//(hue://x.x.x.x@123)ではなければ、 hue://@123 かな・・・？
+	const string id = XLStringUtil::cut(name,"hue://","",NULL);
+	if (! id.empty())
+	{
+		return id;
+	}
+	//それでもダメならあきらめる
+	return "";
 }
 unsigned int NetDeviceHUE::ResolveAction(const string& action)
 {
 	unsigned int i=0;
 	string a = XLStringUtil::cut(action,"(#",")",NULL);
+	if(a.empty())
+	{
+		a = action;
+	}
 	sscanf(a.c_str(),"%02x",&i);
 	return i;
 }
@@ -79,50 +90,5 @@ list<string> NetDeviceHUE::GetValueAll(const string& name,const string& action)
 
 bool NetDeviceHUE::Fire(const string& name,const string& action,const string& value,string* outSTD)
 {
-	string uuid = ResolveName(name);
-
-	UPNPMap m;
-	bool r = MainWindow::m()->UPNPServer.GetSimple(uuid,&m);
-	if (!r)
-	{
-		return false;
-	}
-
-	unsigned int actionU = ResolveAction(action);
-	unsigned int valueU = ResolveAction(value);
-	
-	if (actionU == 0x00)
-	{//POWER
-		string sw;
-		if (valueU == 0x01)
-		{//ON
-			sw = "1";
-		}
-		else
-		{//OFF
-			sw = "0";
-		}
-		string url = XLStringUtil::hosturl(m.location) 
-			+ "/upnp/control/basicevent1";
-		string postdata = 
-			string() +
-			"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-			"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n" +
-			" <s:Body>\n" +
-			"  <u:SetBinaryState xmlns:u=\"urn:Belkin:service:basicevent:1\">\n" + // 対象の Action を指定
-			"   <BinaryState>" + sw + "</BinaryState>\n" + // ON/OFF を 1/0 で指定
-			"  </u:SetBinaryState>\n" +
-			" </s:Body>\n" +
-			"</s:Envelope>\n";
-
-		map<string,string> header;
-		header["User-Agent"] = "CyberGarage-HTTP/1.0"; // iPhone App と同じ User-Agent
-		header["SOAPACTION"] = "\"urn:Belkin:service:basicevent:1#SetBinaryState\"";
-		header["Content-Type"] = "text/xml; charset=\"utf-8\"";
-
-		string ret = XLHttpSocket::Post(url,header,5,postdata.c_str() , postdata.size() );
-		
-		return true;
-	}
 	return false;
 }

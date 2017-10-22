@@ -36,6 +36,7 @@ void UPNPServer::Create()
 	DEBUGLOG("upnp server...");
 	this->UPNPThread = new thread([=](){
 #if WITH_CLIENT_ONLY_CODE==1
+		XLDebugUtil::SetThreadName("UPNPServer");
 		this->upnpThreadMain(); 
 #endif //WITH_CLIENT_ONLY_CODE==1
 	});
@@ -155,6 +156,7 @@ void UPNPServer::GetAll(list<UPNPMap>* outRet)
 	volatile lock_guard<mutex> al(this->lock);
 	for(auto it = this->MappingList.begin() ; it!=this->MappingList.end() ; it++)
 	{
+		NOTIFYLOG("UPNP FOUND :" << (*it)->ip << " " << (*it)->uuid );
 		outRet->push_back( *(*it) );
 	}
 }

@@ -7,6 +7,7 @@
 #include "XLFileUtil.h"
 #include "XLHttpSocket.h"
 #include "XLGZip.h"
+#include "ScriptRemoconWeb.h"
 
 ColudSyncPooling::ColudSyncPooling()
 {
@@ -41,6 +42,7 @@ void ColudSyncPooling::Create(const string& serverurl,const string& id,const str
 	this->isWakeupFlag = false;
 	
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("ColudSyncPooling");
 		this->ThreadMain(); 
 	});
 
@@ -310,6 +312,8 @@ bool ColudSyncPooling::RunOpline(const string& opline)
 	{
 		//温度と明るさのセンサーの値を更新する
 		MainWindow::m()->Sensor.getSensorNow();
+		ScriptRemoconWeb::SettingPageIPAddressOverriade(true);
+
 		//configの保存
 		MainWindow::m()->SyncInvoke([=](){
 			MainWindow::m()->Config.overrideSave();
@@ -318,6 +322,7 @@ bool ColudSyncPooling::RunOpline(const string& opline)
 		MainWindow::m()->ColudSyncPooling.WakeupSyncConfigByconfig();
 		return true;
 	}
+/*
 	else if (opcode[0] == "sip_call")
 	{
 		if (opcode.size() <= 1)
@@ -348,6 +353,7 @@ bool ColudSyncPooling::RunOpline(const string& opline)
 		MainWindow::m()->SipServer.HideNumpad();
 		return true;
 	}
+*/
 	else if (opcode[0] == "BAD")
 	{
 		//エラーが発生

@@ -36,6 +36,8 @@ CallbackPP ScriptWebRunnerRecogn::NewCallback(std::function<void (void) > f)
 //音声認識イベントのリセット
 void ScriptWebRunnerRecogn::ReloadRecong(bool doAutoCommit)
 {
+	NOTIFYLOG("recogn reload");
+
 	MainWindow::m()->SyncInvoke([&](){
 		for(auto it = this->CallbackList.begin() ; it != this->CallbackList.end() ; ++it)
 		{
@@ -86,12 +88,13 @@ void ScriptWebRunnerRecogn::ReloadRecong(bool doAutoCommit)
 
 	if (doAutoCommit)
 	{
-		DEBUGLOG("音声認識エンジンコミット開始" );
+		NOTIFYLOG("音声認識エンジンコミット開始" );
 		MainWindow::m()->SyncInvoke([](){
 			MainWindow::m()->Recognition.CommitRule();
 		});
-		DEBUGLOG("音声認識エンジンコミット終了" );
+		NOTIFYLOG("音声認識エンジンコミット終了" );
 	}
+	NOTIFYLOG("recogn reload end.");
 }
 
 bool ScriptWebRunnerRecogn::isrecongpauseMode(int key1,int key2) const

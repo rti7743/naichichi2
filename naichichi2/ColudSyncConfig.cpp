@@ -32,6 +32,7 @@ void ColudSyncConfig::Create(const string& serverurl)
 	this->isSync = false;
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("ColudSyncConfig");
 		this->ThreadMain(); 
 	});
 }

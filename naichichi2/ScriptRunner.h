@@ -169,7 +169,8 @@ private:
 	static v8::Handle<v8::Value> v8_netdevice_list(const v8::Arguments& args) ;
 	static v8::Handle<v8::Value> v8_netdevice_get(const v8::Arguments& args) ;
 	static v8::Handle<v8::Value> v8_netdevice_set(const v8::Arguments& args) ;
-	
+	static v8::Handle<v8::Value> v8_netdevice_value_to_int(const v8::Arguments& args) ;
+	static v8::Handle<v8::Value> v8_netdevice_int_to_value(const v8::Arguments& args) ;
 
 	//V8の文字列を 普通の文字列に変換
 	static string ToStdString(const v8::Local<v8::String>& v8str);

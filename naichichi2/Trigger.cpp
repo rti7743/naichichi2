@@ -27,6 +27,7 @@ void Trigger::Create()
 	this->StopFlag = false;
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("Trigger");
 		this->ThreadMain(); 
 	});
 }
@@ -133,6 +134,8 @@ void Trigger::OnSensorUpdate(float temp,float lumi)
 
 void Trigger::ThreadMain()
 {
+	const time_t BAD_TIME = 1000000000;
+	
 	this->SensorTemp = 0;
 	this->SensorLumi = 0;
 	while(1)
@@ -152,8 +155,14 @@ void Trigger::ThreadMain()
 			}
 
 			time_t now = time(NULL);
+
 			for(auto it = this->CronCallbackableTriggerList.begin() ; it != this->CronCallbackableTriggerList.end() ; ++it )
 			{
+				if (now < BAD_TIME)
+				{//時計が正しい時刻補正されていないので、トリガーを動かさない
+					NOTIFYLOG("時刻が補正されていないので、トリガーを動かせません now:" << now);
+					continue;
+				}
 				if ( now >= it->fireTime )
 				{
 					MainWindow::m()->ScriptManager.FireTrigger( it->callback);
@@ -164,6 +173,13 @@ void Trigger::ThreadMain()
 
 			for(auto it = this->AtCallbackableTriggerList.begin() ; it != this->AtCallbackableTriggerList.end() ;  )
 			{
+				if (now < BAD_TIME)
+				{//時計が正しい時刻補正されていないので、トリガーを動かさない
+					NOTIFYLOG("時刻が補正されていないので、トリガーを動かせません now:" << now);
+					++it;
+					continue;
+				}
+
 				if ( now >= it->fireTime )
 				{
 					MainWindow::m()->ScriptManager.FireTrigger(it->callback);

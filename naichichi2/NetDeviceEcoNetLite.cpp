@@ -7,6 +7,7 @@
 #include "XLFileUtil.h"
 #include "XLGZip.h"
 #include "SystemMisc.h"
+#include "NetDevice.h"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -18,20 +19,6 @@ string NetDeviceEcoNetLite::MakeActionName(const EcoNetLiteObjCode& deoj,const u
 	char name[512] = {0};
 	snprintf(name,512,"(#%02x)",prop);
 	return CodeToActionNameDisp(deoj,prop) + name;
-}
-unsigned char NetDeviceEcoNetLite::ResolveActionName(const string& name)
-{
-	unsigned int i = 0;
-	string a = XLStringUtil::cut(name,"(#",")",NULL);
-	sscanf(a.c_str(),"%02x",&i);
-	return (unsigned char) i;
-}
-unsigned char NetDeviceEcoNetLite::ResolveValueName(const string& name)
-{
-	unsigned int i = 0;
-	string a = XLStringUtil::cut(name,"(#",")",NULL);
-	sscanf(a.c_str(),"%02x",&i);
-	return (unsigned char)i;
 }
 
 string NetDeviceEcoNetLite::CodeToActionNameDisp(const EcoNetLiteObjCode& deoj,const unsigned char& prop)
@@ -708,12 +695,49 @@ string NetDeviceEcoNetLite::CodeToNameDisp(const EcoNetLiteObjCode& deoj)
 	return "NAZO";
 }
 
+string NetDeviceEcoNetLite::MakeValue(const EcoNetLiteObjCode& deoj,const unsigned char& prop,const std::list<unsigned char>& data)
+{
+	ASSERT( !data.empty() );
+
+	//16進数で値を求める. (#A0) or (#A0A0A0A0) 
+	std::string ret = "(#";
+	{
+		char name[4] = {0};
+		for(auto it = data.begin() ; it != data.end() ; it++ )
+		{
+			snprintf(name,4,"%02x",*it);
+			ret += name;
+		}
+	}
+	ret += ")";
+
+	if (data.size() == 1)
+	{//機能の名前がわかるならつけよう.
+		list<string> l;
+		if (! GetValue(deoj,prop,&l) )
+		{
+			for(auto it = l.begin() ; it != l.end() ; it++ )
+			{
+				if ( it->find(ret) != std::string::npos )
+				{
+					return *it;
+				}
+			}
+		}
+	}
+
+	return "NAZO" + ret;
+}
 
 string NetDeviceEcoNetLite::ResolveName(const string& name)
 {
-	int ip[4] = {0};
-	const string id = XLStringUtil::cut(name,"(enl://",")",NULL);
-	return id;
+	const string id = XLStringUtil::cut(name,"enl://","",NULL);
+	if (! id.empty())
+	{
+		return id;
+	}
+	//あきらめる
+	return "";
 }
 
 bool NetDeviceEcoNetLite::IsThisDevice(const string& name)
@@ -782,7 +806,7 @@ list<string> NetDeviceEcoNetLite::GetSetValueAll(const string& name,const string
 		return ret;
 	}
 
-	unsigned char prop = ResolveActionName(action);
+	unsigned char prop = NetDevice::ResolveValueName(action);
 	if (prop <= 0)
 	{
 		ERRORLOG("動作名を解決できません name:" << name << " action:" << action << " id:" << id);
@@ -846,19 +870,20 @@ bool NetDeviceEcoNetLite::Fire(const string& name,const string& action,const str
 		return false;
 	}
 
-	unsigned char prop = ResolveActionName(action);
+	unsigned char prop = NetDevice::ResolveValueName(action);
 	if (prop <= 0)
 	{
 		ERRORLOG("動作名を解決できません name:" << name << " id:" << id << " action:" << action << " value:" << value);
 		return false;
 	}
 
-	unsigned char valueUC = ResolveValueName(value);
+	unsigned char valueUC = NetDevice::ResolveValueName(value);
+
+	NOTIFYLOG("機材へ信号を送ります name:" << name << " id:" << id << " action:" << action << " value:" << value << " prop:" << prop << " valueUC:" << valueUC );
 
 	//リクエストの送信.UDPなので結果は不定.
 	MainWindow::m()->EcoNetLiteServer.sendSetRequest(m.ip,m.deoj,prop,valueUC);
 
-	NOTIFYLOG("機材へ信号を送ります name:" << name << " id:" << id << " action:" << action << " value:" << value << " prop:" << prop << " valueUC:" << valueUC );
 	return true;
 }
 
@@ -879,7 +904,7 @@ string NetDeviceEcoNetLite::Pickup(const string& name,const string& action )
 		return "";
 	}
 
-	unsigned char prop = ResolveActionName(action);
+	unsigned char prop = NetDevice::ResolveValueName(action);
 	if (prop <= 0)
 	{
 		ERRORLOG("動作名が解決できません name:" << name << " id:" << id << " action:" << action);
@@ -890,7 +915,6 @@ string NetDeviceEcoNetLite::Pickup(const string& name,const string& action )
 	std::string ret;
 	ECONETLITESERVER_TIDCALLBACK callback = [&](const EcoNetLiteData* data,const char* buffer,size_t size)->void 
 	{
-		char name[512] = {0};
 		list<unsigned char> getvalue;
 		EcoNetLiteServer::ParseDataList(data,buffer,size,&getvalue);
 
@@ -902,9 +926,7 @@ string NetDeviceEcoNetLite::Pickup(const string& name,const string& action )
 		}
 		else 
 		{
-			auto it = getvalue.begin();
-
-			ret = MakeActionName(data->seoj,*it);
+			ret = MakeValue(data->seoj,prop,getvalue);
 			isUpdate = true;
 			return ;
 		}

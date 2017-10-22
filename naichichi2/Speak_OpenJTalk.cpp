@@ -62,6 +62,7 @@ bool Speak_OpenJTalk::Create()
 	this->CacheDB.Create("wav");
 	
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("Speak_OpenJTalk");
 		this->Run(); 
 	} );
 

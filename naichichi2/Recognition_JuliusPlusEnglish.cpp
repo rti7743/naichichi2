@@ -1315,6 +1315,7 @@ bool Recognition_JuliusPlusEnglish::JuliusStart()
 
 	this->JuliusThread = new thread( [&]()
 	{
+		XLDebugUtil::SetThreadName("Recognition_JuliusPlusEnglish");
 		j_recognize_stream_naichichi(recog);
 	} );
 

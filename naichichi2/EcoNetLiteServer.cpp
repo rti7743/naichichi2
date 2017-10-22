@@ -38,6 +38,7 @@ void EcoNetLiteServer::Create()
 	DEBUGLOG("econetlite server...");
 	this->EcoNetLiteThread = new thread([=](){
 #if WITH_CLIENT_ONLY_CODE==1
+		XLDebugUtil::SetThreadName("EcoNetLiteThread");
 		this->EcoNetLiteThreadMain(); 
 #endif //WITH_CLIENT_ONLY_CODE==1
 	});
@@ -120,8 +121,14 @@ void EcoNetLiteServer::EcoNetLiteThreadMain()
 void EcoNetLiteServer::ParseResponsD6(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
 {
 	const char *p = buffer + sizeof(EcoNetLiteData);
-	size_t n = MIN( (size - sizeof(EcoNetLiteData))/3 , data->edt_1);
-	for(size_t i = 0 ; i < n ; i ++)
+	int n = MIN( (size - sizeof(EcoNetLiteData))/3 , data->edt_1);
+	if (n < 0)
+	{
+		ERRORLOG("MIN("<<data->edt_1<<","<<size-sizeof(EcoNetLiteData)<<")" <<"0未満です");
+		return;
+	}
+
+	for(int i = 0 ; i < n ; i ++)
 	{
 		EcoNetLiteObjCode deoj;
 		deoj.code[0] = p[i*3+0];
@@ -146,9 +153,15 @@ void EcoNetLiteServer::ParseDataList(const EcoNetLiteData* data,const char* buff
 {
 	if (data->edt_1 < 16)
 	{
-		const size_t n = MIN(data->edt_1,size-sizeof(EcoNetLiteData));
+		const int n = MIN(data->edt_1,size-sizeof(EcoNetLiteData));
+		if (n < 0)
+		{
+			ERRORLOG("MIN("<<data->edt_1<<","<<size-sizeof(EcoNetLiteData)<<")" <<"0未満です");
+			return;
+		}
+
 		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
-		for(size_t i = 0 ; i < n ; i ++)
+		for(int i = 0 ; i < n ; i ++)
 		{
 			outValues->push_back(p[i]);
 		}
@@ -158,8 +171,14 @@ void EcoNetLiteServer::ParseDataList(const EcoNetLiteData* data,const char* buff
 	 //see http://qiita.com/miyazawa_shi/items/4f11493079b5191bd5d5#_reference-3c80b969ad147c95ecb7
  	 //see http://qiita.com/katsumin/items/14970c340c6dc65dbd93
 		const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
-		const size_t n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
-		for(size_t i = 0 ; i < n ; i ++)
+		const int n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
+		if (n < 0)
+		{
+			ERRORLOG("MIN("<<data->edt_1<<","<<size-sizeof(EcoNetLiteData)<<")" <<"0未満です");
+			return;
+		}
+
+		for(int i = 0 ; i < n ; i ++)
 		{
 			for(int bit = 0 ; bit < 8 ; bit ++)
 			{
@@ -192,7 +211,13 @@ void EcoNetLiteServer::ParseRespons9D(const string& ip,const EcoNetLiteData* dat
 void EcoNetLiteServer::ParseRespons83(const string& ip,const EcoNetLiteData* data,const char* buffer,int size)
 {
 	const unsigned char *p = (unsigned char*) buffer + sizeof(EcoNetLiteData);
-	const size_t n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
+	const int n = MIN(data->pdc_1,size-sizeof(EcoNetLiteData));
+	if (n < 0)
+	{
+		ERRORLOG("MIN("<<data->edt_1<<","<<size-sizeof(EcoNetLiteData)<<")" <<"0未満です");
+		return;
+	}
+
 	string id = string((const char*)p,0,n);
 	UpdateIdentification(ip,data->seoj,id);
 }

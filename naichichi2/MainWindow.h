@@ -24,7 +24,7 @@
 #include "HomeKitServer.h"
 #include "MultiRoom.h"
 #include "EcoNetLiteServer.h"
-#include "SipServer.h"
+//#include "SipServer.h"
 #include "SystemMisc.h"
 
 enum EXITCODE_LEVEL
@@ -58,10 +58,6 @@ public:
 	void SyncInvoke(std::function<void (void) > func);
 	//メインスレッドで後で実行するコールバック
 	void AsyncInvoke(std::function<void (void) > func);
-#if WITH_CLIENT_ONLY_CODE==1
-	//音声認識エンジンを止めて最優先実行 関数オブジェクト
-	void TopLevelInvoke(std::function<void (void) > func);
-#endif
 
 	//config の中のパスを作る
 	string GetConfigBasePath(const string& path) const;
@@ -168,7 +164,7 @@ public:
 	class UPNPServer				UPNPServer;			//UPNPの受け答え
 	class EcoNetLiteServer			EcoNetLiteServer;	//EcoNetLite関係
 	class HomeKitServer				HomeKitServer;		//Homekitサポート
-	class SipServer					SipServer;			//sip電話サポート
+//	class SipServer					SipServer;			//sip電話サポート
 	class MultiRoom					MultiRoom;			//複数台連携 同期処理
 	class ScriptManager				ScriptManager;		//内蔵スクリプトとかwebとかの管理
 	class Recognition_Factory		Recognition;		//音声認識.

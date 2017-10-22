@@ -25,6 +25,7 @@ void ResetConfigEndel::Create()
 	DEBUGLOG("ResetConfigEndelを構築します.");
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("ResetConfigEndel");
 		this->ThreadMain(); 
 	});
 }

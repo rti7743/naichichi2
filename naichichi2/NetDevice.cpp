@@ -25,8 +25,12 @@ list<string> NetDevice::GetAll(unsigned int searchtime)
 	list<UPNPMap> upnpServers;
 	MainWindow::m()->UPNPServer.GetAll(&upnpServers);
 	list<string> t = Wemo.GetAll(upnpServers);
-	ret.insert(ret.end(),t.begin(),t.end());
+	if(ret.size() <= 0)
+	{
+		return t;
+	}
 
+	ret.insert(ret.end(),t.begin(),t.end());
 	return ret;
 }
 list<string> NetDevice::GetSetActionAll(const string& name)
@@ -102,3 +106,15 @@ list<string> NetDevice::GetGetActionAll(const string& name)
 	return ret;
 }
 
+
+unsigned char NetDevice::ResolveValueName(const string& name)
+{
+	unsigned int i = 0;
+	string a = XLStringUtil::cut(name,"(#",")",NULL);
+	if(a.empty())
+	{
+		a = name;
+	}
+	sscanf(a.c_str(),"%02x",&i);
+	return (unsigned char)i;
+}

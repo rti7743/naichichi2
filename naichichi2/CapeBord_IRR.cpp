@@ -70,11 +70,10 @@ bool CapeBord_IRR::Capture(const string& path)
 	//優先度とかいろいろあるので別途バイナリを作ってそいつを呼び出す.
 	//pathは安全なファイル名が渡されることを前提としている。
 
-	//音声認識処理を止めて、トッププライオリティで。
-	//IRQ割り込みを利用て、10usオーダーぐらいの処理をします。CPUが忙しいとダメです。
+	//実行する前に音声認識エンジンを止めないとダメです。
 	const string command = this->CapeBord_IRRBIN + " save " + path;
 	string out;
-	MainWindow::m()->TopLevelInvoke([&](){
+	MainWindow::m()->SyncInvoke([&](){
 		out = SystemMisc::PipeExec(command);
 	});
 	DEBUGLOG("IRR  " << command << " @@OUT: " << out );

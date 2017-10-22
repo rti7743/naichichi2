@@ -9,7 +9,7 @@
 #include "XLFileUtil.h"
 #include "MultiRoomUtil.h"
 #include "NetDevice.h"
-#include "SipServer.h"
+//#include "SipServer.h"
 #include "ActionImplement.h"
 
 //循環参照で無限ループにならないように、マイクロの呼び出し回数に上限を設ける
@@ -558,25 +558,25 @@ bool Fire::run_sip(const string& sip_action_type,const string& sip_call_number)
 {
 	if (sip_action_type == "call")
 	{
-		MainWindow::m()->SipServer.Call(sip_call_number);
+//		MainWindow::m()->SipServer.Call(sip_call_number);
 		return true;
 	}
 	else if (sip_action_type == "answer")
 	{
-		MainWindow::m()->SipServer.Answer();
-		MainWindow::m()->SipServer.WaitForRequest(5);
+//		MainWindow::m()->SipServer.Answer();
+//		MainWindow::m()->SipServer.WaitForRequest(5);
 		return true;
 	}
 	else if (sip_action_type == "hangup")
 	{
-		MainWindow::m()->SipServer.Hangup();
-		MainWindow::m()->SipServer.WaitForRequest(5);
+//		MainWindow::m()->SipServer.Hangup();
+//		MainWindow::m()->SipServer.WaitForRequest(5);
 		return true;
 	}
 	else if (sip_action_type == "numpad")
 	{
 		const time_t now = time(NULL);
-		MainWindow::m()->SipServer.ShowNumpad(now);
+//		MainWindow::m()->SipServer.ShowNumpad(now);
 		return true;
 	}
 	return false;

@@ -219,7 +219,10 @@ bool ScriptRunner::CreateV8Instance(const string& source)
 	this->V8Global->Set(v8::String::New("netdevice_list"),v8::FunctionTemplate::New(v8_netdevice_list));
 	this->V8Global->Set(v8::String::New("netdevice_get"),v8::FunctionTemplate::New(v8_netdevice_get));
 	this->V8Global->Set(v8::String::New("netdevice_set"),v8::FunctionTemplate::New(v8_netdevice_set));
+	this->V8Global->Set(v8::String::New("netdevice_value_to_int"),v8::FunctionTemplate::New(v8_netdevice_value_to_int));
+	this->V8Global->Set(v8::String::New("netdevice_int_to_value"),v8::FunctionTemplate::New(v8_netdevice_int_to_value));
 
+	
 	// Create a new context.
 	//Persistent<Context> context = Context::New();
 	this->V8Context = v8::Context::New(NULL,this->V8Global); //ここで globalを渡す.
@@ -305,6 +308,7 @@ bool ScriptRunner::RunScriptWithTimeout(const std::function<void(void)>& func )
 	const int SLEEP_SPAN = 100; //100ミリ秒.
 	auto isolate = v8::Isolate::GetCurrent();
 	auto timeoutTread = new thread([&](){
+		XLDebugUtil::SetThreadName("ScriptRunner");
 		for( int i = 0 ; i < TIMEOUT_MS / SLEEP_SPAN ; i++ )
 		{
 			if (stopFlag) return;
@@ -1489,7 +1493,6 @@ v8::Handle<v8::Value> ScriptRunner::v8_netdevice_get(const v8::Arguments& args)
 
 v8::Handle<v8::Value> ScriptRunner::v8_callcommand(const v8::Arguments& args) 
 {
-	
 	DEBUGLOG(string() + "js function:callcommand"  );
 
 	if (args.Length() < 1)
@@ -1539,6 +1542,59 @@ v8::Handle<v8::Value> ScriptRunner::v8_callcommand(const v8::Arguments& args)
 	}
 
 	return v8::Boolean::New(true);
+}
+
+
+v8::Handle<v8::Value> ScriptRunner::v8_netdevice_value_to_int(const v8::Arguments& args) 
+{
+	DEBUGLOG(string() + "js function:netdevice_value_to_int"  );
+
+	if (args.Length() < 1)
+	{
+		return v8::ThrowException(v8::String::New(_A2U("netdevice_value_to_intには1つ以上の引数が必要です")));
+	}
+	const string p1 = ToStdString(args[0]->ToString());
+	unsigned int r = NetDevice::ResolveValueName(p1);
+
+	return v8::Integer::New(r);
+}
+
+v8::Handle<v8::Value> ScriptRunner::v8_netdevice_int_to_value(const v8::Arguments& args) 
+{
+	DEBUGLOG(string() + "js function:netdevice_int_to_value"  );
+
+	if (args.Length() < 1)
+	{
+		return v8::ThrowException(v8::String::New(_A2U("netdevice_int_to_valueには1つ以上の引数が必要です")));
+	}
+
+	unsigned int p1;
+	if ( args[0]->IsString() )
+	{
+		p1 = atoi(ToStdString(args[0]->ToString()));
+	}
+	else
+	{
+		p1 = args[0]->ToInt32()->Value();
+	}
+	char buf[256];
+	if (p1 < 256)
+	{
+		snprintf(buf,255,"%02x",p1);
+	}
+	else if (p1 < 256*256)
+	{
+		snprintf(buf,255,"%04x",p1);
+	}
+	else if (p1 < 256*256*256)
+	{
+		snprintf(buf,255,"%06x",p1);
+	}
+	else
+	{
+		snprintf(buf,255,"%08x",p1);
+	}
+	return v8::String::New( buf );
 }
 
 

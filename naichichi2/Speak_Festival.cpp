@@ -70,6 +70,7 @@ bool Speak_Festival::Create()
 	this->CacheDB.Create("wav");
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("Speak_Festival");
 		this->Run(); 
 	} );
 

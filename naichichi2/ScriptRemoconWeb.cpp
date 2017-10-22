@@ -633,7 +633,7 @@ string ScriptRemoconWeb::ResultError(int code ,const string& msg)
 
 
 //設定画面のページへのURLを設定し直します static
-bool ScriptRemoconWeb::SettingPageIPAddressOverriade()
+bool ScriptRemoconWeb::SettingPageIPAddressOverriade(bool isChangeOnly)
 {
 	const int port = MainWindow::m()->Config.GetInt("httpd__port", 80 );
 	const auto interfaceMap = SystemMisc::GetIPAddressMap();
@@ -665,14 +665,26 @@ bool ScriptRemoconWeb::SettingPageIPAddressOverriade()
 #endif
 	if (it == interfaceMap.end())
 	{//何もネットデバイスがない
-		NOTIFYLOG("ネットワークデバイスがありませんでした。 127.0.0.1 にします。");
-		MainWindow::m()->Config.Set("httpd__url", "http://127.0.0.1:" + num2str(port) );
+		if  (isChangeOnly == false)
+		{
+			NOTIFYLOG("ネットワークデバイスがありませんでした。 127.0.0.1 にします。");
+			MainWindow::m()->Config.Set("httpd__url", "http://127.0.0.1:" + num2str(port) );
+		}
 		return false;
 	}
 	else
 	{//見つかったものにする
+		string http_url = "http://" + it->second + ":" + num2str(port);
+		if  (isChangeOnly == true)
+		{
+			if(http_url == MainWindow::m()->Config.Get("httpd__url"))
+			{//変更されていないので無視.
+				return true;
+			}
+		}
+
 		NOTIFYLOG("IPアドレス:" + it->second + "(" + it->first + ")を利用します。");
-		MainWindow::m()->Config.Set("httpd__url", "http://" + it->second + ":" + num2str(port) );
+		MainWindow::m()->Config.Set("httpd__url", http_url );
 		return true;
 	}
 }

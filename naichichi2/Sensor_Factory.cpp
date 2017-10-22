@@ -155,6 +155,7 @@ void Sensor_Factory::Create()
 	this->SensorGraphSound = new SensorGraph(graphfilename, 300 , 60*60*24*365/300); //5分間隔で1年分のデータを記録
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("Sensor_Factory");
 		this->ThreadMain(); 
 	});
 	

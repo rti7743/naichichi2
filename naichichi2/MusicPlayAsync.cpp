@@ -48,6 +48,7 @@ bool MusicPlayAsync::Create()
 	this->StopFlag = false;
 	this->StopPlayFlag = false;
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("MusicPlayAsync");
 		this->Run(); 
 	} );
 	return true;
@@ -165,6 +166,7 @@ bool MusicPlayAsync::PlaySyncLow(const string & fullpath)
 	if ( MainWindow::m()->Config.Get("speak_use_remote","") == "1" )
 	{//リモートスピーカーを使う
 		playthread = new thread([=](){
+			XLDebugUtil::SetThreadName("MusicPlayAsync::RemoteSpaker");
 			try
 			{//リモートで再生する
 				const string host = MainWindow::m()->Config.Get("speak_remote1_ip","");

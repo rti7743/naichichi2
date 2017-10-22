@@ -33,8 +33,9 @@ string ActionImplement::Telnet(const string& host,const string& wait,const strin
 	char * buffer = &buffermalloc[0];
 
 	XLSocket socket;
+
 	//タイムアウト5秒
-	socket.SetTimeout(5);
+	socket.CreateTCP(5);
 	socket.Connect( urlparser.getHost() , port );
 
 	//まずは相手の言い分を聞きます.

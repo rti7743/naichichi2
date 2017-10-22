@@ -48,6 +48,7 @@ bool SipServer::Create()
 	DEBUGLOG("sip server...");
 	this->SipThread = new thread([=](){
 #if WITH_CLIENT_ONLY_CODE==1
+		XLDebugUtil::SetThreadName("SipServer");
 		this->SipThreadMain(); 
 #endif //WITH_CLIENT_ONLY_CODE==1
 	});
@@ -58,6 +59,12 @@ bool SipServer::Create()
 void SipServer::Stop()
 {
 	this->StopFlag = true;
+	if ( ! MainWindow::m()->Config.GetBool("sip_enable", false ) )
+	{
+		NOTIFYLOG("sip server is disable");
+		return;
+	}
+
 	if (! sip.IsExiteProcess() )
 	{
 		SendRequest("QUIT");

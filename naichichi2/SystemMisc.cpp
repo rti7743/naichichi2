@@ -1832,3 +1832,27 @@ void SystemMisc::MakeClientWelcome()
 	}
 #endif
 }
+
+//ログファイルの時刻を利用して、時計を合わせる.
+void SystemMisc::SetSystemDateTime(const time_t& logtime)
+{
+#ifdef _MSC_VER
+#else
+	if ( SystemMisc::IsBeagleboneBlack() || SystemMisc::IsBeagleboneOld() )
+	{
+		const time_t BAD_TIME = 1000000000;
+		
+		if (logtime <= BAD_TIME)
+		{
+			ERRORLOG("ログファイルの日付が変なので、時刻設定に採用しません! logtime:" << logtime);
+			return ;
+		}
+		string cmd = "date -s \"@" + num2str(logtime) +"\"";
+		NOTIFYLOG("ログファイルの日付をもとに時刻を補正します! logtime:" << logtime);
+
+		string out = SystemMisc::PipeExec(cmd);
+		NOTIFYLOG("コマンド戻り値:" << out);
+	}
+#endif
+}
+

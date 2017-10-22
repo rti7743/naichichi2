@@ -32,14 +32,14 @@ public:
 private:
 	string MakeActionName(const EcoNetLiteObjCode& deoj,const unsigned char& prop);
 	string CodeToActionNameDisp(const EcoNetLiteObjCode& deoj,const unsigned char& prop);
-	unsigned char ResolveActionName(const string& name);
-	unsigned char ResolveValueName(const string& name);
 
 	string ResolveName(const string& name);
 	void GetValueTemp50(list<string>* outRet);
 	void GetValueParsent100(list<string>* outRet);
 	void GetLevel8(bool enableAuto41,list<string>* outRet);
 	bool GetValue(const EcoNetLiteObjCode& deoj,const unsigned char& prop,list<string>* outRet);
+	string MakeValue(const EcoNetLiteObjCode& deoj,const unsigned char& prop,const std::list<unsigned char>& data);
+
 };
 
 

@@ -27,6 +27,7 @@ void MultiRoom::Create()
 	this->StopFlag = false;
 
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("MultiRoom");
 		this->ThreadMain(); 
 	});
 	

@@ -72,6 +72,7 @@ void ResetConfigIRR::Create()
 	
 	
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("ResetConfigIRR");
 		this->ThreadMain(); 
 	});
 #endif

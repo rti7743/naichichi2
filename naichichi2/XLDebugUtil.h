@@ -20,6 +20,7 @@ public:
 	//16進数dump
 	static string HexDump(const void* data,int len);
 
+	static void SetThreadName(const std::string& name);
 };
 #if _DEBUG
 //メインスレッドでしか動きません

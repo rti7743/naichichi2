@@ -82,6 +82,7 @@ bool HomeKitServer::Create()
 	//upnpスレッド作成.
 	NOTIFYLOG("homekit server...");
 	this->HomeKitThread = new thread([=](){
+		XLDebugUtil::SetThreadName("HomeKitThread");
 		this->HomeKitThreadMain(); 
 	});
 

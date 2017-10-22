@@ -43,6 +43,11 @@ private:
 	//リモコンの副次的情報の取得
 	string remocon_get_append_info(const XLHttpHeader& httpHeaders);
 
+	//音声認識等のリロード
+	string remocon_recogn_reload(const XLHttpHeader& httpHeaders);
+	//リモコン学習の後処理前処理
+	string remocon_toplevel_invoke(const XLHttpHeader& httpHeaders);
+	//リモコン学習
 	string remocon_ir_leaning(const XLHttpHeader& httpHeaders);
 	string remocon_ir_fire(const XLHttpHeader& httpHeaders);
 	bool remocon_ir_leaning(const string& exec_ir);

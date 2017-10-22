@@ -54,6 +54,7 @@ bool BackgroundMusic::Create()
 #else
 	this->StopFlag = false;
 	this->Thread = new thread([=](){
+		XLDebugUtil::SetThreadName("BackgroundMusic");
 		this->ThreadMain(); 
 	} );
 

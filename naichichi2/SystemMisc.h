@@ -121,4 +121,7 @@ public:
 
 	//welcomeデータをSDに書き込む
 	static void MakeClientWelcome();
+
+	//ログファイルの時刻を利用して、時計を合わせる.
+	static void SetSystemDateTime(const time_t& logtime);
 };

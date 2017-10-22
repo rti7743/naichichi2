@@ -47,6 +47,7 @@ void ScriptWebRunner::Create()
 	SystemMisc::MakeClientWelcome();
 }
 
+
 //変更画面全部
 string ScriptWebRunner::EditIndex(const XLHttpHeader& httpHeaders) const
 {
@@ -67,8 +68,6 @@ string ScriptWebRunner::RemoconStatus(const string& appendOption)  const
 }
 string ScriptWebRunner::GetSensorJson() 
 {
-	
-
 	float sensor_temp,sensor_lumi,sensor_sound;
 	MainWindow::m()->Sensor.getSensorNow(&sensor_temp,&sensor_lumi,&sensor_sound);
 	
@@ -179,8 +178,7 @@ string ScriptWebRunner::remocon_preview_elec_macro(const XLHttpHeader& httpHeade
 //SIPで発信する
 string ScriptWebRunner::remocon_sip_call(const XLHttpHeader& httpHeaders) 
 {
-	
-
+/*
 	string jsonstring;
 	const map<string,string> request = httpHeaders.getPost();
 	const string call = mapfind(request,"call");
@@ -189,50 +187,52 @@ string ScriptWebRunner::remocon_sip_call(const XLHttpHeader& httpHeaders)
 
 	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
 	return _A2U(jsonstring.c_str());
+*/
+	return "";
 }
 
 //SIPでかかってきた電話にこたえる
 string ScriptWebRunner::remocon_sip_answer(const XLHttpHeader& httpHeaders) 
 {
-	
-
+/*
 	string jsonstring;
-//	const map<string,string> request = httpHeaders.getPost();
 
 	MainWindow::m()->SipServer.Answer();
 	MainWindow::m()->SipServer.WaitForRequest(5);
 
 	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
 	return _A2U(jsonstring.c_str());
+*/
+	return "";
 }
 
 //SIPで電話を切る
 string ScriptWebRunner::remocon_sip_hangup(const XLHttpHeader& httpHeaders) 
 {
-	
-
+/*
 	string jsonstring;
-//	const map<string,string> request = httpHeaders.getPost();
 
 	MainWindow::m()->SipServer.Hangup();
 	MainWindow::m()->SipServer.WaitForRequest(5);
 
 	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
 	return _A2U(jsonstring.c_str());
+*/
+	return "";
 }
 
 //SIP numpadを閉じるイベント
 string ScriptWebRunner::remocon_sip_numpad_close(const XLHttpHeader& httpHeaders) 
 {
-	
-
+/*
 	string jsonstring;
-//	const map<string,string> request = httpHeaders.getPost();
 
 	MainWindow::m()->SipServer.HideNumpad();
 
 	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
 	return _A2U(jsonstring.c_str());
+*/
+	return "";
 }
 
 
@@ -243,6 +243,67 @@ string ScriptWebRunner::remocon_get_append_info(const XLHttpHeader& httpHeaders)
 	const time_t now = time(NULL);
 
 	return ScriptRemoconWeb::remocon_get_append_info(configmap,now);
+}
+
+string ScriptWebRunner::remocon_recogn_reload(const XLHttpHeader& httpHeaders)
+{
+	const map<string,string> request = httpHeaders.getPost();
+
+	auto c = mapfind(request,"c");
+	auto args1 = mapfind(request,"arg1");
+	if (c == "recogn")
+	{
+		Recogn.ReloadRecong(true);
+	}
+
+	string jsonstring = ",\"c\": " + XLStringUtil::jsonescape(c) ;
+	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
+	return _A2U(jsonstring.c_str());
+}
+
+string ScriptWebRunner::remocon_toplevel_invoke(const XLHttpHeader& httpHeaders)
+{
+	const map<string,string> request = httpHeaders.getPost();
+
+	auto c = mapfind(request,"c");
+	if (c == "start")
+	{
+		//音声認識処理を止めて、トッププライオリティで。
+		//IRQ割り込みを利用て、10usオーダーぐらいの処理をします。CPUが忙しいとダメです。
+
+		//すべてを一つでやると、linuxだとまれに落ちる時がある？ 意味がよくわからないが、安定性を取るため処理を分割します.
+		MainWindow::m()->SyncInvoke([&](){
+			try
+			{
+				//重い音声認識を止めます
+				MainWindow::m()->Recognition.Free();
+				NOTIFYLOG("this->Recognition.Free()");
+			}
+			catch(XLException& e)
+			{
+				ERRORLOG("最優先実行できませんでした。例外 " << e.what() );
+			}
+		});
+	}
+	else if (c == "end")
+	{
+		MainWindow::m()->SyncInvoke([&](){
+			try
+			{
+				NOTIFYLOG("this->Recognition.Rebuild()");
+				MainWindow::m()->ReCreateRecognitionEngine();
+				MainWindow::m()->Recognition.CommitRule();
+			}
+			catch(XLException& e)
+			{
+				ERRORLOG("最優先実行後に音声認識エンジンを構築できませんでした。例外 " << e.what() );
+			}
+		});
+	}
+
+	string jsonstring = ",\"c\": " + XLStringUtil::jsonescape(c) ;
+	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
+	return _A2U(jsonstring.c_str());
 }
 
 string ScriptWebRunner::remocon_ir_leaning(const XLHttpHeader& httpHeaders)
@@ -261,8 +322,15 @@ string ScriptWebRunner::remocon_ir_leaning(const XLHttpHeader& httpHeaders)
 		return ScriptRemoconWeb::ResultError(10500 , "赤外線を記録できませんでした");
 	}
 
-	string appendString = "\"exec_ir\": " + XLStringUtil::jsonescape(exec_ir) ;
-	return RemoconStatus(appendString);
+	NOTIFYLOG("remocon_ir_leaning -> OK 1");
+	NOTIFYLOG(exec_ir);
+	NOTIFYLOG(XLStringUtil::jsonescape(exec_ir));
+	
+	string jsonstring = ",\"exec_ir\": " + XLStringUtil::jsonescape(exec_ir) ;
+	jsonstring = string("{ \"result\": \"ok\" ") + jsonstring + "}";
+
+	NOTIFYLOG("remocon_ir_leaning -> OK 2");
+	return _A2U(jsonstring.c_str());
 }
 
 string ScriptWebRunner::remocon_ir_fire(const XLHttpHeader& httpHeaders)
@@ -385,8 +453,8 @@ string ScriptWebRunner::remocon_delete_elec(const XLHttpHeader& httpHeaders)
 
 	}
 	ConfigUpdated(false);
-	Recogn.ReloadRecong(true);
-	MainWindow::m()->HomeKitServer.NotifyAccessory();
+//	Recogn.ReloadRecong(true);
+//	MainWindow::m()->HomeKitServer.NotifyAccessory();
 	return this->RemoconStatus("");
 }
 
@@ -430,7 +498,7 @@ string ScriptWebRunner::remocon_delete_elec_action(const XLHttpHeader& httpHeade
 	}
 
 	ConfigUpdated(false);
-	Recogn.ReloadRecong(true);
+//	Recogn.ReloadRecong(true);
 	return this->RemoconStatus("");
 }
 
@@ -489,13 +557,6 @@ string ScriptWebRunner::remocon_update_elec(const XLHttpHeader& httpHeaders)
 		const string ignore_recogn = mapfind(request,"ignore_recogn");
 		const string click_to_menu = mapfind(request,"click_to_menu");
 
-
-		bool recognReload = false;
-		if (stringbool(ignore_recogn) != stringbool(MainWindow::m()->Config.Get( prefix + "_ignore_recogn","")) )
-		{//音声認識を無効に切り替えたのでリロードしないとダメ.
-			recognReload = true;
-		}
-
 		MainWindow::m()->Config.Set( prefix + "_type" , type );
 		MainWindow::m()->Config.Set( prefix + "_elecicon" , elecicon );
 		MainWindow::m()->Config.Set( prefix + "_showremocon" , showremocon );
@@ -507,25 +568,16 @@ string ScriptWebRunner::remocon_update_elec(const XLHttpHeader& httpHeaders)
 			MainWindow::m()->Config.Set( prefix + "_status" , "" );
 			MainWindow::m()->Config.Set( prefix + "_statuscolor" , "#000000" );
 			MainWindow::m()->Config.Set( prefix + "_order" , num2str( ScriptRemoconWeb::newOrderElec() ) );
-
-			//新規作成の時は新しく作るので中身は空だからリロードはいらん
-			recognReload = false;
-		}
-
-		if (recognReload)
-		{
-			//音声認識のリロード処理
-			Recogn.ReloadRecong(true);
 		}
 
 		appendOption = "\"updatekey\": \"" + num2str(key) + "\"";
 	}
 
 	ConfigUpdated(true);
-	if (elec_key == "new")
-	{//家電の新しいがあったので、通知
-		MainWindow::m()->HomeKitServer.NotifyAccessory();
-	}
+//	if (elec_key == "new")
+//	{//家電の新しいがあったので、通知
+//		MainWindow::m()->HomeKitServer.NotifyAccessory();
+//	}
 	return this->RemoconStatus(appendOption);
 }
 
@@ -822,6 +874,9 @@ string ScriptWebRunner::remocon_update_elec_action(const XLHttpHeader& httpHeade
 				return ScriptRemoconWeb::ResultError(20059 , "マクロ9で呼び出し回数の上限を超えました。マクロの中で無限ループに入っている可能性があります。");
 			}
 		}
+
+		NOTIFYLOG("speakcache reload");
+		
 		//スピーチキャッシュ関係の処理.
 		MainWindow::m()->Speak.TryDeleteSpeakCacheDB(
 			 MainWindow::m()->Config.Get( prefix + "_tospeak_string","")
@@ -901,12 +956,16 @@ string ScriptWebRunner::remocon_update_elec_action(const XLHttpHeader& httpHeade
 			MainWindow::m()->Config.Set( prefix + "_order" , num2str(ScriptRemoconWeb::newOrderElecAction(key1)) );
 		}
 
-		//リロード処理
-		Recogn.ReloadRecong(true);
+//		//リロード処理
+//		Recogn.ReloadRecong(true);
 
 		appendOption = "\"updatekey\": \"" + num2str(key2) + "\"";
 	}
+
+	NOTIFYLOG("ConfigUpdated.");
 	ConfigUpdated(true);
+
+	NOTIFYLOG("Result.");
 	return this->RemoconStatus(appendOption);
 }
 
@@ -1527,7 +1586,7 @@ string ScriptWebRunner::setting_sip_update(const XLHttpHeader& httpHeaders)
 		MainWindow::m()->Config.Set( "sip_incoming_mp3" , sip_incoming_mp3 );
 		MainWindow::m()->Config.Set( "sip_calling_mp3" , sip_calling_mp3 );
 		MainWindow::m()->Config.Set( "sip_when_taking_stop_recogn" , sip_when_taking_stop_recogn );
-
+/*
 		if ( stringbool(sip_enable) )
 		{//SIPを有効にする.
 			MainWindow::m()->SipServer.Create();
@@ -1543,6 +1602,7 @@ string ScriptWebRunner::setting_sip_update(const XLHttpHeader& httpHeaders)
 		{//SIPを無効にする.
 			MainWindow::m()->SipServer.Stop();
 		}
+*/
 	}
 
 	ConfigUpdated(false);
@@ -3738,7 +3798,6 @@ string ScriptWebRunner::remocon_sip_fire(const XLHttpHeader& httpHeaders)
 
 string ScriptWebRunner::remocon_netdevice_elec_getlist(const XLHttpHeader& httpHeaders) 
 {
-	
 	const map<string,string> request = httpHeaders.getRequest();
 
 	unsigned int searchtime = atoi(mapfind(request,"searchtime","0"));
@@ -3754,6 +3813,7 @@ string ScriptWebRunner::remocon_netdevice_elec_getlist(const XLHttpHeader& httpH
 	{
 		jsonstring = jsonstring.substr(1);
 	}
+	NOTIFYLOG("ネット家電一覧を返します.");
 	return _A2U("{\"result\": \"ok\" , \"list\": [" + jsonstring + "]}");
 }
 
@@ -4738,6 +4798,7 @@ bool ScriptWebRunner::WebAccess(const string& path,const XLHttpHeader& httpHeade
 	{
 		*result = WEBSERVER_RESULT_TYPE_OK_HTML;
 		*responsString = RemoconIndex(httpHeaders,*cookieArray);
+
 		return true;
 	}
 	else if (path == "/") 
@@ -4768,6 +4829,18 @@ bool ScriptWebRunner::WebAccess(const string& path,const XLHttpHeader& httpHeade
 	{
 		*result = WEBSERVER_RESULT_TYPE_OK_JSON;
 		*responsString = remocon_ir_leaning(httpHeaders);
+		return true;
+	}
+	else if (path == "/remocon/toplevel/invoke") 
+	{
+		*result = WEBSERVER_RESULT_TYPE_OK_JSON;
+		*responsString = remocon_toplevel_invoke(httpHeaders);
+		return true;
+	}
+	else if (path == "/remocon/recogn/reload") 
+	{
+		*result = WEBSERVER_RESULT_TYPE_OK_JSON;
+		*responsString = remocon_recogn_reload(httpHeaders);
 		return true;
 	}
 	else if (path == "/recong/mictest/wavdownload") 

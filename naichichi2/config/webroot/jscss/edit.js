@@ -456,6 +456,81 @@ function macro_set(obj,prefix)
 	}
 }
 
+//音声認識のリロード
+function ReloadRecogn()
+{
+	var arr = {};
+	arr['c'] = 'recogn';
+	arr['arg1'] = 'true';
+
+	update(
+		null
+		,"/remocon/recogn/reload"
+		,arr
+		,function(d){ 
+		}
+		,{ load: 'no'
+			,timeout: 5000
+			,error: function(){
+			}
+		 }
+	);
+}
+
+//すべてを一つの処理でやると、linuxだとまれに落ちるらしい...意味がわからないので処理を分割する.
+function TopLevelInvoke(object,url,updateArray,success_callback,options)
+{
+	var destructor_func = function()
+	{
+		update(
+			null
+			,"/remocon/toplevel/invoke"
+			,{ "c": "end" }
+			,function(d){ 
+			}
+			,{
+			   timeout: 5000
+			  ,error: function(d){
+				alert("音声認識を再開できませんでした");
+			}}
+			);
+	};
+
+	update(
+		null
+		,"/remocon/toplevel/invoke"
+		,{ "c": "start" }
+		,function(d){ 
+		
+			var orignal_error = options.error;
+			options.error = function(d){
+				destructor_func();
+				orignal_error && orignal_error(d);
+			};
+			
+			//最優先実行したい処理
+			update(object
+				,url
+				,updateArray
+				,function(d){ 
+					destructor_func();
+					success_callback(d);
+				}
+				,options
+			);
+		}
+		,{
+			 timeout: 5000
+			,error: function(d){
+			  	alert("音声認識を止めようとしましたが、止められませんでした。")
+			  	destructor_func();
+		  }
+		}
+	);
+}
+
+
+
 function update(object,url,updateArray,success_callback,options)
 {
 	//読込中にする
@@ -733,6 +808,11 @@ function remocon_update_icon_order(menu,action)
 
 function remoconedit_stringtospan(str)
 {
+	if ( str == undefined)
+	{
+		str = "";
+	}
+
 	if ( str.length <= 4) return "<span class=\"lensize_0\">" + str + "</span>";
 	else if ( str.length <= 6) return "<span class=\"lensize_1\">" + str + "</span>";
 	else if ( str.length <= 10) return "<span class=\"lensize_2\">" + str + "</span>";
@@ -822,6 +902,8 @@ function remoconedit_iconreset()
 							
 							//トップ画面を更新
 							remoconedit_load();
+							//音声認識の再読み込み(時間かかるので裏でやる)
+							ReloadRecogn();
 
 							hideUpdatewaitDialog();
 							return ;
@@ -1366,7 +1448,6 @@ function elec_update_elec_action_order(menu,action)
 			alertErrorDialog(d,"elec_update_elec_action_order");
 			return ;
 		}
-//		g_Remocon = d;
 	},'json');
 }
 
@@ -1375,6 +1456,8 @@ function elec_save(key)
 	elec_save_callback(key , function(){
 		//トップ画面を更新
 		remoconedit_load();
+		//音声認識の再読み込み(時間かかるので裏でやる)
+		ReloadRecogn();
 	});
 }
 
@@ -1382,6 +1465,8 @@ function elec_goto_action(key,actionkey)
 {
 	elec_save_callback(key , function(){
 		action_load(g_elecObject.find('#elec_key').val(),actionkey);
+		//音声認識の再読み込み(時間かかるので裏でやる)
+		ReloadRecogn();
 	});
 }
 
@@ -1517,7 +1602,11 @@ function elec_delete(parentkey,key)
 						}
 						return true;
 					});
+
 					hideUpdatewaitDialog();
+
+					//音声認識の再読み込み(時間かかるので裏でやる)
+					ReloadRecogn();
 					return ;
 				},
 				error: function(d){
@@ -1801,6 +1890,9 @@ function action_save(parentkey,key)
 
 				//機材の画面を更新
 				elec_load(parentkey);
+
+				//音声認識の再読み込み(時間かかるので裏でやる)
+				ReloadRecogn();
 
 				return ;
 			},
@@ -2631,7 +2723,8 @@ function action_init()
 		var arr = { };
 		arr["exec_ir"] = g_actionObject.find("#exec_ir").val();
 
-		update(
+		//すべてを一つの処理でやると、linuxだとまれに落ちるらしい...意味がわからないので処理を分割する.
+		TopLevelInvoke(
 			null
 			,"/remocon/ir/leaning"
 			,arr
@@ -2643,6 +2736,7 @@ function action_init()
 				g_actionObject.find("#exec_ir_ok").show();
 			}
 			,{ load: $("#loadingwait_dialog_irlearn") 
+			  ,timeout: 100000
 			  ,error: function(d){
 					g_actionObject.find("#exec_ir").val("").change();
 					g_actionObject.find("#exec_ir_registlabel").hide();

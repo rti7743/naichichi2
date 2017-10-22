@@ -23,6 +23,8 @@ public:
 	bool Fire(const string& name,const string& action,const string& value);
 	string Pickup(const string& name,const string& action);
 
+
+	static unsigned char ResolveValueName(const string& name);
 private:
 	NetDeviceEcoNetLite EcoNetLite;
 	NetDeviceWemo Wemo;

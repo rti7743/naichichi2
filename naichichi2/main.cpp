@@ -3,8 +3,8 @@
 #include "MainWindow.h"
 #include "SystemMisc.h"
 
-#define HAIKU_WO_YOME_OUTPUT_STDERR(MSG) ERRORLOG(MSG);sexylog::m()->Flush();
-#include "haikuwoyome.h"
+//#define HAIKU_WO_YOME_OUTPUT_STDERR(MSG) ERRORLOG(MSG);sexylog::m()->Flush();
+//#include "haikuwoyome.h"
 
 
 #if _MSC_VER
@@ -49,8 +49,8 @@ int main(int argc, const char **argv)
 			isdebug = false;
 #endif
 
-			//これ以降、例外を受け取った時にログを書いて死ぬようにする.
-			HaikuWoYome::KaisyakuShiteYaru();
+//			//これ以降、例外を受け取った時にログを書いて死ぬようにする.
+//			HaikuWoYome::KaisyakuShiteYaru();
 
 			//引数 --nostdout がなければ debug モードとしてログを吐きまくる
 			{

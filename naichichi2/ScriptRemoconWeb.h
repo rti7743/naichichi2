@@ -28,7 +28,7 @@ public:
 	//エラーを返す static
 	static string ResultError(int code ,const string& msg)  ;
 	//設定画面のページへのURLを設定し直します
-	static bool SettingPageIPAddressOverriade();
+	static bool SettingPageIPAddressOverriade(bool isChangeOnly = false);
 	//UUIDが設定されていなければ設定しなおします
 	static void SettingUUIDOverriade();
 

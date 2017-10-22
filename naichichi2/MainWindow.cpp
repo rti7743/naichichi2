@@ -50,9 +50,12 @@ MainWindow::MainWindow()
 	}
 
 	const std::string logfilename = XLStringUtil::pathseparator( this->Config.Get("log__filename", GetConfigBasePath("log") + "/log.txt") );
-	XLFileUtil::touch( logfilename );
+
+	//ログの時刻がほしい 最初の時計補正値として利用する. 書き込む前に前回の時刻を取得.
+	time_t logfile_time = XLFileUtil::getfiletime(logfilename);
 
 	//loggerの準備
+	XLFileUtil::touch( logfilename );
 	sexylog::m()->SetLogFile( 
 		 logfilename
 		,this->Config.GetInt("log__bufferbyte",65535)
@@ -66,6 +69,9 @@ MainWindow::MainWindow()
 	#endif
 	sexylog::m()->SetLogLevel( loglevel );
 
+	//ログファイルの時刻を利用して、時計を合わせる.
+	SystemMisc::SetSystemDateTime(logfile_time);
+	
 	//翻訳層の読み込み
 	ReTranslateFile();
 }
@@ -470,45 +476,65 @@ void MainWindow::StopMCISync()
 void MainWindow::RunMessagePump()
 {
 	lock_guard<mutex> al(this->Lock);
-	for(auto it = this->Queue.begin() ; it != this->Queue.end() ; ++it )
 	{
-		LRESULT r = WndProc(0, it->message,it->wParam,it->lParam);
-		if (it->result)
+		for(auto it = this->Queue.begin() ; it != this->Queue.end() ; ++it )
 		{
-			it->result->set_value(r);
+			LRESULT r = WndProc(0, it->message,it->wParam,it->lParam);
+			if (it->result)
+			{
+				it->result->set_value(r);
+				it->result = NULL;
+			}
 		}
+		this->Queue.clear();
 	}
-	this->Queue.clear();
 }
 LRESULT MainWindow::SendMessage(HWND dummyWindowHandle,unsigned int message,WPARAM wParam,LPARAM lParam)
 {
 	promise<LRESULT> resultP;
-	future<LRESULT> future = resultP.get_future();
+	{
+		future<LRESULT> future = resultP.get_future();
 
-	struct Message m = {0};
-	m.message = message;
-	m.wParam = wParam;
-	m.lParam = lParam;
-	m.result = &resultP;
-	
-	//仕事を積む
-	{
-		lock_guard<mutex> al(this->Lock);
-		this->Queue.push_back(m);
-	}
-	//スレッドwakeup
-	{
-		this->EventObject.notify_one();
-	}
+		struct Message m = {0};
+		m.message = message;
+		m.wParam = wParam;
+		m.lParam = lParam;
+		m.result = &resultP;
+		
+		//仕事を積む
+		{
+			lock_guard<mutex> al(this->Lock);
+			this->Queue.push_back(m);
+		}
+		//スレッドwakeup
+		{
+			this->EventObject.notify_one();
+		}
 
-	if (this->MainThreadID == ::this_thread::get_id())
-	{
-		//メインスレッドであれば、メッセージポンプを回す。 そうじゃないと詰まってしまう。
-		RunMessagePump();
+		if (this->MainThreadID == ::this_thread::get_id())
+		{
+			//メインスレッドであれば、メッセージポンプを回す。 そうじゃないと詰まってしまう。
+			RunMessagePump();
+		}
+
+		//値を取得する(値を取得するまでブロック).
+		LRESULT result = future.get();
+		
+		//昔のgccの promise/futureはおかしい. まれに std::future_error: Promise already satisfied 例外が飛ぶ. boostだと普通に動くのに.
+		if (this->MainThreadID != ::this_thread::get_id())
+		{
+			while(true)
+			{
+				//確実に実行が終わっていることを確認する.
+				lock_guard<mutex> al(this->Lock);
+				if (this->Queue.size() <= 0)
+				{
+					break;
+				}
+			}
+		}
+		return result;
 	}
-	
-	//値を取得する(値を取得するまでブロック).
-	return future.get();
 }
 void MainWindow::PostMessage(HWND dummyWindowHandle,unsigned int message,WPARAM wParam,LPARAM lParam)
 {
@@ -573,9 +599,9 @@ void MainWindow::OnDestory(EXITCODE_LEVEL level)
 	DEBUGLOG("ScriptManager Stop...");
 	this->ScriptManager.DestoryScript();
 	DEBUGLOG("ScriptManager Stop");
-	DEBUGLOG("SipServer Stop...");
-	this->SipServer.Stop();
-	DEBUGLOG("SipServer Stop");
+//	DEBUGLOG("SipServer Stop...");
+//	this->SipServer.Stop();
+//	DEBUGLOG("SipServer Stop");
 #endif
 
 #if _MSC_VER
@@ -789,8 +815,8 @@ bool MainWindow::OnInit()
 	}
 	//sip
 	{
-		NOTIFYLOG("OnInit Sip Server..");
-		this->SipServer.Create();
+//		NOTIFYLOG("OnInit Sip Server..");
+//		this->SipServer.Create();
 	}
 
 	//クラウド
@@ -899,7 +925,7 @@ void MainWindow::Shutdown(EXITCODE_LEVEL level,bool isForce)
 	{//今すぐ叩き殺す!! メモリは OSが開放してくれるでしょうwww
 	 //行儀は悪くても確実性を私は取りたい.
 #if WITH_CLIENT_ONLY_CODE==1
-		this->SipServer.Stop();
+//		this->SipServer.Stop();
 #endif
 		exit((int)level);
 	}
@@ -994,77 +1020,6 @@ void MainWindow::AsyncInvoke(std::function<void (void) > func)
 	);
 }
 
-#if WITH_CLIENT_ONLY_CODE==1
-void MainWindow::TopLevelInvoke(std::function<void (void) > func)
-{
-	//停止フラグが有効な場合は無視する。
-	if (this->StopFlag)
-	{
-		return ;
-	}
-
-	MainWindow::m()->SyncInvoke([&](){
-		try
-		{
-			//重い音声認識を止めます
-			this->Recognition.Free();
-			DEBUGLOG("this->Recognition.Free()");
-			//常時内部LANのUPNPを受け止めているスレッドは止めます.
-			this->UPNPServer.Stop();
-			DEBUGLOG("this->UPNPServer.Stop()");
-			//常時内部LANのEcoNetLiteを受け止めているスレッドは止めます.
-			this->EcoNetLiteServer.Stop();
-			DEBUGLOG("this->EcoNetLiteServer.Stop()");
-			//SIPも止めます.
-			this->SipServer.Stop();
-			DEBUGLOG("this->SipServer.Stop()");
-
-			func();
-		}
-		catch(XLException& e)
-		{
-			ERRORLOG("最優先実行できませんでした。例外 " << e.what() );
-		}
-
-		try
-		{
-			ReCreateRecognitionEngine();
-			this->Recognition.CommitRule();
-		}
-		catch(XLException& e)
-		{
-			ERRORLOG("最優先実行後に音声認識エンジンを構築できませんでした。例外 " << e.what() );
-		}
-		
-		try
-		{
-			this->UPNPServer.Create();
-		}
-		catch(XLException& e)
-		{
-			ERRORLOG("最優先実行後にUPNP SERVER を起動できません。例外 " << e.what() );
-		}
-		
-		try
-		{
-			this->EcoNetLiteServer.Create();
-		}
-		catch(XLException& e)
-		{
-			ERRORLOG("最優先実行後にEcoNetLite SERVER を起動できません。例外 " << e.what() );
-		}
-
-		try
-		{
-			this->SipServer.Create();
-		}
-		catch(XLException& e)
-		{
-			ERRORLOG("最優先実行後にSip SERVER を起動できません。例外 " << e.what() );
-		}
-	});
-}
-#endif
 
 
 //ログ用のコンソールを開きます。
